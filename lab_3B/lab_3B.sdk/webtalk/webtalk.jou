@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2016.3 (64-bit)
+# SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+# 
+# Start of session at: Mon Oct 01 23:34:43 2018
+# Process ID: 14132
+# Current directory: C:/Users/klosey/lab_3B/lab_3B.sdk/webtalk
+# Command line: wbtcv.exe -mode batch -source sdk_webtalk.tcl
+# Log file: C:/Users/klosey/lab_3B/lab_3B.sdk/webtalk/webtalk.log
+# Journal file: C:/Users/klosey/lab_3B/lab_3B.sdk/webtalk\webtalk.jou
+#-----------------------------------------------------------
+source sdk_webtalk.tcl
