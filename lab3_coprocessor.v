@@ -144,7 +144,7 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    reg done = 0;
    reg read = 0;
    reg send = 0;
-   reg [6:0]count = 31; 
+   reg [4:0]count = 31; 
 
    always @(posedge ACLK) 
    begin
