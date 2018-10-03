@@ -113,11 +113,12 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    localparam NUMBER_OF_OUTPUT_WORDS = 2;
 
    // Define the states of state machine
-   localparam Idle  = 3'b100;
-   localparam Read_Inputs = 3'b010;
-   localparam Write_Outputs  = 3'b001;
+   localparam Idle  = 4'b0100;
+   localparam Read_Inputs = 4'b0010;
+   localparam Write_Outputs  = 4'b0001;
+   localparam Computing = 4'b1000;
 
-   reg [2:0] state;
+   reg [3:0] state;
 
    // Accumulator to hold sum of inputs read at any point in time
    reg [31:0] sum;
@@ -136,6 +137,14 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
 
    assign M_AXIS_TDATA = sum;
 
+
+   // added variables
+   reg [63:0] result;
+   reg [31:0] temp1, temp2;
+   reg done = 0;
+   reg read = 0;
+   reg send = 0;
+
    always @(posedge ACLK) 
    begin
 
@@ -152,7 +161,6 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
       /************** state machines **************/
       else
         case (state)
-
           Idle:
             if (S_AXIS_TVALID == 1)
             begin
@@ -165,11 +173,18 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             if (S_AXIS_TVALID == 1) 
             begin
               // --- Coprocessor function happens below --- //
-              sum  <=  sum + S_AXIS_TDATA;
+              //sum  <=  sum + S_AXIS_TDATA;
+              if (!read) begin
+                temp1 <= S_AXIS_TDATA;
+                read <= 1;
+              end else begin
+                temp2 <= S_AXIS_TDATA;
+                read <= 0;
+              end
               // --- Coprocessor function happens above --- //
               if (nr_of_reads == 0)
                 begin
-                  state        <= Write_Outputs;
+                  state        <= Computing;
                   nr_of_writes <= NUMBER_OF_OUTPUT_WORDS - 1;
                 end
               else
@@ -179,10 +194,25 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
           Write_Outputs:
             if (M_AXIS_TREADY == 1) 
             begin
+              if (!send) begin
+                sum <= result[31:16];
+                send <= 1;
+              end else begin
+                sum <= result[15:0];
+                send <= 0;
+              end
               if (nr_of_writes == 0) 
                  state <= Idle;
               else
                  nr_of_writes <= nr_of_writes - 1;
+            end
+          Computing:
+            if (!done) begin
+              result <= temp1 * temp2;
+              done <= 1;
+            end else begin
+              state <= Write_Outputs;
+              done <= 0;
             end
         endcase
    end
