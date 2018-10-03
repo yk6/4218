@@ -62,7 +62,7 @@
 -------------------------------------------------------------------------------
 */
 
-module myip_v1_0 
+module lab333333333333_v1_0//myip_v1_0 
 	(
 		// DO NOT EDIT BELOW THIS LINE ////////////////////
 		ACLK,
@@ -139,8 +139,9 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
 
 
    // added variables
-   reg [31:0] result = 0;
-   reg [31:0] temp1, temp2;
+   reg [63:0] result = 0;
+   reg [31:0] temp1 = 0;
+   reg [31:0] temp2 = 0;
    reg done = 0;
    reg read = 0;
    reg send = 0;
@@ -158,6 +159,9 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
            nr_of_reads  <= 0;
            nr_of_writes <= 0;
            sum          <= 0;
+           temp1        <= 0;
+           temp2        <= 0;
+           result       <= 0;
         end
       /************** state machines **************/
       else
@@ -196,12 +200,12 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             if (M_AXIS_TREADY == 1) 
             begin
               if (!send) begin
-                //sum <= result >> 32;
-                sum <= result;
+                sum <= result >> 32;
+                // sum <= result;
                 send <= 1;
               end else begin
-                //sum <= result & 32'hFFFFFFFF;
-                sum <= temp2;
+                sum <= result & 32'hFFFFFFFF;
+                // sum <= temp2;
                 send <= 0;
               end
               if (nr_of_writes == 0) 
@@ -211,19 +215,19 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             end
           Computing:
             if (!done) begin
-              // result <= temp1 * temp2;
-              result = temp2[0] ? (result + temp1): result;
-              temp2 = temp2 >> 1;
-              temp2[31] = result[0];
-              result = result >> 1;
-              count <= count - 1;
-              if (count == 0) begin
-                done <= 1;
-                count <= 31;
-              end
+              result <= temp1 * temp2;
+              // result = temp2[0] ? (result + temp1): result;
+              // temp2 = temp2 >> 1;
+              // temp2[31] = result[0];
+              // result = result >> 1;
+              // count <= count - 1;
+              // if (count == 0) begin
+              //   done <= 1;
+              //   count <= 31;
+              // end
             end else begin
               state <= Write_Outputs;
-              done <= 0;
+              // done <= 0;
             end
         endcase
    end
