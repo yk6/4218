@@ -139,11 +139,12 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
 
 
    // added variables
-   reg [63:0] result = 0;
+   reg [31:0] result = 0;
    reg [31:0] temp1, temp2;
    reg done = 0;
    reg read = 0;
    reg send = 0;
+   reg [6:0]count = 31; 
 
    always @(posedge ACLK) 
    begin
@@ -195,10 +196,12 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             if (M_AXIS_TREADY == 1) 
             begin
               if (!send) begin
-                sum <= result >> 32;
+                //sum <= result >> 32;
+                sum <= result;
                 send <= 1;
               end else begin
-                sum <= result & 32'hFFFFFFFF;
+                //sum <= result & 32'hFFFFFFFF;
+                sum <= temp2;
                 send <= 0;
               end
               if (nr_of_writes == 0) 
@@ -208,8 +211,16 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             end
           Computing:
             if (!done) begin
-              result <= temp1 * temp2;
-              done <= 1;
+              // result <= temp1 * temp2;
+              result = temp2[0] ? (result + temp1): result;
+              temp2 = temp2 >> 1;
+              temp2[31] = result[0];
+              result = result >> 1;
+              count <= count - 1;
+              if (count == 0) begin
+                done <= 1;
+                count <= 31;
+              end
             end else begin
               state <= Write_Outputs;
               done <= 0;
