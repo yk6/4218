@@ -139,7 +139,7 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
 
 
    // added variables
-   reg [63:0] result;
+   reg [63:0] result = 0;
    reg [31:0] temp1, temp2;
    reg done = 0;
    reg read = 0;
@@ -184,7 +184,7 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
               // --- Coprocessor function happens above --- //
               if (nr_of_reads == 0)
                 begin
-                  state        <= Computing;
+                  state        <= Computing; //Computing;
                   nr_of_writes <= NUMBER_OF_OUTPUT_WORDS - 1;
                 end
               else
@@ -195,10 +195,10 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             if (M_AXIS_TREADY == 1) 
             begin
               if (!send) begin
-                sum <= result[31:16];
+                sum <= result >> 32;
                 send <= 1;
               end else begin
-                sum <= result[15:0];
+                sum <= result & 32'hFFFFFFFF;
                 send <= 0;
               end
               if (nr_of_writes == 0) 
