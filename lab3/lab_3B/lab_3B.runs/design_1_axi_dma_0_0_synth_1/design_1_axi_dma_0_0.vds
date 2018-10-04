@@ -1,0 +1,252 @@
+#-----------------------------------------------------------
+# Vivado v2016.3 (64-bit)
+# SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+# IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+# Start of session at: Mon Oct 01 17:09:22 2018
+# Process ID: 3620
+# Current directory: C:/Users/klosey/lab_3B/lab_3B.runs/design_1_axi_dma_0_0_synth_1
+# Command line: vivado.exe -log design_1_axi_dma_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_axi_dma_0_0.tcl
+# Log file: C:/Users/klosey/lab_3B/lab_3B.runs/design_1_axi_dma_0_0_synth_1/design_1_axi_dma_0_0.vds
+# Journal file: C:/Users/klosey/lab_3B/lab_3B.runs/design_1_axi_dma_0_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source design_1_axi_dma_0_0.tcl -notrace
+Starting RTL Elaboration : Time (s): cpu = 00:00:20 ; elapsed = 00:00:28 . Memory (MB): peak = 306.145 ; gain = 95.992
+INFO: [Synth 8-638] synthesizing module 'design_1_axi_dma_0_0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0_1/synth/design_1_axi_dma_0_0.vhd:128]
+INFO: [Synth 8-638] synthesizing module 'axi_dma' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:21830]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_rst_module' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:1595]
+INFO: [Synth 8-638] synthesizing module 'cdc_sync' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync' (1#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_reset' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:603]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_reset' (2#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:603]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_rst_module' (3#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:1595]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_reg_module' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:8254]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_lite_if' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:2066]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_lite_if' (4#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:2066]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_register' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:3604]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_register' (5#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:3604]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_register_s2mm' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:4837]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_register_s2mm' (6#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:4837]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_reg_module' (7#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:8254]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_mm2s_mngr' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:14884]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_smple_sm' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:11685]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_smple_sm' (8#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:11685]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_mm2s_cmdsts_if' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:13668]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_mm2s_cmdsts_if' (9#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:13668]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_mm2s_sts_mngr' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:13983]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_mm2s_sts_mngr' (10#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:13983]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_mm2s_mngr' (11#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:14884]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_sofeof_gen' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:11155]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_sofeof_gen' (12#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:11155]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_s2mm_mngr' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:20222]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_s2mm_cmdsts_if' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:18487]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_s2mm_cmdsts_if' (13#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:18487]
+INFO: [Synth 8-638] synthesizing module 'axi_dma_s2mm_sts_mngr' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:18917]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_s2mm_sts_mngr' (14#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:18917]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma_s2mm_mngr' (15#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:20222]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:48516]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_mm2s_full_wrap' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:46666]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_reset' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:153]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_reset' (16#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:153]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_cmd_status' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:2693]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo' (17#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized0' (17#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_cmd_status' (18#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:2693]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_rd_status_cntl' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:13741]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_rd_status_cntl' (19#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:13741]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_pcc' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:7411]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_strb_gen2' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:4337]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_strb_gen2' (20#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:4337]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_strb_gen2__parameterized0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:4337]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_strb_gen2__parameterized0' (20#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:4337]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_pcc' (21#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:7411]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_addr_cntl' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:9995]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized1' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'cntr_incr_decr_addn_f' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'cntr_incr_decr_addn_f' (22#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f' (23#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f' (24#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f' (25#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized1' (25#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_addr_cntl' (26#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:9995]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_rddata_cntl' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:12180]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_rdmux' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:10676]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_rdmux' (27#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:10676]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized2' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized0' (27#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized0' (27#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized0' (27#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized2' (27#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_rddata_cntl' (28#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:12180]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_rd_sf' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:20200]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized3' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized1' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized1' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized1' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized1' (28#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized1' (28#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized1' (28#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized3' (28#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_sfifo_autord' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1294]
+INFO: [Synth 8-638] synthesizing module 'sync_fifo_fg' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/61a7/hdl/lib_fifo_v1_0_rfs.vhd:2097]
+INFO: [Synth 8-256] done synthesizing module 'sync_fifo_fg' (57#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/61a7/hdl/lib_fifo_v1_0_rfs.vhd:2097]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_sfifo_autord' (58#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1294]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_rd_sf' (59#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:20200]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_skid_buf' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:19492]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_skid_buf' (60#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:19492]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_mm2s_full_wrap' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:46666]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_s2mm_full_wrap' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:43113]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_cmd_status__parameterized0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:2693]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized4' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized4' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_cmd_status__parameterized0' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:2693]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_wr_status_cntl' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:17697]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized5' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized2' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized2' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'cntr_incr_decr_addn_f__parameterized0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'cntr_incr_decr_addn_f__parameterized0' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized2' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized2' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized2' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized2' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized5' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized6' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized3' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized3' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'cntr_incr_decr_addn_f__parameterized1' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'cntr_incr_decr_addn_f__parameterized1' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized3' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized3' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized3' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized3' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized6' (61#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_wr_status_cntl' (62#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:17697]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_ibttcc' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:25723]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_ibttcc' (63#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:25723]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_s2mm_realign' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:40129]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized7' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized4' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized4' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized4' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized4' (63#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized4' (63#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized4' (63#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized7' (63#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_s2mm_scatter' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:38236]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_mssai_skid_buf' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:37286]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_ms_strb_set' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:35726]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_ms_strb_set' (64#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:35726]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_mssai_skid_buf' (65#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:37286]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_slice' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:37975]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_slice' (66#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:37975]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized8' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized5' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized5' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'cntr_incr_decr_addn_f__parameterized2' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'cntr_incr_decr_addn_f__parameterized2' (66#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized5' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized5' (66#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized5' (66#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized5' (66#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized8' (66#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_s2mm_scatter' (67#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:38236]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_s2mm_realign' (68#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:40129]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_indet_btt' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:28422]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_stbs_set_nodre' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:24201]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_stbs_set_nodre' (69#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:24201]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_sfifo_autord__parameterized0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1294]
+INFO: [Synth 8-638] synthesizing module 'sync_fifo_fg__parameterized0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/61a7/hdl/lib_fifo_v1_0_rfs.vhd:2097]
+INFO: [Synth 8-256] done synthesizing module 'sync_fifo_fg__parameterized0' (70#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/61a7/hdl/lib_fifo_v1_0_rfs.vhd:2097]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_sfifo_autord__parameterized0' (70#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1294]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_sfifo_autord__parameterized1' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1294]
+INFO: [Synth 8-638] synthesizing module 'sync_fifo_fg__parameterized1' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/61a7/hdl/lib_fifo_v1_0_rfs.vhd:2097]
+INFO: [Synth 8-256] done synthesizing module 'sync_fifo_fg__parameterized1' (70#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/61a7/hdl/lib_fifo_v1_0_rfs.vhd:2097]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_sfifo_autord__parameterized1' (70#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1294]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_skid_buf__parameterized0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:19492]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_skid_buf__parameterized0' (70#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:19492]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_indet_btt' (71#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:28422]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_addr_cntl__parameterized0' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:9995]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized9' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized9' (71#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_addr_cntl__parameterized0' (71#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:9995]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_wrdata_cntl' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:15669]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized10' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized6' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized6' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized6' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized6' (71#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized6' (71#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized6' (71#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized10' (71#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:1881]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_wrdata_cntl' (72#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:15669]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_skid2mm_buf' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:18990]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_wr_demux' [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:14112]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_wr_demux' (73#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:14112]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_skid2mm_buf' (74#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:18990]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_s2mm_full_wrap' (75#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:43113]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover' (76#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/1cd0/hdl/axi_datamover_v5_1_vh_rfs.vhd:48516]
+INFO: [Synth 8-256] done synthesizing module 'axi_dma' (77#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ipshared/a41f/hdl/axi_dma_v7_1_vh_rfs.vhd:21830]
+INFO: [Synth 8-256] done synthesizing module 'design_1_axi_dma_0_0' (78#1) [c:/Users/klosey/lab_3B/lab_3B.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0_1/synth/design_1_axi_dma_0_0.vhd:128]
+Finished RTL Elaboration : Time (s): cpu = 00:05:43 ; elapsed = 00:06:10 . Memory (MB): peak = 581.207 ; gain = 371.055
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:05:44 ; elapsed = 00:06:11 . Memory (MB): peak = 581.207 ; gain = 371.055
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.188 . Memory (MB): peak = 725.141 ; gain = 0.313
+Finished Constraint Validation : Time (s): cpu = 00:06:00 ; elapsed = 00:06:28 . Memory (MB): peak = 725.141 ; gain = 514.988
+Finished Loading Part and Timing Information : Time (s): cpu = 00:06:00 ; elapsed = 00:06:28 . Memory (MB): peak = 725.141 ; gain = 514.988
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:06:00 ; elapsed = 00:06:28 . Memory (MB): peak = 725.141 ; gain = 514.988
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:06:06 ; elapsed = 00:06:36 . Memory (MB): peak = 725.141 ; gain = 514.988
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:06:15 ; elapsed = 00:06:46 . Memory (MB): peak = 725.141 ; gain = 514.988
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping  Report (see note below)
++------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+----------------------+--------------+
+|Module Name | RTL Object                                                                                                                                                                                                                                        | Inference      | Size (Depth x Width) | Primitives   | 
++------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+----------------------+--------------+
+|axi_dma     | I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_XD_FIFO/NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO/FAMILY_SUPPORTED.I_SYNC_FIFO_BRAM/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gdm.dm_gen.dm/RAM_reg | User Attribute | 8 x 9                | RAM32M x 2   | 
++------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+----------------------+--------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:06:28 ; elapsed = 00:06:59 . Memory (MB): peak = 725.141 ; gain = 514.988
+Finished Timing Optimization : Time (s): cpu = 00:06:35 ; elapsed = 00:07:06 . Memory (MB): peak = 754.738 ; gain = 544.586
+Finished Technology Mapping : Time (s): cpu = 00:06:37 ; elapsed = 00:07:08 . Memory (MB): peak = 754.738 ; gain = 544.586
+Finished IO Insertion : Time (s): cpu = 00:06:38 ; elapsed = 00:07:09 . Memory (MB): peak = 754.738 ; gain = 544.586
+Finished Renaming Generated Instances : Time (s): cpu = 00:06:38 ; elapsed = 00:07:09 . Memory (MB): peak = 754.738 ; gain = 544.586
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:06:39 ; elapsed = 00:07:10 . Memory (MB): peak = 754.738 ; gain = 544.586
+Finished Renaming Generated Ports : Time (s): cpu = 00:06:39 ; elapsed = 00:07:10 . Memory (MB): peak = 754.738 ; gain = 544.586
+Finished Handling Custom Attributes : Time (s): cpu = 00:06:39 ; elapsed = 00:07:10 . Memory (MB): peak = 754.738 ; gain = 544.586
+Finished Renaming Generated Nets : Time (s): cpu = 00:06:39 ; elapsed = 00:07:10 . Memory (MB): peak = 754.738 ; gain = 544.586
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY4   |    43|
+|2     |LUT1     |    95|
+|3     |LUT2     |   174|
+|4     |LUT3     |   378|
+|5     |LUT4     |   214|
+|6     |LUT5     |   234|
+|7     |LUT6     |   373|
+|8     |MUXF7    |     7|
+|9     |RAM32M   |     2|
+|10    |RAMB36E1 |     2|
+|11    |SRL16E   |   170|
+|12    |FDR      |     8|
+|13    |FDRE     |  1781|
+|14    |FDSE     |    76|
++------+---------+------+
+Finished Writing Synthesis Report : Time (s): cpu = 00:06:39 ; elapsed = 00:07:10 . Memory (MB): peak = 754.738 ; gain = 544.586
+synth_design: Time (s): cpu = 00:06:35 ; elapsed = 00:07:01 . Memory (MB): peak = 754.738 ; gain = 532.750

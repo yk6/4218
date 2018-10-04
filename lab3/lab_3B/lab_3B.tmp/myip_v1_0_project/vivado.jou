@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2016.3 (64-bit)
+# SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+# IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+# Start of session at: Wed Oct 03 23:00:50 2018
+# Process ID: 10708
+# Current directory: C:/Users/klosey/lab_3B/lab_3B.tmp/myip_v1_0_project
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12484 C:\Users\klosey\lab_3B\lab_3B.tmp\myip_v1_0_project\myip_v1_0_project.xpr
+# Log file: C:/Users/klosey/lab_3B/lab_3B.tmp/myip_v1_0_project/vivado.log
+# Journal file: C:/Users/klosey/lab_3B/lab_3B.tmp/myip_v1_0_project\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/klosey/lab_3B/lab_3B.tmp/myip_v1_0_project/myip_v1_0_project.xpr
