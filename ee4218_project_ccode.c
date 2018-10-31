@@ -15,10 +15,10 @@ for smooth running of code
 
 
 NUMPAT:     number of training data 
+NUMTEST:    number of testing data
 NUMIN:      number of features
 NUMHID:     number of hidden node
 NUMOUT:     number of output node
-NUMTEST:    number of testing data
 
 */
 
@@ -27,10 +27,10 @@ const char* trainPath = "/Users/G552/Desktop/4218 proj/training_data.txt";
 const char* testPath = "/Users/G552/Desktop/4218 proj/test_data.txt";
 
 #define NUMPAT 150
+#define NUMTEST 28
 #define NUMIN  13
 #define NUMHID 10
 #define NUMOUT 1
-#define NUMTEST 28
 #define MAX_INPUT 256
 #define NUM_OUTPUT 3
 
@@ -135,7 +135,7 @@ int training() {
             }
         }
         /*if( epoch%1000 == 0 ) fprintf(stdout, "\nEpoch %-5d :   Error = %f", epoch, Error) ;*/
-        if( Error < 0.8 ) break ;  /* stop learning when 'near enough' */
+        if( Error < 0.9 ) break ;  /* stop learning when 'near enough' */
     }
     
     fprintf(stdout, "\n\nNETWORK DATA - EPOCH %d\n", epoch) ;   /* print network outputs */
