@@ -5,22 +5,45 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+/*
+Reference website: http://www.cs.bham.ac.uk/~jxb/INC/nn.html
+===========================================================
+                        README
+===========================================================
+Change training file and test file path to correct path
+for smooth running of code
+
+
+NUMPAT:     number of training data 
+NUMIN:      number of features
+NUMHID:     number of hidden node
+NUMOUT:     number of output node
+NUMTEST:    number of testing data
+
+*/
+
+
+const char* trainPath = "/Users/G552/Desktop/4218 proj/training_data.txt";
+const char* testPath = "/Users/G552/Desktop/4218 proj/test_data.txt";
+
 #define NUMPAT 150
 #define NUMIN  13
 #define NUMHID 10
 #define NUMOUT 1
 #define NUMTEST 28
+#define MAX_INPUT 256
+#define NUM_OUTPUT 3
 
 #define rando() ((double)rand()/((double)RAND_MAX+1))
 
-//declare function
+/*declare function*/
 double readinput(double input[NUMPAT+1][NUMIN+1],double target[NUMPAT+1][NUMOUT+1]);
 double test(double test_input[NUMTEST+1][NUMIN+1],double test_target[NUMTEST+1][NUMOUT+1],
             double SumH[NUMPAT+1][NUMHID+1],double WeightIH[NUMIN+1][NUMHID+1],double Hidden[NUMPAT+1][NUMHID+1],
             double SumO[NUMPAT+1][NUMOUT+1],double WeightHO[NUMHID+1][NUMOUT+1],double Output[NUMPAT+1][NUMOUT+1]);
 int training(void);
 
-//declare variable
+/*declare variable*/
 int    i, j, k, p, np, op, ranpat[NUMPAT+1], epoch;
 double SumH[NUMPAT+1][NUMHID+1], WeightIH[NUMIN+1][NUMHID+1], Hidden[NUMPAT+1][NUMHID+1];
 double SumO[NUMPAT+1][NUMOUT+1], WeightHO[NUMHID+1][NUMOUT+1], Output[NUMPAT+1][NUMOUT+1];
@@ -32,14 +55,12 @@ double DeltaO[NUMOUT+1], SumDOW[NUMHID+1], DeltaH[NUMHID+1];
 double DeltaWeightIH[NUMIN+1][NUMHID+1], DeltaWeightHO[NUMHID+1][NUMOUT+1];
 double Error, eta = 0.5, alpha = 0.9, smallwt = 0.5;
 
-
 int main()
 {
     readinput(Input,Target);
     training();
-    fprintf(stdout,"\n\nfollowing is test\n");
+    fprintf(stdout,"\nTest\n");
     test(Test_input,Test_target,SumH,WeightIH,Hidden,SumO,WeightHO,Output);
-    fprintf(stdout, "\n\nfinish\n\n") ;
 }
 
 
@@ -113,11 +134,18 @@ int training() {
                 }
             }
         }
-        if( epoch%100 == 0 ) fprintf(stdout, "\nEpoch %-5d :   Error = %f", epoch, Error) ;
-        if( Error < 0.0004 ) break ;  /* stop learning when 'near enough' */
+        /*if( epoch%1000 == 0 ) fprintf(stdout, "\nEpoch %-5d :   Error = %f", epoch, Error) ;*/
+        if( Error < 0.8 ) break ;  /* stop learning when 'near enough' */
     }
     
-    fprintf(stdout, "\n\nNETWORK DATA - EPOCH %d\n\nPat\t", epoch) ;   /* print network outputs */
+    fprintf(stdout, "\n\nNETWORK DATA - EPOCH %d\n", epoch) ;   /* print network outputs */
+    fprintf(stdout, "Error -  %f\n", Error) ;
+    /*  
+        print all input data 
+        print actual and predicted
+    */
+    /*
+    fprintf(stdout, "Pat\t"); 
     for( i = 1 ; i <= NUMIN ; i++ ) {
         fprintf(stdout, "Input%-4d\t", i) ;
     }
@@ -127,12 +155,13 @@ int training() {
     for( p = 1 ; p <= NUMPAT ; p++ ) {
         fprintf(stdout, "\n%d\t", p) ;
         for( i = 1 ; i <= NUMIN ; i++ ) {
-            fprintf(stdout, "%g\t", 256 * Input[p][i]) ;
+            fprintf(stdout, "%g\t", MAX_INPUT * Input[p][i]) ;
         }
         for( k = 1 ; k <= NUMOUT ; k++ ) {
-            fprintf(stdout, "%g\t%g\t", 3 * Target[p][k], 3 * Output[p][k]) ;
+            fprintf(stdout, "%g\t%g\t", NUM_OUTPUT * Target[p][k], NUM_OUTPUT * Output[p][k]) ;
         }
     }
+    */
     return 0 ;
 }
 
@@ -140,18 +169,18 @@ int training() {
 double readinput(double input[NUMPAT+1][NUMIN+1],double target[NUMPAT+1][NUMOUT+1])
 {
     int i,j;
-    FILE *fw=fopen("/Users/klosey/Desktop/training_data.txt","r");
+    FILE *fw=fopen(trainPath,"r");
     for(i=1;i<NUMPAT+1;i++)
     {
         for(j=1;j<NUMOUT+1;j++)
         {
             fscanf(fw,"%lf",&target[i][j]);
-            target[i][j] = target[i][j] / 3;
+            target[i][j] = target[i][j] / NUM_OUTPUT;
         }
         for(j=1;j<NUMIN+1;j++)
         {
             fscanf(fw,"%lf",&input[i][j]);
-            input[i][j] = input[i][j] / 256;
+            input[i][j] = input[i][j] / MAX_INPUT;
         }
     }
     fclose(fw);
@@ -164,37 +193,40 @@ double test(double test_input[NUMTEST+1][NUMIN+1],double test_target[NUMTEST+1][
             double SumO[NUMPAT+1][NUMOUT+1],double WeightHO[NUMHID+1][NUMOUT+1],double Output[NUMPAT+1][NUMOUT+1])
 {
     int i,j,p,k = 0;
-    FILE *fw=fopen("/Users/klosey/Desktop/test_data.txt","r");
+    double accuracy = 0.0;
+    FILE *fw=fopen(testPath,"r");
     for(i=1;i<NUMTEST+1;i++)
     {
         for(j=1;j<NUMOUT+1;j++)
         {
             fscanf(fw,"%lf",&test_target[i][j]);
-            test_target[i][j] = test_target[i][j] / 3;
+            test_target[i][j] = test_target[i][j] / NUM_OUTPUT;
         }
         for(j=1;j<NUMIN+1;j++)
         {
             fscanf(fw,"%lf",&test_input[i][j]);
-            test_input[i][j] = test_input[i][j] / 256;
+            test_input[i][j] = test_input[i][j] / MAX_INPUT;
         }
     }
     fclose(fw);
     for( p = 1 ; p <= NUMTEST ; p++ ) {
-    for( j = 1 ; j <= NUMHID ; j++ ) {    /* compute hidden unit activations */
-        SumH[p][j] = WeightIH[0][j] ;
-        for( i = 1 ; i <= NUMIN ; i++ ) {
-            SumH[p][j] += test_input[p][i] * WeightIH[i][j] ;
+        for( j = 1 ; j <= NUMHID ; j++ ) {    /* compute hidden unit activations */
+            SumH[p][j] = WeightIH[0][j] ;
+            for( i = 1 ; i <= NUMIN ; i++ ) {
+                SumH[p][j] += test_input[p][i] * WeightIH[i][j] ;
+            }
+            Hidden[p][j] = 1.0/(1.0 + exp(-SumH[p][j])) ;
         }
-        Hidden[p][j] = 1.0/(1.0 + exp(-SumH[p][j])) ;
-    }
-    for( k = 1 ; k <= NUMOUT ; k++ ) {    /* compute output unit activations and errors */
-        SumO[p][k] = WeightHO[0][k] ;
-        for( j = 1 ; j <= NUMHID ; j++ ) {
-            SumO[p][k] += Hidden[p][j] * WeightHO[j][k] ;
+        for( k = 1 ; k <= NUMOUT ; k++ ) {    /* compute output unit activations and errors */
+            SumO[p][k] = WeightHO[0][k] ;
+            for( j = 1 ; j <= NUMHID ; j++ ) {
+                SumO[p][k] += Hidden[p][j] * WeightHO[j][k] ;
+            }
+            Output[p][k] = 1.0/(1.0 + exp(-SumO[p][k])) ;
         }
-        Output[p][k] = 1.0/(1.0 + exp(-SumO[p][k])) ;
     }
-    }
+    /* print full testdata and prediction */
+    /*
     fprintf(stdout, "\ntestdata\t") ;
     for( k = 1 ; k <= NUMOUT ; k++ ) {
         fprintf(stdout,"Target%d\t   Output%d\t", k, k) ;
@@ -202,8 +234,20 @@ double test(double test_input[NUMTEST+1][NUMIN+1],double test_target[NUMTEST+1][
     for( p = 1 ; p <= NUMTEST ; p++ ) {
         fprintf(stdout, "\n   %d\t", p) ;
         for( k = 1 ; k <= NUMOUT ; k++ ) {
-            fprintf(stdout, "       %g\t   %g\t", 3 * test_target[p][k], 3 * Output[p][k]) ;
+            fprintf(stdout, "       %g\t   %g\t", NUM_OUTPUT * test_target[p][k], NUM_OUTPUT * Output[p][k]) ;
         }
     }
+    */
+
+    /* print accuracy only */
+    for( p = 1 ; p <= NUMTEST ; p++ ) {
+        for( k = 1 ; k <= NUMOUT ; k++ ) {
+            if(NUM_OUTPUT * test_target[p][k] == round(NUM_OUTPUT * Output[p][k])) {
+                accuracy += 1.0;
+            }
+        }
+    }
+    fprintf(stdout, "Accuracy: %.2f%\n", accuracy/NUMTEST);
+
     return 0;
 }
