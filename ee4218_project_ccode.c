@@ -135,7 +135,7 @@ int training() {
             }
         }
         /*if( epoch%1000 == 0 ) fprintf(stdout, "\nEpoch %-5d :   Error = %f", epoch, Error) ;*/
-        if( Error < 0.9 ) break ;  /* stop learning when 'near enough' */
+        if( Error < 0.001 ) break ;  /* stop learning when 'near enough' */
     }
     
     fprintf(stdout, "\n\nNETWORK DATA - EPOCH %d\n", epoch) ;   /* print network outputs */
@@ -226,7 +226,7 @@ double test(double test_input[NUMTEST+1][NUMIN+1],double test_target[NUMTEST+1][
         }
     }
     /* print full testdata and prediction */
-    /*
+    
     fprintf(stdout, "\ntestdata\t") ;
     for( k = 1 ; k <= NUMOUT ; k++ ) {
         fprintf(stdout,"Target%d\t   Output%d\t", k, k) ;
@@ -237,7 +237,7 @@ double test(double test_input[NUMTEST+1][NUMIN+1],double test_target[NUMTEST+1][
             fprintf(stdout, "       %g\t   %g\t", NUM_OUTPUT * test_target[p][k], NUM_OUTPUT * Output[p][k]) ;
         }
     }
-    */
+    
 
     /* print accuracy only */
     for( p = 1 ; p <= NUMTEST ; p++ ) {
@@ -248,6 +248,5 @@ double test(double test_input[NUMTEST+1][NUMIN+1],double test_target[NUMTEST+1][
         }
     }
     fprintf(stdout, "Accuracy: %.2f%\n", accuracy/NUMTEST);
-
     return 0;
 }
