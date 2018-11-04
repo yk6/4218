@@ -54,7 +54,7 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
 
    assign value = temp[0];
 
-
+   reg done;
    reg [3:0] count;
    
    // wire [31:0] mul_in1;
@@ -137,13 +137,15 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
               if (nr_of_writes == 0)
               begin
                 state <= Idle;
-              end
+              end        
             end
           Compute:
           begin
-            if (nr_of_writes == 0)
+            if (done == 1)
+            begin
+              if (nr_of_writes == 0)
               begin
-                state <= Write_Outputs;
+                  state <= Write_Outputs;
               end
               case (nr_of_writes%3)
                 0:
@@ -169,6 +171,17 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
                 end
                 default:;
               endcase
+            end     
+            else begin
+              int[0] = int[0] * 2;
+              dec[0] = dec[0] * 2;
+              if (dec[0] > 8'd100)
+              begin
+                dec[0] = dec[0] - 8'd100;
+                int[0] = int[0] + 1;
+              end
+              done <= 1;
+            end             
           end
         endcase
    end
