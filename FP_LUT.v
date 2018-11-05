@@ -1,4 +1,4 @@
-module FP_LUT 
+module myip_v1_0 
   (
     // DO NOT EDIT BELOW THIS LINE ////////////////////
     ACLK,
@@ -46,11 +46,11 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    // reg [31:0] first;
    // reg [63:0] result;
 
-   reg sign[0:10];
+   reg [4:0]sign[0:10];
    reg [7:0] int[0:10];
    reg [7:0] dec[0:10];
    wire [16:0] value;
-   reg [16:0] temp[0:10];
+   reg [20:0] temp[0:10];
 
    assign value = temp[0];
 
@@ -63,7 +63,7 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    // assign mul_in2 = S_AXIS_TDATA;
 
    // Counters to store the number inputs read & outputs written
-   reg [NUMBER_OF_INPUT_WORDS - 1:0] nr_of_reads;
+   reg [NUMBER_OF_INPUT_WORDS :0] nr_of_reads;
    reg [NUMBER_OF_OUTPUT_WORDS - 1:0] nr_of_writes;
 
    // CAUTION:
@@ -95,9 +95,10 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             if (S_AXIS_TVALID == 1)
             begin
               state       <= Read_Inputs;
-              nr_of_reads <= NUMBER_OF_INPUT_WORDS - 1;
+              nr_of_reads <= NUMBER_OF_INPUT_WORDS;
               count <= 0;
               temp[0] <= 0;
+              done <= 0;
             end
           Read_Inputs:
             if (S_AXIS_TVALID == 1) 
@@ -109,7 +110,7 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
                 nr_of_writes <= NUMBER_OF_OUTPUT_WORDS - 1;
               end
               case(nr_of_reads%3)
-                0:
+                1:
                   begin
                     dec[0] <= S_AXIS_TDATA;
                     count <= count + 1;
@@ -118,12 +119,12 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
                       nr_of_reads <= nr_of_reads - 1;                      
                     end
                   end
-                1:
+                2:
                   begin
                     int[0] <= S_AXIS_TDATA;
                     nr_of_reads <= nr_of_reads - 1;
                   end
-                2:
+                0:
                   begin
                     sign[0] <= S_AXIS_TDATA;
                     nr_of_reads <= nr_of_reads - 1;
@@ -141,39 +142,7 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             end
           Compute:
           begin
-            if (done == 1)
-            begin
-              if (nr_of_writes == 0)
-              begin
-                  state <= Write_Outputs;
-              end
-              case (nr_of_writes%3)
-                0:
-                begin
-                  temp[0] <= sign[0] << 16 | int[0] << 8 | dec[0];                  
-                  count <= count + 1;                  
-                  if (nr_of_writes !=0) 
-                  begin
-                    nr_of_writes <= nr_of_writes - 1;
-                  end
-                end
-                1:
-                begin
-                  temp[0] <= sign[0] << 16 | int[0] << 8 | dec[0]; 
-                  count <= count + 1;
-                  nr_of_writes <= nr_of_writes - 1;
-                end
-                2:
-                begin
-                  temp[0] <= sign[0] << 16 | int[0] << 8 | dec[0]; 
-                  count <= count + 1;
-                  nr_of_writes <= nr_of_writes - 1;
-                end
-                default:;
-              endcase
-            end     
-            else begin
-              int[0] = int[0] * 2;
+              int[0] = int[0] <<1;
               dec[0] = dec[0] * 2;
               if (dec[0] > 8'd100)
               begin
@@ -181,8 +150,17 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
                 int[0] = int[0] + 1;
               end
               done <= 1;
-            end             
-          end
+              if (nr_of_writes == 0)
+              begin
+                  state <= Write_Outputs;
+                  temp[0] <= sign[0] << 16 | int[0] << 8 | dec[0];                  
+                  count <= count + 1;
+              end               
+              if (nr_of_writes !=0) 
+              begin
+                  nr_of_writes <= nr_of_writes - 1;
+              end     
+            end
         endcase
    end
 
