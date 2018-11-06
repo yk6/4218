@@ -1,4 +1,4 @@
-module myip_v1_0 
+module FP_LUT 
   (
     // DO NOT EDIT BELOW THIS LINE ////////////////////
     ACLK,
@@ -27,13 +27,14 @@ output     [31 : 0]            M_AXIS_TDATA;   // Data Out
 output                         M_AXIS_TLAST;   // Optional data out qualifier
 input                          M_AXIS_TREADY;  // Connected slave device is ready to accept data out
     
-   localparam FP = 3;
+   // number of data
+   localparam FP = 2; 
 
    // Total number of input data.
-   localparam NUMBER_OF_INPUT_WORDS  = FP*1;
+   localparam NUMBER_OF_INPUT_WORDS  = FP * 3;
 
    // Total number of output data
-   localparam NUMBER_OF_OUTPUT_WORDS = FP/3;
+   localparam NUMBER_OF_OUTPUT_WORDS = FP;
 
    // Define the states of state machine
    localparam Idle  = 4'b0001;
@@ -43,27 +44,20 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    reg [3:0] state;
 
    // Accumulator to hold sum of inputs read at any point in time
-   // reg [31:0] first;
-   // reg [63:0] result;
 
-   reg [4:0]sign[0:10];
+   reg sign[0:10];
    reg [7:0] int[0:10];
    reg [7:0] dec[0:10];
-   wire [16:0] value;
+   wire [20:0] value;
    reg [20:0] temp[0:10];
 
-   assign value = temp[0];
+   assign value = temp[count];
 
    reg done;
    reg [3:0] count;
-   
-   // wire [31:0] mul_in1;
-   // wire [31:0] mul_in2;
-   // assign mul_in1 = first;
-   // assign mul_in2 = S_AXIS_TDATA;
 
    // Counters to store the number inputs read & outputs written
-   reg [NUMBER_OF_INPUT_WORDS :0] nr_of_reads;
+   reg [NUMBER_OF_INPUT_WORDS - 1:0] nr_of_reads;
    reg [NUMBER_OF_OUTPUT_WORDS - 1:0] nr_of_writes;
 
    // CAUTION:
@@ -78,7 +72,6 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
 
    always @(posedge ACLK) 
    begin
-
       /****** Synchronous reset (active low) ******/
       if (!ARESETN)
         begin
@@ -95,9 +88,8 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             if (S_AXIS_TVALID == 1)
             begin
               state       <= Read_Inputs;
-              nr_of_reads <= NUMBER_OF_INPUT_WORDS;
+              nr_of_reads <= NUMBER_OF_INPUT_WORDS - 1;
               count <= 0;
-              temp[0] <= 0;
               done <= 0;
             end
           Read_Inputs:
@@ -106,27 +98,26 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
               if (nr_of_reads == 0) 
               begin
                 state <= Compute;
-                count <= 0;
                 nr_of_writes <= NUMBER_OF_OUTPUT_WORDS - 1;
               end
               case(nr_of_reads%3)
-                1:
+                0:
                   begin
-                    dec[0] <= S_AXIS_TDATA;
+                    dec[count] <= S_AXIS_TDATA;
                     count <= count + 1;
                     if (nr_of_reads != 0) 
                     begin
                       nr_of_reads <= nr_of_reads - 1;                      
                     end
                   end
-                2:
+                1:
                   begin
-                    int[0] <= S_AXIS_TDATA;
+                    int[count] <= S_AXIS_TDATA;
                     nr_of_reads <= nr_of_reads - 1;
                   end
-                0:
+                2:
                   begin
-                    sign[0] <= S_AXIS_TDATA;
+                    sign[count] <= S_AXIS_TDATA;
                     nr_of_reads <= nr_of_reads - 1;
                   end
                 default:;
@@ -137,30 +128,38 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             begin
               if (nr_of_writes == 0)
               begin
-                state <= Idle;
-              end        
+                state <= Idle;                    
+              end
+              else begin
+                nr_of_writes <= nr_of_writes - 1;
+                count <= count + 1;
+              end      
             end
           Compute:
           begin
-              int[0] = int[0] <<1;
-              dec[0] = dec[0] * 2;
-              if (dec[0] > 8'd100)
+              int[count] = int[count] * 2;
+              dec[count] = dec[count] * 2;
+              if (dec[count] > 8'd100)
               begin
-                dec[0] = dec[0] - 8'd100;
-                int[0] = int[0] + 1;
+                dec[count] = dec[count] - 8'd100;
+                int[count] = int[count] + 1;
               end
-              done <= 1;
-              if (nr_of_writes == 0)
+              if (count != 0)
+              begin                
+                temp[count] <= sign[count] << 16 | int[count] << 8 | dec[count];                  
+                count <= count - 1;                
+              end
+              if (count == 0) 
               begin
-                  state <= Write_Outputs;
-                  temp[0] <= sign[0] << 16 | int[0] << 8 | dec[0];                  
-                  count <= count + 1;
-              end               
-              if (nr_of_writes !=0) 
+                done <= 1;
+                temp[count] <= sign[count] << 16 | int[count] << 8 | dec[count];
+              end
+              if (done == 1)
               begin
-                  nr_of_writes <= nr_of_writes - 1;
-              end     
-            end
+                state <= Write_Outputs;
+                done <= 0;
+              end
+          end
         endcase
    end
 

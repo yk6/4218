@@ -31,12 +31,18 @@ module test(
         M_AXIS_TREADY = 1;
         #8;
         S_AXIS_TVALID = 1;
-        #10;
+        #12;
         S_AXIS_TDATA = 1'b1;
-        #8;
+        #12;
         S_AXIS_TDATA = 8'd200;
         #12;
-        S_AXIS_TDATA = 8'd61;
+        S_AXIS_TDATA = 8'd61;        
+        #12;
+        S_AXIS_TDATA = 1'b1;
+        #12;
+        S_AXIS_TDATA = 8'd400;
+        #12;
+        S_AXIS_TDATA = 8'd21;
         #20
         S_AXIS_TVALID = 0;
         S_AXIS_TDATA = 0;
