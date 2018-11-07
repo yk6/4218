@@ -1,5 +1,5 @@
-module FP_LUT 
-  (
+module myip_v1_0 
+(
     // DO NOT EDIT BELOW THIS LINE ////////////////////
     ACLK,
     ARESETN,
@@ -28,7 +28,7 @@ output                         M_AXIS_TLAST;   // Optional data out qualifier
 input                          M_AXIS_TREADY;  // Connected slave device is ready to accept data out
     
    // number of data
-   localparam FP = 2; 
+   localparam FP = 1; 
 
    // Total number of input data.
    localparam NUMBER_OF_INPUT_WORDS  = FP * 3;
@@ -57,8 +57,8 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    reg [3:0] count;
 
    // Counters to store the number inputs read & outputs written
-   reg [NUMBER_OF_INPUT_WORDS - 1:0] nr_of_reads;
-   reg [NUMBER_OF_OUTPUT_WORDS - 1:0] nr_of_writes;
+   reg [NUMBER_OF_INPUT_WORDS :0] nr_of_reads;
+   reg [NUMBER_OF_OUTPUT_WORDS :0] nr_of_writes;
 
    // CAUTION:
    // The sequence in which data are read in should be
@@ -68,7 +68,7 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    assign M_AXIS_TVALID = (state == Write_Outputs);
    assign M_AXIS_TLAST = (state == Write_Outputs) & (nr_of_writes == 0);
 
-   assign M_AXIS_TDATA = M_AXIS_TVALID?value:0;
+   assign M_AXIS_TDATA = M_AXIS_TVALID?temp[count]:0;
 
    always @(posedge ACLK) 
    begin
@@ -88,7 +88,7 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             if (S_AXIS_TVALID == 1)
             begin
               state       <= Read_Inputs;
-              nr_of_reads <= NUMBER_OF_INPUT_WORDS - 1;
+              nr_of_reads <= NUMBER_OF_INPUT_WORDS;
               count <= 0;
               done <= 0;
             end
@@ -100,28 +100,31 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
                 state <= Compute;
                 nr_of_writes <= NUMBER_OF_OUTPUT_WORDS - 1;
               end
+              else
+              begin
               case(nr_of_reads%3)
-                0:
+                1:
                   begin
                     dec[count] <= S_AXIS_TDATA;
+                    nr_of_reads <= nr_of_reads - 1;
                     count <= count + 1;
+                  end
+                2:
+                  begin
+                    int[count] <= S_AXIS_TDATA;
+                    nr_of_reads <= nr_of_reads - 1;
+                  end
+                0:
+                  begin
+                    sign[count] <= S_AXIS_TDATA;
                     if (nr_of_reads != 0) 
                     begin
                       nr_of_reads <= nr_of_reads - 1;                      
                     end
                   end
-                1:
-                  begin
-                    int[count] <= S_AXIS_TDATA;
-                    nr_of_reads <= nr_of_reads - 1;
-                  end
-                2:
-                  begin
-                    sign[count] <= S_AXIS_TDATA;
-                    nr_of_reads <= nr_of_reads - 1;
-                  end
                 default:;
               endcase
+              end
             end
           Write_Outputs:
             if (M_AXIS_TREADY == 1) 
@@ -145,20 +148,21 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
                 int[count] = int[count] + 1;
               end
               if (count != 0)
-              begin                
-                temp[count] <= sign[count] << 16 | int[count] << 8 | dec[count];                  
-                count <= count - 1;                
+              begin    
+              temp[count] <= sign[count] << 16 | int[count] << 8 | dec[count];                  
+              count <= count - 1;                
               end
               if (count == 0) 
               begin
                 done <= 1;
+                state <= Write_Outputs;
                 temp[count] <= sign[count] << 16 | int[count] << 8 | dec[count];
               end
-              if (done == 1)
-              begin
-                state <= Write_Outputs;
-                done <= 0;
-              end
+              //if (done == 1)
+              //begin
+              //  state <= Write_Outputs;
+              //  done <= 0;
+              //end
           end
         endcase
    end
