@@ -28,7 +28,7 @@ output                         M_AXIS_TLAST;   // Optional data out qualifier
 input                          M_AXIS_TREADY;  // Connected slave device is ready to accept data out
     
    // number of data
-   localparam FP = 1; 
+   localparam FP = 2; 
 
    // Total number of input data.
    localparam NUMBER_OF_INPUT_WORDS  = FP;
@@ -49,7 +49,7 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    reg [31:0] int;          // 30th to 16th
    reg [31:0] dec;          // 15:0
    reg [31:0] rx_tmp[0:10][0:13];
-   reg [31:0 tx_tmp[0:10][0:13];   
+   reg [31:0] tx_tmp[0:10][0:13];   
    wire [31:0] value;
 
    assign value = tx_tmp[node_count][count];
@@ -164,13 +164,13 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
             begin
               sign = rx_tmp[node_count][count][31];
               int = rx_tmp[node_count][count][30:16];
-              dec = rx_tmp[node_count][count]15:0];
+              dec = rx_tmp[node_count][count][15:0];
 
               int = int << 1;
               dec = dec << 1;
               if (dec > 14'd10000)
               begin
-                int = int + (dec / 10000)
+                int = int + (dec / 10000);
                 dec = dec % 10000;
               end
 
@@ -189,12 +189,13 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
 
               if ((count == 0) && (node_count == 0))
               begin
-                done <= 1;  
+                done <= 1;
               end
             end
             else 
             begin
               state <= Write_Outputs;
+              count <= 0; 
             end
           end
         endcase
