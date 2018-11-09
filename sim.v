@@ -34,7 +34,7 @@ module test(
         #10;
         S_AXIS_TDATA = 32'hC80264;
         #10;
-        S_AXIS_TDATA = 32'h190007b;
+        S_AXIS_TDATA = 32'd20;
         #10
         S_AXIS_TVALID = 0;
         S_AXIS_TDATA = 0;
