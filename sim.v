@@ -32,9 +32,11 @@ module test(
         #10;
         S_AXIS_TVALID = 1;
         #10;
-        S_AXIS_TDATA = 32'hC80264;
+        S_AXIS_TDATA = 32'h81000;
+        // S_AXIS_TDATA = 32'hC80264;
         #10;
-        S_AXIS_TDATA = 32'd20;
+        S_AXIS_TDATA = 32'h46000;
+        // S_AXIS_TDATA = 32'd20;
         #10
         S_AXIS_TVALID = 0;
         S_AXIS_TDATA = 0;

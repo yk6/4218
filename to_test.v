@@ -51,6 +51,7 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    reg [31:0] rx_tmp[0:10][0:13];
    reg [31:0] tx_tmp[0:10][0:13];   
    wire [31:0] value;
+   reg [63:0] temp;
 
    reg [7:0] data[0:27];    // test data
 
@@ -62,33 +63,89 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    reg [3:0] max_cnt;
    reg [3:0] max_node;
 
-   function [31:0]Multiply;  //32bit
+   function [31:0] Multiply;
     input [31:0] a;
     input [31:0] b;
-    reg _sign;
-    reg [31:0]_dec;
-    reg [31:0]_int;
+    reg [63:0] _temp;
 
-    begin        
-      assign _int = a[29:16] * b[29:16];
-      assign _dec = a[15:0] * b[15:0];
-      // 0 is positive, 1 is negative
-      // 
-      // A  B   
-      // 0  0   0
-      // 0  1   1
-      // 1  0   1
-      // 1  1   0
-
-      if (_dec >= 10000)
-      begin
-        assign _dec = _dec % 10000;
-        assign _int = _int + 1;
-      end
-
-      multiply = {_sign, _int[13:0], _dec[15:0]};
+    begin
+      assign _temp = a * b;
+      assign Multiply = _temp[47:16];
     end
   endfunction
+
+  function [31:0] Sum;
+    input [31:0] a;
+    input [31:0] b;
+
+    begin
+      Sum = a + b;
+    end
+  endfunction
+
+  function [31:0] Sigmoid;
+    input a;
+    reg [31:0] _out;
+
+
+    begin
+      if () 
+      begin
+        
+
+
+      end
+    end
+  endfunction
+  //  function [31:0] Multiply;  //32bit
+  //   input [31:0] a;
+  //   input [31:0] b;
+  //   reg _sign;
+  //   reg [31:0] _dec;
+  //   reg [31:0] _int;
+  //   reg [31:0] _dec2;
+  //   reg [31:0] _int2;
+
+  //   begin         
+  //     if (a[31] ^ b[31])
+  //     begin        
+  //       // if diff sign        
+  //       assign _sign = 1;
+  //     end
+  //     else
+  //     begin
+  //       //  if same sign
+  //       assign _sign = 0;
+  //     end
+
+  //     if ((a == 0 || b == 0))
+  //     begin
+  //       _int = 0;
+  //       _dec = 0;
+  //     end
+  //     else
+  //     begin
+  //       assign _int = a[30:16];
+  //       assign _int2 = b[30:16];
+  //       assign _dec = a[15:0];
+  //       assign _dec2 = b[15:0];
+
+  //       if (_dec >= 10000)
+  //       begin
+  //         assign  _int = _int + (_dec / 10000);
+  //         assign _dec = _dec % 10000;
+  //       end
+  //     end
+  //     // 0 is positive, 1 is negative
+  //     // 
+  //     // A  B   
+  //     // 0  0   0
+  //     // 0  1   1
+  //     // 1  0   1
+  //     // 1  1   0
+  //     Multiply = {_sign, _int[14:0], _dec[15:0]};
+  //   end
+  // endfunction
 
   // function [31:0]Sum;
   //   input [31:0] a;
@@ -250,25 +307,25 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
           begin
             if (done != 1) 
             begin
-              sign = rx_tmp[node_count][count][31];
-              int = rx_tmp[node_count][count][30:16];
-              dec = rx_tmp[node_count][count][15:0];
+              // sign = rx_tmp[node_count][count][31];
+              // int = rx_tmp[node_count][count][30:16];
+              // dec = rx_tmp[node_count][count][15:0];
 
-              int = int << 1;
-              dec = dec << 1;
+              // int = int << 1;
+              // dec = dec << 1;
 
-              if (dec > 14'd10000)
-              begin
-                int = int + (dec / 10000);
-                dec = dec % 10000;
-              end
+              // if (dec > 14'd10000)
+              // begin
+              //   int = int + (dec / 10000);
+              //   dec = dec % 10000;
+              // end
 
-              // TODO: sign computation
+              // // TODO: sign computation
 
-              tx_tmp[node_count][count][31] = sign;
-              tx_tmp[node_count][count][30:16] = int[14:0];
-              tx_tmp[node_count][count][15:0] = dec[15:0];
-              count <= count - 1;
+              // tx_tmp[node_count][count][31] = sign;
+              // tx_tmp[node_count][count][30:16] = int[14:0];
+              // tx_tmp[node_count][count][15:0] = dec[15:0];
+              // count <= count - 1;
               //=============================================
               // if (count == 0)
               // begin
@@ -276,9 +333,10 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
               //   count <= max_cnt;
               // end
 
-              // //tested
-              // tx_tmp[0][0] <= Multiply(rx_tmp[0][0], rx_tmp[0][1]);
-              // count <= 0;
+              // tested
+              tx_tmp[0][0] <= Multiply(rx_tmp[0][0], rx_tmp[0][1]);
+              tx_tmp[0][1] <= Sum(rx_tmp[0][0], rx_tmp[0][1]);
+              count <= 0;
 
               if ((count == 0) && (node_count == 0))
               begin
