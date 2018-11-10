@@ -51,9 +51,6 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    reg [31:0] rx_tmp[0:10][0:13];
    reg [31:0] tx_tmp[0:10][0:13];   
    wire [31:0] value;
-   reg [63:0] temp;
-
-   reg [7:0] data[0:27];    // test data
 
    assign value = tx_tmp[node_count][count];
 
@@ -66,37 +63,39 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    function [31:0] Multiply;
     input [31:0] a;
     input [31:0] b;
-    reg [63:0] _temp;
+    reg [31:0] _temp;
 
     begin
-      assign _temp = a * b;
-      assign Multiply = _temp[47:16];
+      assign _temp = a[15:0] * b[15:0];
+      assign Multiply = _temp[23:8];
+      // assign Multiply = _temp[47:16];
     end
   endfunction
 
   function [31:0] Sum;
     input [31:0] a;
     input [31:0] b;
+    reg [31:0] _out;
 
     begin
-      Sum = a + b;
+      Sum = _out[15:0];
     end
   endfunction
 
-  function [31:0] Sigmoid;
-    input a;
-    reg [31:0] _out;
+  // function [31:0] Sigmoid;
+  //   input a;
+  //   reg [31:0] _out;
 
 
-    begin
-      if () 
-      begin
+  //   begin
+  //     if () 
+  //     begin
         
 
 
-      end
-    end
-  endfunction
+  //     end
+  //   end
+  // endfunction
   //  function [31:0] Multiply;  //32bit
   //   input [31:0] a;
   //   input [31:0] b;
