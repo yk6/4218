@@ -81,27 +81,22 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
 function signed [31:0] Sigmoid_PLAN;
       input signed [31:0] a;
 
-      //begin
-        //if (a > 5120)       // >=5 assign 1
-        begin
+      begin
+        if (a > 5120)          // 5<a assign 1
           Sigmoid_PLAN = 1024;
-        end
-        /*else if (a > 2432)     //  >=2.375 assign 0.03125x + 0.84375
-        begin
+        else if (a > 2432)     //  2.375<a<=5 assign 0.03125a + 0.84375
           Sigmoid_PLAN = (a / 32)  + 864;
-        end
-        else if (a > 1024)   // >=1 assign 0.125x + 0.625
-        begin
+        else if (a > 1024)     //  1<a<=2.375 assign 0.125a + 0.625
           Sigmoid_PLAN = (a / 8) + 640;
-        end
-        else if (a > 0)   // >=0 assign 0.25x + 0.5
-        begin
+        else if (a > -1024)    // -1<a<=1 assign 0.25a + 0.5
           Sigmoid_PLAN = (a / 4) + 512;
-        end
-        else begin
+        else if (a > -2432)    //  -2.375<a<=-1 assign 0.125a + 0.375
+          Sigmoid_PLAN = (a / 8) + 384;
+        else if(a > - 5120)   //  -5<a<=-2.375 assign 0.03125a + 0.15625
+          Sigmoid_PLAN = (a / 32)  + 160;
+        else                  //   a<=-5 assign 0
           Sigmoid_PLAN = 0;
-        end*/
-      //end
+      end
     endfunction
 
 
@@ -187,8 +182,6 @@ function signed [31:0] Sigmoid_PLAN;
             begin
               tx_tmp[0][0] <= Multiply(rx_tmp[0][0], rx_tmp[0][1]);
               tx_tmp[0][1] <= Sum(rx_tmp[0][0], rx_tmp[0][1]);
-              //tx_tmp[0][2] <= Multiply(rx_tmp[0][2], rx_tmp[0][3]);
-              //tx_tmp[0][3] <= Sum(rx_tmp[0][2], rx_tmp[0][3]);
               tx_tmp[0][2] <= Sigmoid_PLAN(rx_tmp[0][0]);
               tx_tmp[0][3] <= Sigmoid_PLAN(rx_tmp[0][1]);
               
