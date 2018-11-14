@@ -41,47 +41,24 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    reg [10:0] nr_of_reads;
    reg [10:0] nr_of_writes;
 
-
-   reg signed [31:0] tempH_1[0:27][0:12];
-   reg signed [31:0] tempH_1_2[0:27][0:12];
-
-   reg signed [31:0] tempH_2[0:27][0:12];
-   reg signed [31:0] tempH_2_2[0:27][0:12];
-
-   reg signed [31:0] tempH_3[0:27][0:12];
-   reg signed [31:0] tempH_3_2[0:27][0:12];
-
-   reg signed [31:0] tempH_4[0:27][0:12];
-   reg signed [31:0] tempH_4_2[0:27][0:12];
-
-   reg signed [31:0] tempH_5[0:27][0:12];
-   reg signed [31:0] tempH_5_2[0:27][0:12];
-
-   reg signed [31:0] tempH_6[0:27][0:12];
-   reg signed [31:0] tempH_6_2[0:27][0:12];
-
-   reg signed [31:0] tempH_7[0:27][0:12];
-   reg signed [31:0] tempH_7_2[0:27][0:12];
-
-   reg signed [31:0] tempH_8[0:27][0:12];
-   reg signed [31:0] tempH_8_2[0:27][0:12];
-
-   reg signed [31:0] tempH_9[0:27][0:12];
-   reg signed [31:0] tempH_9_2[0:27][0:12];
-
-   reg signed [31:0] tempH_10[0:27][0:12];
-   reg signed [31:0] tempH_10_2[0:27][0:12];
-
    reg signed [31:0] input_number[0:27][0:12];
    reg signed [31:0] weightih[0:13][0:9];
    reg signed [31:0] weightho[0:10];
    reg signed [31:0] hidden_layer[0:27][0:9];
+   reg signed [31:0] tempH[0:27][0:12];
+   reg signed [31:0] tempH_2[0:27][0:12];
    reg signed [31:0] tempO[0:9];
    reg signed [31:0] output_number[0:27];
    wire signed [31:0] value;
 
    assign value = output_number[pat_count];
+   //assign value = input_number[pat_count][input_node_count];
+   //assign value = hidden_layer[pat_count][hidden_node_count];
+   //assign value = weightih[input_node_count][hidden_node_count];
+   //assign value = weightho[hidden_node_count];
+   //assign value = tempH[pat_count][input_node_count];
 
+   reg [10:0] num_count;
    reg [4:0] pat_count;
    reg [3:0] input_node_count;
    reg [3:0] hidden_node_count;
@@ -262,233 +239,51 @@ begin
           input_node_count <= 0;
           hidden_node_count <= 0;
         end
+
         else begin
+
+        //======================================
           if (hidden_node_count == 10)
           begin
             hidden_node_count <= 0;
-            input_node_count <= 0;
             pat_count <= pat_count + 1;
           end
           if (hidden_node_count != 10)
-          begin            
-            hidden_node_count <= 10;            
+          begin
             if (input_node_count == 15)
             begin
+              hidden_node_count <= hidden_node_count + 1;
               input_node_count <= 0;
-              hidden_layer[pat_count][0] <= Sigmoid_PLAN(hidden_layer[pat_count][0]);
-              hidden_layer[pat_count][1] <= Sigmoid_PLAN(hidden_layer[pat_count][1]);
-              hidden_layer[pat_count][2] <= Sigmoid_PLAN(hidden_layer[pat_count][2]);
-              hidden_layer[pat_count][3] <= Sigmoid_PLAN(hidden_layer[pat_count][3]);
-              hidden_layer[pat_count][4] <= Sigmoid_PLAN(hidden_layer[pat_count][4]);
-              hidden_layer[pat_count][5] <= Sigmoid_PLAN(hidden_layer[pat_count][5]);
-              hidden_layer[pat_count][6] <= Sigmoid_PLAN(hidden_layer[pat_count][6]);
-              hidden_layer[pat_count][7] <= Sigmoid_PLAN(hidden_layer[pat_count][7]);
-              hidden_layer[pat_count][8] <= Sigmoid_PLAN(hidden_layer[pat_count][8]);
-              hidden_layer[pat_count][9] <= Sigmoid_PLAN(hidden_layer[pat_count][9]);
+              hidden_layer[pat_count][hidden_node_count] <= Sigmoid_PLAN(hidden_layer[pat_count][hidden_node_count]);
             end
             if (input_node_count == 14)
-            begin              
-              // add bias
-              hidden_layer[pat_count][0] <= weightih[0][0] + hidden_layer[pat_count][0];               
-              hidden_layer[pat_count][1] <= weightih[0][1] + hidden_layer[pat_count][1];
-              hidden_layer[pat_count][2] <= weightih[0][2] + hidden_layer[pat_count][2];
-              hidden_layer[pat_count][3] <= weightih[0][3] + hidden_layer[pat_count][3];
-              hidden_layer[pat_count][4] <= weightih[0][4] + hidden_layer[pat_count][4];
-              hidden_layer[pat_count][5] <= weightih[0][5] + hidden_layer[pat_count][5];
-              hidden_layer[pat_count][6] <= weightih[0][6] + hidden_layer[pat_count][6];
-              hidden_layer[pat_count][7] <= weightih[0][7] + hidden_layer[pat_count][7];
-              hidden_layer[pat_count][8] <= weightih[0][8] + hidden_layer[pat_count][8];
-              hidden_layer[pat_count][9] <= weightih[0][9] + hidden_layer[pat_count][9];
-              input_node_count <= input_node_count + 1;
+            begin
+               hidden_layer[pat_count][hidden_node_count] <= weightih[0][hidden_node_count] + hidden_layer[pat_count][hidden_node_count];
+               input_node_count <= input_node_count + 1;
             end
             if (input_node_count == 13)
             begin
-              // 1
-              hidden_layer[pat_count][0] <= Sum1(tempH_1[pat_count][0],tempH_1[pat_count][1],
-                tempH_1[pat_count][2],tempH_1[pat_count][3],tempH_1[pat_count][4],tempH_1[pat_count][5],tempH_1[pat_count][6],
-                tempH_1_2[pat_count][7],tempH_1_2[pat_count][8],tempH_1_2[pat_count][9],tempH_1_2[pat_count][10],tempH_1_2[pat_count][11],tempH_1_2[pat_count][12]);
-              // 2
-              hidden_layer[pat_count][1] <= Sum1(tempH_2[pat_count][0],tempH_2[pat_count][1],
-                tempH_2[pat_count][2],tempH_2[pat_count][3],tempH_2[pat_count][4],tempH_2[pat_count][5],tempH_2[pat_count][6],
-                tempH_2_2[pat_count][7],tempH_2_2[pat_count][8],tempH_2_2[pat_count][9],tempH_2_2[pat_count][10],tempH_2_2[pat_count][11],tempH_2_2[pat_count][12]);
-              // 3
-              hidden_layer[pat_count][2] <= Sum1(tempH_3[pat_count][0],tempH_3[pat_count][1],
-                tempH_3[pat_count][2],tempH_3[pat_count][3],tempH_3[pat_count][4],tempH_3[pat_count][5],tempH_3[pat_count][6],
-                tempH_3_2[pat_count][7],tempH_3_2[pat_count][8],tempH_3_2[pat_count][9],tempH_3_2[pat_count][10],tempH_3_2[pat_count][11],tempH_3_2[pat_count][12]);
-              // 4
-              hidden_layer[pat_count][3] <= Sum1(tempH_4[pat_count][0],tempH_4[pat_count][1],
-                tempH_4[pat_count][2],tempH_4[pat_count][3],tempH_4[pat_count][4],tempH_4[pat_count][5],tempH_4[pat_count][6],
-                tempH_4_2[pat_count][7],tempH_4_2[pat_count][8],tempH_4_2[pat_count][9],tempH_4_2[pat_count][10],tempH_4_2[pat_count][11],tempH_4_2[pat_count][12]);
-              // 5
-              hidden_layer[pat_count][4] <= Sum1(tempH_5[pat_count][0],tempH_5[pat_count][1],
-                tempH_5[pat_count][2],tempH_5[pat_count][3],tempH_5[pat_count][4],tempH_5[pat_count][5],tempH_5[pat_count][6],
-                tempH_5_2[pat_count][7],tempH_5_2[pat_count][8],tempH_5_2[pat_count][9],tempH_5_2[pat_count][10],tempH_5_2[pat_count][11],tempH_5_2[pat_count][12]);
-              // 6
-              hidden_layer[pat_count][5] <= Sum1(tempH_6[pat_count][0],tempH_6[pat_count][1],
-                tempH_6[pat_count][2],tempH_6[pat_count][3],tempH_6[pat_count][4],tempH_6[pat_count][5],tempH_6[pat_count][6],
-                tempH_6_2[pat_count][7],tempH_6_2[pat_count][8],tempH_6_2[pat_count][9],tempH_6_2[pat_count][10],tempH_6_2[pat_count][11],tempH_6_2[pat_count][12]);
-              // 7
-              hidden_layer[pat_count][6] <= Sum1(tempH_7[pat_count][0],tempH_7[pat_count][1],
-                tempH_7[pat_count][2],tempH_7[pat_count][3],tempH_7[pat_count][4],tempH_7[pat_count][5],tempH_7[pat_count][6],
-                tempH_7_2[pat_count][7],tempH_7_2[pat_count][8],tempH_7_2[pat_count][9],tempH_7_2[pat_count][10],tempH_7_2[pat_count][11],tempH_7_2[pat_count][12]);
-              // 8
-              hidden_layer[pat_count][7] <= Sum1(tempH_8[pat_count][0],tempH_8[pat_count][1],
-                tempH_8[pat_count][2],tempH_8[pat_count][3],tempH_8[pat_count][4],tempH_8[pat_count][5],tempH_8[pat_count][6],
-                tempH_8_2[pat_count][7],tempH_8_2[pat_count][8],tempH_8_2[pat_count][9],tempH_8_2[pat_count][10],tempH_8_2[pat_count][11],tempH_8_2[pat_count][12]);
-              // 9
-              hidden_layer[pat_count][8] <= Sum1(tempH_9[pat_count][0],tempH_9[pat_count][1],
-                tempH_9[pat_count][2],tempH_9[pat_count][3],tempH_9[pat_count][4],tempH_9[pat_count][5],tempH_9[pat_count][6],
-                tempH_9_2[pat_count][7],tempH_9_2[pat_count][8],tempH_9_2[pat_count][9],tempH_9_2[pat_count][10],tempH_9_2[pat_count][11],tempH_9_2[pat_count][12]);
-              // 10
-              hidden_layer[pat_count][9] <= Sum1(tempH_10[pat_count][0],tempH_10[pat_count][1],
-                tempH_10[pat_count][2],tempH_10[pat_count][3],tempH_10[pat_count][4],tempH_10[pat_count][5],tempH_10[pat_count][6],
-                tempH_10_2[pat_count][7],tempH_10_2[pat_count][8],tempH_10_2[pat_count][9],tempH_10_2[pat_count][10],tempH_10_2[pat_count][11],tempH_10_2[pat_count][12]);
+              hidden_layer[pat_count][hidden_node_count] <= Sum1(tempH[pat_count][0],tempH[pat_count][1],
+                tempH[pat_count][2],tempH[pat_count][3],tempH[pat_count][4],tempH[pat_count][5],tempH_2[pat_count][6],
+                tempH_2[pat_count][7],tempH_2[pat_count][8],tempH_2[pat_count][9],tempH_2[pat_count][10],tempH_2[pat_count][11],tempH_2[pat_count][12]);
               input_node_count <= input_node_count + 1;
             end
             if (input_node_count < 13)
             begin
-
+              tempH[pat_count][0] <= Multiply(weightih[1][hidden_node_count],input_number[pat_count][0]);
+              tempH[pat_count][1] <= Multiply(weightih[2][hidden_node_count],input_number[pat_count][1]);
+              tempH[pat_count][2] <= Multiply(weightih[3][hidden_node_count],input_number[pat_count][2]);
+              tempH[pat_count][3] <= Multiply(weightih[4][hidden_node_count],input_number[pat_count][3]);
+              tempH[pat_count][4] <= Multiply(weightih[5][hidden_node_count],input_number[pat_count][4]);
+              tempH[pat_count][5] <= Multiply(weightih[6][hidden_node_count],input_number[pat_count][5]);
+              tempH_2[pat_count][6] <= Multiply(weightih[7][hidden_node_count],input_number[pat_count][6]);
+              tempH_2[pat_count][7] <= Multiply(weightih[8][hidden_node_count],input_number[pat_count][7]);
+              tempH_2[pat_count][8] <= Multiply(weightih[9][hidden_node_count],input_number[pat_count][8]);
+              tempH_2[pat_count][9] <= Multiply(weightih[10][hidden_node_count],input_number[pat_count][9]);
+              tempH_2[pat_count][10] <= Multiply(weightih[11][hidden_node_count],input_number[pat_count][10]);
+              tempH_2[pat_count][11] <= Multiply(weightih[12][hidden_node_count],input_number[pat_count][11]);
+              tempH_2[pat_count][12] <= Multiply(weightih[13][hidden_node_count],input_number[pat_count][12]);
               input_node_count <= 13;
-
-              tempH_1[pat_count][0] <= Multiply(weightih[1][0],input_number[pat_count][0]);
-              tempH_1[pat_count][1] <= Multiply(weightih[2][0],input_number[pat_count][1]);
-              tempH_1[pat_count][2] <= Multiply(weightih[3][0],input_number[pat_count][2]);
-              tempH_1[pat_count][3] <= Multiply(weightih[4][0],input_number[pat_count][3]);
-              tempH_1[pat_count][4] <= Multiply(weightih[5][0],input_number[pat_count][4]);
-              tempH_1[pat_count][5] <= Multiply(weightih[6][0],input_number[pat_count][5]);
-              tempH_1[pat_count][6] <= Multiply(weightih[7][0],input_number[pat_count][6]);
-              tempH_1_2[pat_count][7] <= Multiply(weightih[8][0],input_number[pat_count][7]);
-              tempH_1_2[pat_count][8] <= Multiply(weightih[9][0],input_number[pat_count][8]);
-              tempH_1_2[pat_count][9] <= Multiply(weightih[10][0],input_number[pat_count][9]);
-              tempH_1_2[pat_count][10] <= Multiply(weightih[11][0],input_number[pat_count][10]);
-              tempH_1_2[pat_count][11] <= Multiply(weightih[12][0],input_number[pat_count][11]);
-              tempH_1_2[pat_count][12] <= Multiply(weightih[13][0],input_number[pat_count][12]);
-
-              tempH_2[pat_count][0] <= Multiply(weightih[1][1],input_number[pat_count][0]);
-              tempH_2[pat_count][1] <= Multiply(weightih[2][1],input_number[pat_count][1]);
-              tempH_2[pat_count][2] <= Multiply(weightih[3][1],input_number[pat_count][2]);
-              tempH_2[pat_count][3] <= Multiply(weightih[4][1],input_number[pat_count][3]);
-              tempH_2[pat_count][4] <= Multiply(weightih[5][1],input_number[pat_count][4]);
-              tempH_2[pat_count][5] <= Multiply(weightih[6][1],input_number[pat_count][5]);
-              tempH_2[pat_count][6] <= Multiply(weightih[7][1],input_number[pat_count][6]);
-              tempH_2_2[pat_count][7] <= Multiply(weightih[8][1],input_number[pat_count][7]);
-              tempH_2_2[pat_count][8] <= Multiply(weightih[9][1],input_number[pat_count][8]);
-              tempH_2_2[pat_count][9] <= Multiply(weightih[10][1],input_number[pat_count][9]);
-              tempH_2_2[pat_count][10] <= Multiply(weightih[11][1],input_number[pat_count][10]);
-              tempH_2_2[pat_count][11] <= Multiply(weightih[12][1],input_number[pat_count][11]);
-              tempH_2_2[pat_count][12] <= Multiply(weightih[13][1],input_number[pat_count][12]);
-
-              tempH_3[pat_count][0] <= Multiply(weightih[1][2],input_number[pat_count][0]);
-              tempH_3[pat_count][1] <= Multiply(weightih[2][2],input_number[pat_count][1]);
-              tempH_3[pat_count][2] <= Multiply(weightih[3][2],input_number[pat_count][2]);
-              tempH_3[pat_count][3] <= Multiply(weightih[4][2],input_number[pat_count][3]);
-              tempH_3[pat_count][4] <= Multiply(weightih[5][2],input_number[pat_count][4]);
-              tempH_3[pat_count][5] <= Multiply(weightih[6][2],input_number[pat_count][5]);
-              tempH_3[pat_count][6] <= Multiply(weightih[7][2],input_number[pat_count][6]);
-              tempH_3_2[pat_count][7] <= Multiply(weightih[8][2],input_number[pat_count][7]);
-              tempH_3_2[pat_count][8] <= Multiply(weightih[9][2],input_number[pat_count][8]);
-              tempH_3_2[pat_count][9] <= Multiply(weightih[10][2],input_number[pat_count][9]);
-              tempH_3_2[pat_count][10] <= Multiply(weightih[11][2],input_number[pat_count][10]);
-              tempH_3_2[pat_count][11] <= Multiply(weightih[12][2],input_number[pat_count][11]);
-              tempH_3_2[pat_count][12] <= Multiply(weightih[13][2],input_number[pat_count][12]);
-
-              tempH_4[pat_count][0] <= Multiply(weightih[1][3],input_number[pat_count][0]);
-              tempH_4[pat_count][1] <= Multiply(weightih[2][3],input_number[pat_count][1]);
-              tempH_4[pat_count][2] <= Multiply(weightih[3][3],input_number[pat_count][2]);
-              tempH_4[pat_count][3] <= Multiply(weightih[4][3],input_number[pat_count][3]);
-              tempH_4[pat_count][4] <= Multiply(weightih[5][3],input_number[pat_count][4]);
-              tempH_4[pat_count][5] <= Multiply(weightih[6][3],input_number[pat_count][5]);
-              tempH_4[pat_count][6] <= Multiply(weightih[7][3],input_number[pat_count][6]);
-              tempH_4_2[pat_count][7] <= Multiply(weightih[8][3],input_number[pat_count][7]);
-              tempH_4_2[pat_count][8] <= Multiply(weightih[9][3],input_number[pat_count][8]);
-              tempH_4_2[pat_count][9] <= Multiply(weightih[10][3],input_number[pat_count][9]);
-              tempH_4_2[pat_count][10] <= Multiply(weightih[11][3],input_number[pat_count][10]);
-              tempH_4_2[pat_count][11] <= Multiply(weightih[12][3],input_number[pat_count][11]);
-              tempH_4_2[pat_count][12] <= Multiply(weightih[13][3],input_number[pat_count][12]);
-
-              tempH_5[pat_count][0] <= Multiply(weightih[1][4],input_number[pat_count][0]);
-              tempH_5[pat_count][1] <= Multiply(weightih[2][4],input_number[pat_count][1]);
-              tempH_5[pat_count][2] <= Multiply(weightih[3][4],input_number[pat_count][2]);
-              tempH_5[pat_count][3] <= Multiply(weightih[4][4],input_number[pat_count][3]);
-              tempH_5[pat_count][4] <= Multiply(weightih[5][4],input_number[pat_count][4]);
-              tempH_5[pat_count][5] <= Multiply(weightih[6][4],input_number[pat_count][5]);
-              tempH_5[pat_count][6] <= Multiply(weightih[7][4],input_number[pat_count][6]);
-              tempH_5_2[pat_count][7] <= Multiply(weightih[8][4],input_number[pat_count][7]);
-              tempH_5_2[pat_count][8] <= Multiply(weightih[9][4],input_number[pat_count][8]);
-              tempH_5_2[pat_count][9] <= Multiply(weightih[10][4],input_number[pat_count][9]);
-              tempH_5_2[pat_count][10] <= Multiply(weightih[11][4],input_number[pat_count][10]);
-              tempH_5_2[pat_count][11] <= Multiply(weightih[12][4],input_number[pat_count][11]);
-              tempH_5_2[pat_count][12] <= Multiply(weightih[13][4],input_number[pat_count][12]);
-
-              tempH_6[pat_count][0] <= Multiply(weightih[1][5],input_number[pat_count][0]);
-              tempH_6[pat_count][1] <= Multiply(weightih[2][5],input_number[pat_count][1]);
-              tempH_6[pat_count][2] <= Multiply(weightih[3][5],input_number[pat_count][2]);
-              tempH_6[pat_count][3] <= Multiply(weightih[4][5],input_number[pat_count][3]);
-              tempH_6[pat_count][4] <= Multiply(weightih[5][5],input_number[pat_count][4]);
-              tempH_6[pat_count][5] <= Multiply(weightih[6][5],input_number[pat_count][5]);
-              tempH_6[pat_count][6] <= Multiply(weightih[7][5],input_number[pat_count][6]);
-              tempH_6_2[pat_count][7] <= Multiply(weightih[8][5],input_number[pat_count][7]);
-              tempH_6_2[pat_count][8] <= Multiply(weightih[9][5],input_number[pat_count][8]);
-              tempH_6_2[pat_count][9] <= Multiply(weightih[10][5],input_number[pat_count][9]);
-              tempH_6_2[pat_count][10] <= Multiply(weightih[11][5],input_number[pat_count][10]);
-              tempH_6_2[pat_count][11] <= Multiply(weightih[12][5],input_number[pat_count][11]);
-              tempH_6_2[pat_count][12] <= Multiply(weightih[13][5],input_number[pat_count][12]);
-
-              tempH_7[pat_count][0] <= Multiply(weightih[1][6],input_number[pat_count][0]);
-              tempH_7[pat_count][1] <= Multiply(weightih[2][6],input_number[pat_count][1]);
-              tempH_7[pat_count][2] <= Multiply(weightih[3][6],input_number[pat_count][2]);
-              tempH_7[pat_count][3] <= Multiply(weightih[4][6],input_number[pat_count][3]);
-              tempH_7[pat_count][4] <= Multiply(weightih[5][6],input_number[pat_count][4]);
-              tempH_7[pat_count][5] <= Multiply(weightih[6][6],input_number[pat_count][5]);
-              tempH_7[pat_count][6] <= Multiply(weightih[7][6],input_number[pat_count][6]);
-              tempH_7_2[pat_count][7] <= Multiply(weightih[8][6],input_number[pat_count][7]);
-              tempH_7_2[pat_count][8] <= Multiply(weightih[9][6],input_number[pat_count][8]);
-              tempH_7_2[pat_count][9] <= Multiply(weightih[10][6],input_number[pat_count][9]);
-              tempH_7_2[pat_count][10] <= Multiply(weightih[11][6],input_number[pat_count][10]);
-              tempH_7_2[pat_count][11] <= Multiply(weightih[12][6],input_number[pat_count][11]);
-              tempH_7_2[pat_count][12] <= Multiply(weightih[13][6],input_number[pat_count][12]);
-
-              tempH_8[pat_count][0] <= Multiply(weightih[1][7],input_number[pat_count][0]);
-              tempH_8[pat_count][1] <= Multiply(weightih[2][7],input_number[pat_count][1]);
-              tempH_8[pat_count][2] <= Multiply(weightih[3][7],input_number[pat_count][2]);
-              tempH_8[pat_count][3] <= Multiply(weightih[4][7],input_number[pat_count][3]);
-              tempH_8[pat_count][4] <= Multiply(weightih[5][7],input_number[pat_count][4]);
-              tempH_8[pat_count][5] <= Multiply(weightih[6][7],input_number[pat_count][5]);
-              tempH_8[pat_count][6] <= Multiply(weightih[7][7],input_number[pat_count][6]);
-              tempH_8_2[pat_count][7] <= Multiply(weightih[8][7],input_number[pat_count][7]);
-              tempH_8_2[pat_count][8] <= Multiply(weightih[9][7],input_number[pat_count][8]);
-              tempH_8_2[pat_count][9] <= Multiply(weightih[10][7],input_number[pat_count][9]);
-              tempH_8_2[pat_count][10] <= Multiply(weightih[11][7],input_number[pat_count][10]);
-              tempH_8_2[pat_count][11] <= Multiply(weightih[12][7],input_number[pat_count][11]);
-              tempH_8_2[pat_count][12] <= Multiply(weightih[13][7],input_number[pat_count][12]);
-
-              tempH_9[pat_count][0] <= Multiply(weightih[1][8],input_number[pat_count][0]);
-              tempH_9[pat_count][1] <= Multiply(weightih[2][8],input_number[pat_count][1]);
-              tempH_9[pat_count][2] <= Multiply(weightih[3][8],input_number[pat_count][2]);
-              tempH_9[pat_count][3] <= Multiply(weightih[4][8],input_number[pat_count][3]);
-              tempH_9[pat_count][4] <= Multiply(weightih[5][8],input_number[pat_count][4]);
-              tempH_9[pat_count][5] <= Multiply(weightih[6][8],input_number[pat_count][5]);
-              tempH_9[pat_count][6] <= Multiply(weightih[7][8],input_number[pat_count][6]);
-              tempH_9_2[pat_count][7] <= Multiply(weightih[8][8],input_number[pat_count][7]);
-              tempH_9_2[pat_count][8] <= Multiply(weightih[9][8],input_number[pat_count][8]);
-              tempH_9_2[pat_count][9] <= Multiply(weightih[10][8],input_number[pat_count][9]);
-              tempH_9_2[pat_count][10] <= Multiply(weightih[11][8],input_number[pat_count][10]);
-              tempH_9_2[pat_count][11] <= Multiply(weightih[12][8],input_number[pat_count][11]);
-              tempH_9_2[pat_count][12] <= Multiply(weightih[13][8],input_number[pat_count][12]);
-
-              tempH_10[pat_count][0] <= Multiply(weightih[1][9],input_number[pat_count][0]);
-              tempH_10[pat_count][1] <= Multiply(weightih[2][9],input_number[pat_count][1]);
-              tempH_10[pat_count][2] <= Multiply(weightih[3][9],input_number[pat_count][2]);
-              tempH_10[pat_count][3] <= Multiply(weightih[4][9],input_number[pat_count][3]);
-              tempH_10[pat_count][4] <= Multiply(weightih[5][9],input_number[pat_count][4]);
-              tempH_10[pat_count][5] <= Multiply(weightih[6][9],input_number[pat_count][5]);
-              tempH_10[pat_count][6] <= Multiply(weightih[7][9],input_number[pat_count][6]);
-              tempH_10_2[pat_count][7] <= Multiply(weightih[8][9],input_number[pat_count][7]);
-              tempH_10_2[pat_count][8] <= Multiply(weightih[9][9],input_number[pat_count][8]);
-              tempH_10_2[pat_count][9] <= Multiply(weightih[10][9],input_number[pat_count][9]);
-              tempH_10_2[pat_count][10] <= Multiply(weightih[11][9],input_number[pat_count][10]);
-              tempH_10_2[pat_count][11] <= Multiply(weightih[12][9],input_number[pat_count][11]);
-              tempH_10_2[pat_count][12] <= Multiply(weightih[13][9],input_number[pat_count][12]);
             end
           end
         end
