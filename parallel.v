@@ -41,12 +41,24 @@ input                          M_AXIS_TREADY;  // Connected slave device is read
    reg [10:0] nr_of_reads;
    reg [10:0] nr_of_writes;
 
+   reg signed [31:0] tempH[0:27];
+   reg signed [31:0] tempH_1[0:27];
+   reg signed [31:0] tempH_2[0:27];
+   reg signed [31:0] tempH_3[0:27];
+   reg signed [31:0] tempH_4[0:27];
+   reg signed [31:0] tempH_5[0:27];
+   reg signed [31:0] tempH_6[0:27];
+   reg signed [31:0] tempH_7[0:27];
+   reg signed [31:0] tempH_8[0:27];
+   reg signed [31:0] tempH_9[0:27];
+   reg signed [31:0] tempH_10[0:27];
+   reg signed [31:0] tempH_11[0:27];
+   reg signed [31:0] tempH_12[0:27];
+
    reg signed [31:0] input_number[0:27][0:12];
    reg signed [31:0] weightih[0:13][0:9];
    reg signed [31:0] weightho[0:10];
    reg signed [31:0] hidden_layer[0:27][0:9];
-   reg signed [31:0] tempH[0:27][0:12];
-   reg signed [31:0] tempH_2[0:27][0:12];
    reg signed [31:0] tempO[0:9];
    reg signed [31:0] output_number[0:27];
    wire signed [31:0] value;
@@ -239,10 +251,7 @@ begin
           input_node_count <= 0;
           hidden_node_count <= 0;
         end
-
         else begin
-
-        //======================================
           if (hidden_node_count == 10)
           begin
             hidden_node_count <= 0;
@@ -263,26 +272,26 @@ begin
             end
             if (input_node_count == 13)
             begin
-              hidden_layer[pat_count][hidden_node_count] <= Sum1(tempH[pat_count][0],tempH[pat_count][1],
-                tempH[pat_count][2],tempH[pat_count][3],tempH[pat_count][4],tempH[pat_count][5],tempH_2[pat_count][6],
-                tempH_2[pat_count][7],tempH_2[pat_count][8],tempH_2[pat_count][9],tempH_2[pat_count][10],tempH_2[pat_count][11],tempH_2[pat_count][12]);
+              hidden_layer[pat_count][hidden_node_count] <= Sum1(tempH[pat_count],tempH_1[pat_count],
+                tempH_2[pat_count],tempH_3[pat_count],tempH_4[pat_count],tempH_5[pat_count],tempH_6[pat_count],
+                tempH_7[pat_count],tempH_8[pat_count],tempH_9[pat_count],tempH_10[pat_count],tempH_11[pat_count],tempH_12[pat_count]);
               input_node_count <= input_node_count + 1;
             end
             if (input_node_count < 13)
             begin
-              tempH[pat_count][0] <= Multiply(weightih[1][hidden_node_count],input_number[pat_count][0]);
-              tempH[pat_count][1] <= Multiply(weightih[2][hidden_node_count],input_number[pat_count][1]);
-              tempH[pat_count][2] <= Multiply(weightih[3][hidden_node_count],input_number[pat_count][2]);
-              tempH[pat_count][3] <= Multiply(weightih[4][hidden_node_count],input_number[pat_count][3]);
-              tempH[pat_count][4] <= Multiply(weightih[5][hidden_node_count],input_number[pat_count][4]);
-              tempH[pat_count][5] <= Multiply(weightih[6][hidden_node_count],input_number[pat_count][5]);
-              tempH_2[pat_count][6] <= Multiply(weightih[7][hidden_node_count],input_number[pat_count][6]);
-              tempH_2[pat_count][7] <= Multiply(weightih[8][hidden_node_count],input_number[pat_count][7]);
-              tempH_2[pat_count][8] <= Multiply(weightih[9][hidden_node_count],input_number[pat_count][8]);
-              tempH_2[pat_count][9] <= Multiply(weightih[10][hidden_node_count],input_number[pat_count][9]);
-              tempH_2[pat_count][10] <= Multiply(weightih[11][hidden_node_count],input_number[pat_count][10]);
-              tempH_2[pat_count][11] <= Multiply(weightih[12][hidden_node_count],input_number[pat_count][11]);
-              tempH_2[pat_count][12] <= Multiply(weightih[13][hidden_node_count],input_number[pat_count][12]);
+              tempH[pat_count] <= Multiply(weightih[1][hidden_node_count],input_number[pat_count][0]);
+              tempH_1[pat_count] <= Multiply(weightih[2][hidden_node_count],input_number[pat_count][1]);
+              tempH_2[pat_count] <= Multiply(weightih[3][hidden_node_count],input_number[pat_count][2]);
+              tempH_3[pat_count] <= Multiply(weightih[4][hidden_node_count],input_number[pat_count][3]);
+              tempH_4[pat_count] <= Multiply(weightih[5][hidden_node_count],input_number[pat_count][4]);
+              tempH_5[pat_count] <= Multiply(weightih[6][hidden_node_count],input_number[pat_count][5]);
+              tempH_6[pat_count] <= Multiply(weightih[7][hidden_node_count],input_number[pat_count][6]);
+              tempH_7[pat_count] <= Multiply(weightih[8][hidden_node_count],input_number[pat_count][7]);
+              tempH_8[pat_count] <= Multiply(weightih[9][hidden_node_count],input_number[pat_count][8]);
+              tempH_9[pat_count] <= Multiply(weightih[10][hidden_node_count],input_number[pat_count][9]);
+              tempH_10[pat_count] <= Multiply(weightih[11][hidden_node_count],input_number[pat_count][10]);
+              tempH_11[pat_count] <= Multiply(weightih[12][hidden_node_count],input_number[pat_count][11]);
+              tempH_12[pat_count] <= Multiply(weightih[13][hidden_node_count],input_number[pat_count][12]);
               input_node_count <= 13;
             end
           end
