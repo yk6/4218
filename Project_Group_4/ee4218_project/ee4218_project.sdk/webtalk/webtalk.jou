@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2016.3 (64-bit)
+# SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+# 
+# Start of session at: Mon Nov 05 13:58:07 2018
+# Process ID: 2856
+# Current directory: C:/Users/klosey/Desktop/ee4218_project/ee4218_project.sdk/webtalk
+# Command line: wbtcv.exe -mode batch -source sdk_webtalk.tcl
+# Log file: C:/Users/klosey/Desktop/ee4218_project/ee4218_project.sdk/webtalk/webtalk.log
+# Journal file: C:/Users/klosey/Desktop/ee4218_project/ee4218_project.sdk/webtalk\webtalk.jou
+#-----------------------------------------------------------
+source sdk_webtalk.tcl

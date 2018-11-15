@@ -1,0 +1,14 @@
+03:44:48 **** Build of configuration Debug for project project_bsp_xscugic_tapp_example_1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/xscugic_tapp_example.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xscugic_tapp_example.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../project_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xscugic_tapp_example.d" -MT"src/xscugic_tapp_example.o" -o "src/xscugic_tapp_example.o" "../src/xscugic_tapp_example.c"
+In file included from ../src/xscugic_tapp_example.c:62:0:
+../../project_bsp/ps7_cortexa9_0/include/xparameters.h:16:28: fatal error: xparameters_ps.h: No such file or directory
+compilation terminated.
+make: *** [src/xscugic_tapp_example.o] ´íÎó 1
+
+03:44:49 Build Finished (took 809ms)
+
