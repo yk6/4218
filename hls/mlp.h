@@ -2,7 +2,6 @@
 #define MLP_H_
 
 #include "stdint.h"
-#include "hls_math.h"
 
 #define INPUT_NODE 13
 #define HIDDEN_NODE 10
@@ -10,10 +9,8 @@
 
 #define NUM_OF_TEST_DATA 28
 
-void mlp(uint32_t input, uint32_t output);
+void mlp(int input[], int output[]);
 
-float decode(uint32_t data);
-uint32_t encode(float data);
-float sigmoid(float data);
+int sigmoid(int data);
 
 #endif
