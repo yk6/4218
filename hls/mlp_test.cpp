@@ -1,27 +1,9 @@
-#define _CRT_SECURE_NO_WARNINGS
-// #include "mlp.h"
+#include "mlp.h"
 #include <stdio.h>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <math.h>
-
-#define _TEST_
-
-#ifdef _TEST_
-#include "stdint.h"
-
-#define INPUT_NODE 13
-#define HIDDEN_NODE 10
-#define OUTPUT_NODE 1
-#define NUMPAT 150
-
-#define NUM_OF_TEST_DATA 28
-
-void mlp(int input[], int output[]);
-
-int sigmoid(int data);
-#endif
 
 using namespace std;
 
@@ -64,27 +46,15 @@ int main(void) {
 		};
 
 
-	//FILE *fp;
-
-	// for (i = 0, j = 0; i < 515; i++) {
-	// 	if ( i < 364) {
-	// 		input_data[i] = arr[i];
-	// 	} else {
-	// 		input_data[i] = arr2[j];
-	// 		j++;
-	// 	}
-	// }
-
-	//read 364 values first
-	//read 140 weights
+	FILE *fp;
 
 	mlp(input_data, output_data);
 
-	//fp = fopen("result.dat", "w");
-	//for (i = 0; i < 28; i++) {
-	//	printf("%lf ", (output_data[i] * 3 / 256.0));
-	//}
-	//fclose(fp);
+	fp = fopen("result.dat", "w");
+	for (i = 0; i < 28; i++) {
+		fprintf(fp, "%d ", (int)round(output_data[i] * 3 / 256.0));
+	}
+	fclose(fp);
 
 	retval = system("diff --brief -w result.dat result.golden.dat");
 	if (retval != 0) {
@@ -97,119 +67,3 @@ int main(void) {
 
 	return 0;
 }
-
-#ifdef _TEST_
-#include "mlp.h"
-
-using namespace std;
-
-void mlp(int input[], int output[]) {
-	// #pragma HLS INTERFACE axis port = input
-	// #pragma HLS INTERFACE axis port = output
-	// #pragma HLS INTERFACE ap_ctrl_none port = return
-
-	int test_data[NUM_OF_TEST_DATA + 1][INPUT_NODE + 1];
-
-	int weightIH[INPUT_NODE + 1][HIDDEN_NODE + 1];
-	int weightHO[INPUT_NODE + 1][OUTPUT_NODE + 1];
-
-	int SumH[HIDDEN_NODE + 1];
-
-	int result[NUM_OF_TEST_DATA];
-
-	int i = 0, j = 0, k = 0, p = 0, z = 0;
-	//================================
-	// int SumH[NUMPAT + 1][HIDDEN_NODE + 1];
-	// int WeightIH[INPUT_NODE + 1][HIDDEN_NODE + 1];
-	// int Hidden[NUMPAT + 1][HIDDEN_NODE + 1];
-	// int SumO[NUMPAT + 1][OUTPUT_NODE + 1];
-	// int WeightHO[HIDDEN_NODE + 1][OUTPUT_NODE + 1];
-	// int Output[NUMPAT + 1][OUTPUT_NODE + 1];
-
-	//================================
-
-	//Receive data
-
-
-
-
-	for (i = 1; i <= NUM_OF_TEST_DATA; i++) {
-		for (j = 1; j <= INPUT_NODE; j++) {
-			test_data[i][j] = input[k];
-			k++;
-		}
-	}
-
-
-	for (j = 1; j <= HIDDEN_NODE; j++) {
-		weightIH[0][j] = input[k];
-		k++;
-	}
-	
-	for (j = 1; j <= HIDDEN_NODE; j++) {
-		for (i = 1; i <= INPUT_NODE; i++) {
-			weightIH[i][j] = input[k];
-			k++;
-		}
-	}
-
-	
-	for (i = 0; i <= HIDDEN_NODE; i++) {
-		for (j = 1; j <= OUTPUT_NODE; j++) {
-			weightHO[i][j] = input[k];
-			k++;
-		}
-	}
-		
-	// Compute data
-	for (k = 1; k <= NUM_OF_TEST_DATA; k++) {
-		for (i = 1; i <= HIDDEN_NODE; i++) {
-			SumH[i] = 256 * weightIH[0][i];
-
-			for (j = 1; j <= INPUT_NODE; j++) {
-				SumH[i] += test_data[k][j] * weightIH[j][i];
-			}
-			SumH[i] = sigmoid(SumH[i]/256);
-			//printf("%6d\n", SumH[i]);
-		}
-
-			result[k] = 256 * weightHO[0][1];
-			for (j = 1; j <= HIDDEN_NODE; j++) {
-				result[k] += SumH[j] * weightHO[j][1];
-			}
-			result[k] = sigmoid(result[k]/256);
-			printf("%6d\n", result[k]);
-	}
-
-
-	// Output data
-	//for (i = 0; i < NUM_OF_TEST_DATA; i++) {
-	//	output[i] = result[i-1];
-	//}
-
-}
-
-int sigmoid(int data) {
-	if (data > 1280) {
-		return 256;
-	}
-	else if (data > 608) {
-		return (data / 32 + 216);
-	}
-	else if (data > 256) {
-		return (data / 8 + 160);
-	}
-	else if (data > -256) {
-		return (data / 4 + 128);
-	}
-	else if (data > -608) {
-		return (data / 8 + 96);
-	}
-	else if (data > -1280) {
-		return (data / 32 + 40);
-	}
-	else {
-		return 0;
-	}
-}
-#endif
