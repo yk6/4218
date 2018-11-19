@@ -1,0 +1,2464 @@
+
+
+================================================================
+== Vivado HLS Report for 'mlp'
+================================================================
+* Date:           Mon Nov 19 13:34:37 2018
+
+* Version:        2016.3 (Build 1682563 on Mon Oct 10 19:41:59 MDT 2016)
+* Project:        HLS
+* Solution:       solution4
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      8.52|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +------+------+------+------+---------+
+    |   Latency   |   Interval  | Pipeline|
+    |  min |  max |  min |  max |   Type  |
+    +------+------+------+------+---------+
+    |  1984|  1984|  1985|  1985|   none  |
+    +------+------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------------+------+------+----------+-----------+-----------+------+----------+
+        |                |   Latency   | Iteration|  Initiation Interval  | Trip |          |
+        |    Loop Name   |  min |  max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------------+------+------+----------+-----------+-----------+------+----------+
+        |- mlp_label12   |   364|   364|        14|         13|          1|    28|    yes   |
+        |- mlp_label13   |    10|    10|         2|          1|          1|    10|    yes   |
+        |- mlp_label14   |   130|   130|        14|         13|          1|    10|    yes   |
+        |- mlp_label16   |    10|    10|         2|          1|          1|    10|    yes   |
+        |- mlp_label18   |  1428|  1428|        51|          -|          -|    28|    no    |
+        | + mlp_label19  |    18|    18|        10|          1|          1|    10|    yes   |
+        | + mlp_label21  |    25|    25|         8|          2|          1|    10|    yes   |
+        |- mlp_label22   |    29|    29|         3|          1|          1|    28|    yes   |
+        +----------------+------+------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 13, depth = 14
+  * Pipeline-1: initiation interval (II) = 1, depth = 2
+  * Pipeline-2: initiation interval (II) = 13, depth = 14
+  * Pipeline-3: initiation interval (II) = 1, depth = 2
+  * Pipeline-4: initiation interval (II) = 1, depth = 10
+  * Pipeline-5: initiation interval (II) = 2, depth = 8
+  * Pipeline-6: initiation interval (II) = 1, depth = 3
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 67
+* Pipeline: 7
+  Pipeline-0: II = 13, D = 14, States = { 2 3 4 5 6 7 8 9 10 11 12 13 14 15 }
+  Pipeline-1: II = 1, D = 2, States = { 17 18 }
+  Pipeline-2: II = 13, D = 14, States = { 20 21 22 23 24 25 26 27 28 29 30 31 32 33 }
+  Pipeline-3: II = 1, D = 2, States = { 36 37 }
+  Pipeline-4: II = 1, D = 10, States = { 42 43 44 45 46 47 48 49 50 51 }
+  Pipeline-5: II = 2, D = 8, States = { 53 54 55 56 57 58 59 60 }
+  Pipeline-6: II = 1, D = 3, States = { 64 65 66 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	16  / (exitcond9)
+	3  / (!exitcond9)
+3 --> 
+	4  / true
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / true
+15 --> 
+	2  / true
+16 --> 
+	17  / true
+17 --> 
+	19  / (exitcond8)
+	18  / (!exitcond8)
+18 --> 
+	17  / true
+19 --> 
+	20  / true
+20 --> 
+	34  / (exitcond7)
+	21  / (!exitcond7)
+21 --> 
+	22  / true
+22 --> 
+	23  / true
+23 --> 
+	24  / true
+24 --> 
+	25  / true
+25 --> 
+	26  / true
+26 --> 
+	27  / true
+27 --> 
+	28  / true
+28 --> 
+	29  / true
+29 --> 
+	30  / true
+30 --> 
+	31  / true
+31 --> 
+	32  / true
+32 --> 
+	33  / true
+33 --> 
+	20  / true
+34 --> 
+	35  / true
+35 --> 
+	36  / true
+36 --> 
+	38  / (exitcond5)
+	37  / (!exitcond5)
+37 --> 
+	36  / true
+38 --> 
+	39  / true
+39 --> 
+	40  / true
+40 --> 
+	41  / (!exitcond4)
+	64  / (exitcond4)
+41 --> 
+	42  / true
+42 --> 
+	52  / (exitcond3)
+	43  / (!exitcond3)
+43 --> 
+	44  / true
+44 --> 
+	45  / true
+45 --> 
+	46  / true
+46 --> 
+	47  / true
+47 --> 
+	48  / true
+48 --> 
+	49  / true
+49 --> 
+	50  / true
+50 --> 
+	51  / true
+51 --> 
+	42  / true
+52 --> 
+	53  / true
+53 --> 
+	61  / (exitcond1)
+	54  / (!exitcond1)
+54 --> 
+	55  / true
+55 --> 
+	56  / true
+56 --> 
+	57  / true
+57 --> 
+	58  / true
+58 --> 
+	59  / true
+59 --> 
+	60  / true
+60 --> 
+	53  / true
+61 --> 
+	62  / true
+62 --> 
+	63  / true
+63 --> 
+	40  / true
+64 --> 
+	67  / (exitcond)
+	65  / (!exitcond)
+65 --> 
+	66  / true
+66 --> 
+	64  / true
+67 --> 
+* FSM state operations: 
+
+ <State 1>: 1.57ns
+ST_1: StgValue_68 (3)  [1/1] 0.00ns
+:0  call void (...)* @_ssdm_op_SpecBitsMap(i32* %input_r) nounwind, !map !13
+
+ST_1: StgValue_69 (4)  [1/1] 0.00ns
+:1  call void (...)* @_ssdm_op_SpecBitsMap(i32* %output_r) nounwind, !map !19
+
+ST_1: StgValue_70 (5)  [1/1] 0.00ns
+:2  call void (...)* @_ssdm_op_SpecTopModule([4 x i8]* @mlp_str) nounwind
+
+ST_1: test_data_1 (6)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:3  %test_data_1 = alloca [29 x i32], align 4
+
+ST_1: test_data_2 (7)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:4  %test_data_2 = alloca [29 x i32], align 4
+
+ST_1: test_data_3 (8)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:5  %test_data_3 = alloca [29 x i32], align 4
+
+ST_1: test_data_4 (9)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:6  %test_data_4 = alloca [29 x i32], align 4
+
+ST_1: test_data_5 (10)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:7  %test_data_5 = alloca [29 x i32], align 4
+
+ST_1: test_data_6 (11)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:8  %test_data_6 = alloca [29 x i32], align 4
+
+ST_1: test_data_7 (12)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:9  %test_data_7 = alloca [29 x i32], align 4
+
+ST_1: test_data_8 (13)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:10  %test_data_8 = alloca [29 x i32], align 4
+
+ST_1: test_data_9 (14)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:11  %test_data_9 = alloca [29 x i32], align 4
+
+ST_1: test_data_10 (15)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:12  %test_data_10 = alloca [29 x i32], align 4
+
+ST_1: test_data_11 (16)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:13  %test_data_11 = alloca [29 x i32], align 4
+
+ST_1: test_data_12 (17)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:14  %test_data_12 = alloca [29 x i32], align 4
+
+ST_1: test_data_13 (18)  [1/1] 0.00ns  loc: ./mlp.cpp:8
+:15  %test_data_13 = alloca [29 x i32], align 4
+
+ST_1: weightIH_0 (19)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:16  %weightIH_0 = alloca [11 x i32], align 4
+
+ST_1: weightIH_1 (20)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:17  %weightIH_1 = alloca [11 x i32], align 4
+
+ST_1: weightIH_2 (21)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:18  %weightIH_2 = alloca [11 x i32], align 4
+
+ST_1: weightIH_3 (22)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:19  %weightIH_3 = alloca [11 x i32], align 4
+
+ST_1: weightIH_4 (23)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:20  %weightIH_4 = alloca [11 x i32], align 4
+
+ST_1: weightIH_5 (24)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:21  %weightIH_5 = alloca [11 x i32], align 4
+
+ST_1: weightIH_6 (25)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:22  %weightIH_6 = alloca [11 x i32], align 4
+
+ST_1: weightIH_7 (26)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:23  %weightIH_7 = alloca [11 x i32], align 4
+
+ST_1: weightIH_8 (27)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:24  %weightIH_8 = alloca [11 x i32], align 4
+
+ST_1: weightIH_9 (28)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:25  %weightIH_9 = alloca [11 x i32], align 4
+
+ST_1: weightIH_10 (29)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:26  %weightIH_10 = alloca [11 x i32], align 4
+
+ST_1: weightIH_11 (30)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:27  %weightIH_11 = alloca [11 x i32], align 4
+
+ST_1: weightIH_12 (31)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:28  %weightIH_12 = alloca [11 x i32], align 4
+
+ST_1: weightIH_13 (32)  [1/1] 0.00ns  loc: ./mlp.cpp:10
+:29  %weightIH_13 = alloca [11 x i32], align 4
+
+ST_1: weightHO (33)  [1/1] 0.00ns  loc: ./mlp.cpp:11
+:30  %weightHO = alloca [14 x i32], align 4
+
+ST_1: SumH (34)  [1/1] 0.00ns  loc: ./mlp.cpp:13
+:31  %SumH = alloca [11 x i32], align 4
+
+ST_1: result (35)  [1/1] 0.00ns  loc: ./mlp.cpp:15
+:32  %result = alloca [28 x i32], align 4
+
+ST_1: StgValue_101 (36)  [1/1] 0.00ns  loc: ./mlp.cpp:4
+:33  call void (...)* @_ssdm_op_SpecInterface(i32* %input_r, [5 x i8]* @p_str, i32 1, i32 1, [5 x i8]* @p_str1, i32 0, i32 0, [1 x i8]* @p_str2, [1 x i8]* @p_str2, [1 x i8]* @p_str2, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str2, [1 x i8]* @p_str2) nounwind
+
+ST_1: StgValue_102 (37)  [1/1] 0.00ns  loc: ./mlp.cpp:5
+:34  call void (...)* @_ssdm_op_SpecInterface(i32* %output_r, [5 x i8]* @p_str, i32 1, i32 1, [5 x i8]* @p_str1, i32 0, i32 0, [1 x i8]* @p_str2, [1 x i8]* @p_str2, [1 x i8]* @p_str2, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str2, [1 x i8]* @p_str2) nounwind
+
+ST_1: StgValue_103 (38)  [1/1] 0.00ns  loc: ./mlp.cpp:6
+:35  call void (...)* @_ssdm_op_SpecInterface(i32 0, [13 x i8]* @p_str3, i32 0, i32 0, [1 x i8]* @p_str2, i32 0, i32 0, [1 x i8]* @p_str2, [1 x i8]* @p_str2, [1 x i8]* @p_str2, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str2, [1 x i8]* @p_str2) nounwind
+
+ST_1: StgValue_104 (39)  [1/1] 1.57ns  loc: ./mlp.cpp:20
+:36  br label %1
+
+
+ <State 2>: 3.28ns
+ST_2: i (41)  [1/1] 0.00ns
+:0  %i = phi i5 [ 1, %0 ], [ %i_1, %2 ]
+
+ST_2: exitcond9 (42)  [1/1] 1.91ns  loc: ./mlp.cpp:20
+:1  %exitcond9 = icmp eq i5 %i, -3
+
+ST_2: StgValue_107 (43)  [1/1] 0.00ns  loc: ./mlp.cpp:20
+:2  br i1 %exitcond9, label %.preheader12.preheader, label %2
+
+ST_2: input_read (50)  [2/2] 0.00ns  loc: ./mlp.cpp:21
+:5  %input_read = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 3>: 0.00ns
+ST_3: input_read (50)  [1/2] 0.00ns  loc: ./mlp.cpp:21
+:5  %input_read = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_3: input_read_1 (53)  [2/2] 0.00ns  loc: ./mlp.cpp:22
+:8  %input_read_1 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 4>: 0.00ns
+ST_4: input_read_1 (53)  [1/2] 0.00ns  loc: ./mlp.cpp:22
+:8  %input_read_1 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_4: input_read_2 (56)  [2/2] 0.00ns  loc: ./mlp.cpp:23
+:11  %input_read_2 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 5>: 0.00ns
+ST_5: input_read_2 (56)  [1/2] 0.00ns  loc: ./mlp.cpp:23
+:11  %input_read_2 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_5: input_read_3 (59)  [2/2] 0.00ns  loc: ./mlp.cpp:24
+:14  %input_read_3 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 6>: 0.00ns
+ST_6: input_read_3 (59)  [1/2] 0.00ns  loc: ./mlp.cpp:24
+:14  %input_read_3 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_6: input_read_4 (62)  [2/2] 0.00ns  loc: ./mlp.cpp:25
+:17  %input_read_4 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 7>: 0.00ns
+ST_7: input_read_4 (62)  [1/2] 0.00ns  loc: ./mlp.cpp:25
+:17  %input_read_4 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_7: input_read_5 (65)  [2/2] 0.00ns  loc: ./mlp.cpp:26
+:20  %input_read_5 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 8>: 0.00ns
+ST_8: input_read_5 (65)  [1/2] 0.00ns  loc: ./mlp.cpp:26
+:20  %input_read_5 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_8: input_read_6 (68)  [2/2] 0.00ns  loc: ./mlp.cpp:27
+:23  %input_read_6 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 9>: 0.00ns
+ST_9: input_read_6 (68)  [1/2] 0.00ns  loc: ./mlp.cpp:27
+:23  %input_read_6 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_9: input_read_7 (71)  [2/2] 0.00ns  loc: ./mlp.cpp:28
+:26  %input_read_7 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 10>: 0.00ns
+ST_10: input_read_7 (71)  [1/2] 0.00ns  loc: ./mlp.cpp:28
+:26  %input_read_7 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_10: input_read_8 (74)  [2/2] 0.00ns  loc: ./mlp.cpp:29
+:29  %input_read_8 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 11>: 0.00ns
+ST_11: input_read_8 (74)  [1/2] 0.00ns  loc: ./mlp.cpp:29
+:29  %input_read_8 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_11: input_read_9 (77)  [2/2] 0.00ns  loc: ./mlp.cpp:30
+:32  %input_read_9 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 12>: 0.00ns
+ST_12: input_read_9 (77)  [1/2] 0.00ns  loc: ./mlp.cpp:30
+:32  %input_read_9 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_12: input_read_10 (80)  [2/2] 0.00ns  loc: ./mlp.cpp:31
+:35  %input_read_10 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 13>: 0.00ns
+ST_13: input_read_10 (80)  [1/2] 0.00ns  loc: ./mlp.cpp:31
+:35  %input_read_10 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_13: input_read_11 (83)  [2/2] 0.00ns  loc: ./mlp.cpp:32
+:38  %input_read_11 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 14>: 2.39ns
+ST_14: i_cast (45)  [1/1] 0.00ns  loc: ./mlp.cpp:20
+:0  %i_cast = zext i5 %i to i32
+
+ST_14: input_read_11 (83)  [1/2] 0.00ns  loc: ./mlp.cpp:32
+:38  %input_read_11 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_14: test_data_12_addr (84)  [1/1] 0.00ns  loc: ./mlp.cpp:32
+:39  %test_data_12_addr = getelementptr [29 x i32]* %test_data_12, i32 0, i32 %i_cast
+
+ST_14: StgValue_134 (85)  [1/1] 2.39ns  loc: ./mlp.cpp:32
+:40  store i32 %input_read_11, i32* %test_data_12_addr, align 4
+
+ST_14: input_read_12 (86)  [2/2] 0.00ns  loc: ./mlp.cpp:33
+:41  %input_read_12 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_14: i_1 (90)  [1/1] 1.72ns  loc: ./mlp.cpp:20
+:45  %i_1 = add i5 %i, 1
+
+
+ <State 15>: 2.39ns
+ST_15: empty (46)  [1/1] 0.00ns
+:1  %empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 28, i64 28, i64 28) nounwind
+
+ST_15: StgValue_138 (47)  [1/1] 0.00ns  loc: ./mlp.cpp:20
+:2  call void (...)* @_ssdm_op_SpecLoopName([12 x i8]* @p_str4) nounwind
+
+ST_15: tmp_1 (48)  [1/1] 0.00ns  loc: ./mlp.cpp:20
+:3  %tmp_1 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str4) nounwind
+
+ST_15: StgValue_140 (49)  [1/1] 0.00ns  loc: ./mlp.cpp:21
+:4  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str2) nounwind
+
+ST_15: test_data_1_addr (51)  [1/1] 0.00ns  loc: ./mlp.cpp:21
+:6  %test_data_1_addr = getelementptr [29 x i32]* %test_data_1, i32 0, i32 %i_cast
+
+ST_15: StgValue_142 (52)  [1/1] 2.39ns  loc: ./mlp.cpp:21
+:7  store i32 %input_read, i32* %test_data_1_addr, align 4
+
+ST_15: test_data_2_addr (54)  [1/1] 0.00ns  loc: ./mlp.cpp:22
+:9  %test_data_2_addr = getelementptr [29 x i32]* %test_data_2, i32 0, i32 %i_cast
+
+ST_15: StgValue_144 (55)  [1/1] 2.39ns  loc: ./mlp.cpp:22
+:10  store i32 %input_read_1, i32* %test_data_2_addr, align 4
+
+ST_15: test_data_3_addr (57)  [1/1] 0.00ns  loc: ./mlp.cpp:23
+:12  %test_data_3_addr = getelementptr [29 x i32]* %test_data_3, i32 0, i32 %i_cast
+
+ST_15: StgValue_146 (58)  [1/1] 2.39ns  loc: ./mlp.cpp:23
+:13  store i32 %input_read_2, i32* %test_data_3_addr, align 4
+
+ST_15: test_data_4_addr (60)  [1/1] 0.00ns  loc: ./mlp.cpp:24
+:15  %test_data_4_addr = getelementptr [29 x i32]* %test_data_4, i32 0, i32 %i_cast
+
+ST_15: StgValue_148 (61)  [1/1] 2.39ns  loc: ./mlp.cpp:24
+:16  store i32 %input_read_3, i32* %test_data_4_addr, align 4
+
+ST_15: test_data_5_addr (63)  [1/1] 0.00ns  loc: ./mlp.cpp:25
+:18  %test_data_5_addr = getelementptr [29 x i32]* %test_data_5, i32 0, i32 %i_cast
+
+ST_15: StgValue_150 (64)  [1/1] 2.39ns  loc: ./mlp.cpp:25
+:19  store i32 %input_read_4, i32* %test_data_5_addr, align 4
+
+ST_15: test_data_6_addr (66)  [1/1] 0.00ns  loc: ./mlp.cpp:26
+:21  %test_data_6_addr = getelementptr [29 x i32]* %test_data_6, i32 0, i32 %i_cast
+
+ST_15: StgValue_152 (67)  [1/1] 2.39ns  loc: ./mlp.cpp:26
+:22  store i32 %input_read_5, i32* %test_data_6_addr, align 4
+
+ST_15: test_data_7_addr (69)  [1/1] 0.00ns  loc: ./mlp.cpp:27
+:24  %test_data_7_addr = getelementptr [29 x i32]* %test_data_7, i32 0, i32 %i_cast
+
+ST_15: StgValue_154 (70)  [1/1] 2.39ns  loc: ./mlp.cpp:27
+:25  store i32 %input_read_6, i32* %test_data_7_addr, align 4
+
+ST_15: test_data_8_addr (72)  [1/1] 0.00ns  loc: ./mlp.cpp:28
+:27  %test_data_8_addr = getelementptr [29 x i32]* %test_data_8, i32 0, i32 %i_cast
+
+ST_15: StgValue_156 (73)  [1/1] 2.39ns  loc: ./mlp.cpp:28
+:28  store i32 %input_read_7, i32* %test_data_8_addr, align 4
+
+ST_15: test_data_9_addr (75)  [1/1] 0.00ns  loc: ./mlp.cpp:29
+:30  %test_data_9_addr = getelementptr [29 x i32]* %test_data_9, i32 0, i32 %i_cast
+
+ST_15: StgValue_158 (76)  [1/1] 2.39ns  loc: ./mlp.cpp:29
+:31  store i32 %input_read_8, i32* %test_data_9_addr, align 4
+
+ST_15: test_data_10_addr (78)  [1/1] 0.00ns  loc: ./mlp.cpp:30
+:33  %test_data_10_addr = getelementptr [29 x i32]* %test_data_10, i32 0, i32 %i_cast
+
+ST_15: StgValue_160 (79)  [1/1] 2.39ns  loc: ./mlp.cpp:30
+:34  store i32 %input_read_9, i32* %test_data_10_addr, align 4
+
+ST_15: test_data_11_addr (81)  [1/1] 0.00ns  loc: ./mlp.cpp:31
+:36  %test_data_11_addr = getelementptr [29 x i32]* %test_data_11, i32 0, i32 %i_cast
+
+ST_15: StgValue_162 (82)  [1/1] 2.39ns  loc: ./mlp.cpp:31
+:37  store i32 %input_read_10, i32* %test_data_11_addr, align 4
+
+ST_15: input_read_12 (86)  [1/2] 0.00ns  loc: ./mlp.cpp:33
+:41  %input_read_12 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_15: test_data_13_addr (87)  [1/1] 0.00ns  loc: ./mlp.cpp:33
+:42  %test_data_13_addr = getelementptr [29 x i32]* %test_data_13, i32 0, i32 %i_cast
+
+ST_15: StgValue_165 (88)  [1/1] 2.39ns  loc: ./mlp.cpp:33
+:43  store i32 %input_read_12, i32* %test_data_13_addr, align 4
+
+ST_15: empty_7 (89)  [1/1] 0.00ns  loc: ./mlp.cpp:35
+:44  %empty_7 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str4, i32 %tmp_1) nounwind
+
+ST_15: StgValue_167 (91)  [1/1] 0.00ns  loc: ./mlp.cpp:20
+:46  br label %1
+
+
+ <State 16>: 1.57ns
+ST_16: StgValue_168 (93)  [1/1] 1.57ns  loc: ./mlp.cpp:38
+.preheader12.preheader:0  br label %.preheader12
+
+
+ <State 17>: 3.25ns
+ST_17: j (95)  [1/1] 0.00ns
+.preheader12:0  %j = phi i4 [ %j_2, %3 ], [ 1, %.preheader12.preheader ]
+
+ST_17: exitcond8 (96)  [1/1] 1.88ns  loc: ./mlp.cpp:38
+.preheader12:1  %exitcond8 = icmp eq i4 %j, -5
+
+ST_17: StgValue_171 (97)  [1/1] 0.00ns  loc: ./mlp.cpp:38
+.preheader12:2  br i1 %exitcond8, label %.preheader11.preheader, label %3
+
+ST_17: input_read_13 (104)  [2/2] 0.00ns  loc: ./mlp.cpp:39
+:5  %input_read_13 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_17: j_2 (109)  [1/1] 0.80ns  loc: ./mlp.cpp:38
+:10  %j_2 = add i4 1, %j
+
+
+ <State 18>: 2.39ns
+ST_18: j_cast (99)  [1/1] 0.00ns  loc: ./mlp.cpp:38
+:0  %j_cast = zext i4 %j to i32
+
+ST_18: empty_8 (100)  [1/1] 0.00ns
+:1  %empty_8 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 10, i64 10, i64 10) nounwind
+
+ST_18: StgValue_176 (101)  [1/1] 0.00ns  loc: ./mlp.cpp:38
+:2  call void (...)* @_ssdm_op_SpecLoopName([12 x i8]* @p_str5) nounwind
+
+ST_18: tmp_s (102)  [1/1] 0.00ns  loc: ./mlp.cpp:38
+:3  %tmp_s = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str5) nounwind
+
+ST_18: StgValue_178 (103)  [1/1] 0.00ns  loc: ./mlp.cpp:39
+:4  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str2) nounwind
+
+ST_18: input_read_13 (104)  [1/2] 0.00ns  loc: ./mlp.cpp:39
+:5  %input_read_13 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_18: tmp (105)  [1/1] 0.00ns  loc: ./mlp.cpp:39
+:6  %tmp = shl i32 %input_read_13, 8
+
+ST_18: weightIH_0_addr (106)  [1/1] 0.00ns  loc: ./mlp.cpp:39
+:7  %weightIH_0_addr = getelementptr [11 x i32]* %weightIH_0, i32 0, i32 %j_cast
+
+ST_18: StgValue_182 (107)  [1/1] 2.39ns  loc: ./mlp.cpp:39
+:8  store i32 %tmp, i32* %weightIH_0_addr, align 4
+
+ST_18: empty_9 (108)  [1/1] 0.00ns  loc: ./mlp.cpp:41
+:9  %empty_9 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str5, i32 %tmp_s) nounwind
+
+ST_18: StgValue_184 (110)  [1/1] 0.00ns  loc: ./mlp.cpp:38
+:11  br label %.preheader12
+
+
+ <State 19>: 1.57ns
+ST_19: StgValue_185 (112)  [1/1] 1.57ns  loc: ./mlp.cpp:43
+.preheader11.preheader:0  br label %.preheader11
+
+
+ <State 20>: 3.25ns
+ST_20: j_1 (114)  [1/1] 0.00ns
+.preheader11:0  %j_1 = phi i4 [ %j_4, %4 ], [ 1, %.preheader11.preheader ]
+
+ST_20: exitcond7 (115)  [1/1] 1.88ns  loc: ./mlp.cpp:43
+.preheader11:1  %exitcond7 = icmp eq i4 %j_1, -5
+
+ST_20: StgValue_188 (116)  [1/1] 0.00ns  loc: ./mlp.cpp:43
+.preheader11:2  br i1 %exitcond7, label %5, label %4
+
+ST_20: input_read_15 (123)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:5  %input_read_15 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 21>: 0.00ns
+ST_21: input_read_15 (123)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:5  %input_read_15 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_21: input_read_16 (126)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:8  %input_read_16 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 22>: 0.00ns
+ST_22: input_read_16 (126)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:8  %input_read_16 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_22: input_read_17 (129)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:11  %input_read_17 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 23>: 0.00ns
+ST_23: input_read_17 (129)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:11  %input_read_17 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_23: input_read_18 (132)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:14  %input_read_18 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 24>: 0.00ns
+ST_24: input_read_18 (132)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:14  %input_read_18 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_24: input_read_19 (135)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:17  %input_read_19 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 25>: 0.00ns
+ST_25: input_read_19 (135)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:17  %input_read_19 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_25: input_read_20 (138)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:20  %input_read_20 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 26>: 0.00ns
+ST_26: input_read_20 (138)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:20  %input_read_20 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_26: input_read_21 (141)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:23  %input_read_21 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 27>: 0.00ns
+ST_27: input_read_21 (141)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:23  %input_read_21 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_27: input_read_22 (144)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:26  %input_read_22 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 28>: 0.00ns
+ST_28: input_read_22 (144)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:26  %input_read_22 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_28: input_read_23 (147)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:29  %input_read_23 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 29>: 0.00ns
+ST_29: input_read_23 (147)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:29  %input_read_23 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_29: input_read_24 (150)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:32  %input_read_24 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 30>: 0.00ns
+ST_30: input_read_24 (150)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:32  %input_read_24 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_30: input_read_25 (153)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:35  %input_read_25 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 31>: 0.00ns
+ST_31: input_read_25 (153)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:35  %input_read_25 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_31: input_read_26 (156)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:38  %input_read_26 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 32>: 2.39ns
+ST_32: j_1_cast (118)  [1/1] 0.00ns  loc: ./mlp.cpp:43
+:0  %j_1_cast = zext i4 %j_1 to i32
+
+ST_32: input_read_26 (156)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:38  %input_read_26 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_32: weightIH_12_addr (157)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:39  %weightIH_12_addr = getelementptr [11 x i32]* %weightIH_12, i32 0, i32 %j_1_cast
+
+ST_32: StgValue_215 (158)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:40  store i32 %input_read_26, i32* %weightIH_12_addr, align 4
+
+ST_32: input_read_27 (159)  [2/2] 0.00ns  loc: ./mlp.cpp:45
+:41  %input_read_27 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_32: j_4 (163)  [1/1] 0.80ns  loc: ./mlp.cpp:43
+:45  %j_4 = add i4 %j_1, 1
+
+
+ <State 33>: 2.39ns
+ST_33: empty_10 (119)  [1/1] 0.00ns
+:1  %empty_10 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 10, i64 10, i64 10) nounwind
+
+ST_33: StgValue_219 (120)  [1/1] 0.00ns  loc: ./mlp.cpp:43
+:2  call void (...)* @_ssdm_op_SpecLoopName([12 x i8]* @p_str6) nounwind
+
+ST_33: tmp_3 (121)  [1/1] 0.00ns  loc: ./mlp.cpp:43
+:3  %tmp_3 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str6) nounwind
+
+ST_33: StgValue_221 (122)  [1/1] 0.00ns  loc: ./mlp.cpp:44
+:4  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str2) nounwind
+
+ST_33: weightIH_1_addr (124)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:6  %weightIH_1_addr = getelementptr [11 x i32]* %weightIH_1, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_223 (125)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:7  store i32 %input_read_15, i32* %weightIH_1_addr, align 4
+
+ST_33: weightIH_2_addr (127)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:9  %weightIH_2_addr = getelementptr [11 x i32]* %weightIH_2, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_225 (128)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:10  store i32 %input_read_16, i32* %weightIH_2_addr, align 4
+
+ST_33: weightIH_3_addr (130)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:12  %weightIH_3_addr = getelementptr [11 x i32]* %weightIH_3, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_227 (131)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:13  store i32 %input_read_17, i32* %weightIH_3_addr, align 4
+
+ST_33: weightIH_4_addr (133)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:15  %weightIH_4_addr = getelementptr [11 x i32]* %weightIH_4, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_229 (134)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:16  store i32 %input_read_18, i32* %weightIH_4_addr, align 4
+
+ST_33: weightIH_5_addr (136)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:18  %weightIH_5_addr = getelementptr [11 x i32]* %weightIH_5, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_231 (137)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:19  store i32 %input_read_19, i32* %weightIH_5_addr, align 4
+
+ST_33: weightIH_6_addr (139)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:21  %weightIH_6_addr = getelementptr [11 x i32]* %weightIH_6, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_233 (140)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:22  store i32 %input_read_20, i32* %weightIH_6_addr, align 4
+
+ST_33: weightIH_7_addr (142)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:24  %weightIH_7_addr = getelementptr [11 x i32]* %weightIH_7, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_235 (143)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:25  store i32 %input_read_21, i32* %weightIH_7_addr, align 4
+
+ST_33: weightIH_8_addr (145)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:27  %weightIH_8_addr = getelementptr [11 x i32]* %weightIH_8, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_237 (146)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:28  store i32 %input_read_22, i32* %weightIH_8_addr, align 4
+
+ST_33: weightIH_9_addr (148)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:30  %weightIH_9_addr = getelementptr [11 x i32]* %weightIH_9, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_239 (149)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:31  store i32 %input_read_23, i32* %weightIH_9_addr, align 4
+
+ST_33: weightIH_10_addr (151)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:33  %weightIH_10_addr = getelementptr [11 x i32]* %weightIH_10, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_241 (152)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:34  store i32 %input_read_24, i32* %weightIH_10_addr, align 4
+
+ST_33: weightIH_11_addr (154)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:36  %weightIH_11_addr = getelementptr [11 x i32]* %weightIH_11, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_243 (155)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:37  store i32 %input_read_25, i32* %weightIH_11_addr, align 4
+
+ST_33: input_read_27 (159)  [1/2] 0.00ns  loc: ./mlp.cpp:45
+:41  %input_read_27 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_33: weightIH_13_addr (160)  [1/1] 0.00ns  loc: ./mlp.cpp:45
+:42  %weightIH_13_addr = getelementptr [11 x i32]* %weightIH_13, i32 0, i32 %j_1_cast
+
+ST_33: StgValue_246 (161)  [1/1] 2.39ns  loc: ./mlp.cpp:45
+:43  store i32 %input_read_27, i32* %weightIH_13_addr, align 4
+
+ST_33: empty_11 (162)  [1/1] 0.00ns  loc: ./mlp.cpp:48
+:44  %empty_11 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str6, i32 %tmp_3) nounwind
+
+ST_33: StgValue_248 (164)  [1/1] 0.00ns  loc: ./mlp.cpp:43
+:46  br label %.preheader11
+
+
+ <State 34>: 0.00ns
+ST_34: input_read_14 (166)  [2/2] 0.00ns  loc: ./mlp.cpp:50
+:0  %input_read_14 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+
+ <State 35>: 2.39ns
+ST_35: input_read_14 (166)  [1/2] 0.00ns  loc: ./mlp.cpp:50
+:0  %input_read_14 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_35: tmp_2 (167)  [1/1] 0.00ns  loc: ./mlp.cpp:50
+:1  %tmp_2 = shl i32 %input_read_14, 8
+
+ST_35: weightHO_addr (168)  [1/1] 0.00ns  loc: ./mlp.cpp:50
+:2  %weightHO_addr = getelementptr inbounds [14 x i32]* %weightHO, i32 0, i32 0
+
+ST_35: StgValue_253 (169)  [1/1] 2.39ns  loc: ./mlp.cpp:50
+:3  store i32 %tmp_2, i32* %weightHO_addr, align 4
+
+ST_35: StgValue_254 (170)  [1/1] 1.57ns  loc: ./mlp.cpp:52
+:4  br label %6
+
+
+ <State 36>: 3.25ns
+ST_36: i_2 (172)  [1/1] 0.00ns
+:0  %i_2 = phi i4 [ 1, %5 ], [ %i_5, %7 ]
+
+ST_36: exitcond5 (173)  [1/1] 1.88ns  loc: ./mlp.cpp:52
+:1  %exitcond5 = icmp eq i4 %i_2, -5
+
+ST_36: StgValue_257 (174)  [1/1] 0.00ns  loc: ./mlp.cpp:52
+:2  br i1 %exitcond5, label %.preheader10.preheader, label %7
+
+ST_36: input_read_28 (181)  [2/2] 0.00ns  loc: ./mlp.cpp:53
+:5  %input_read_28 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_36: i_5 (185)  [1/1] 0.80ns  loc: ./mlp.cpp:52
+:9  %i_5 = add i4 %i_2, 1
+
+
+ <State 37>: 2.39ns
+ST_37: i_2_cast (176)  [1/1] 0.00ns  loc: ./mlp.cpp:51
+:0  %i_2_cast = zext i4 %i_2 to i32
+
+ST_37: empty_12 (177)  [1/1] 0.00ns
+:1  %empty_12 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 10, i64 10, i64 10) nounwind
+
+ST_37: StgValue_262 (178)  [1/1] 0.00ns  loc: ./mlp.cpp:52
+:2  call void (...)* @_ssdm_op_SpecLoopName([12 x i8]* @p_str8) nounwind
+
+ST_37: tmp_4 (179)  [1/1] 0.00ns  loc: ./mlp.cpp:52
+:3  %tmp_4 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str8) nounwind
+
+ST_37: StgValue_264 (180)  [1/1] 0.00ns  loc: ./mlp.cpp:53
+:4  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str2) nounwind
+
+ST_37: input_read_28 (181)  [1/2] 0.00ns  loc: ./mlp.cpp:53
+:5  %input_read_28 = call i32 @_ssdm_op_Read.axis.i32P(i32* %input_r) nounwind
+
+ST_37: weightHO_addr_1 (182)  [1/1] 0.00ns  loc: ./mlp.cpp:53
+:6  %weightHO_addr_1 = getelementptr inbounds [14 x i32]* %weightHO, i32 0, i32 %i_2_cast
+
+ST_37: StgValue_267 (183)  [1/1] 2.39ns  loc: ./mlp.cpp:53
+:7  store i32 %input_read_28, i32* %weightHO_addr_1, align 4
+
+ST_37: empty_13 (184)  [1/1] 0.00ns  loc: ./mlp.cpp:55
+:8  %empty_13 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str8, i32 %tmp_4) nounwind
+
+ST_37: StgValue_269 (186)  [1/1] 0.00ns  loc: ./mlp.cpp:52
+:10  br label %6
+
+
+ <State 38>: 2.39ns
+ST_38: weightHO_load (188)  [2/2] 2.39ns  loc: ./mlp.cpp:67
+.preheader10.preheader:0  %weightHO_load = load i32* %weightHO_addr, align 4
+
+
+ <State 39>: 2.39ns
+ST_39: weightHO_load (188)  [1/2] 2.39ns  loc: ./mlp.cpp:67
+.preheader10.preheader:0  %weightHO_load = load i32* %weightHO_addr, align 4
+
+ST_39: StgValue_272 (189)  [1/1] 1.57ns  loc: ./mlp.cpp:58
+.preheader10.preheader:1  br label %.preheader10
+
+
+ <State 40>: 3.28ns
+ST_40: k_5 (191)  [1/1] 0.00ns
+.preheader10:0  %k_5 = phi i5 [ %k, %14 ], [ 1, %.preheader10.preheader ]
+
+ST_40: exitcond4 (192)  [1/1] 1.91ns  loc: ./mlp.cpp:58
+.preheader10:1  %exitcond4 = icmp eq i5 %k_5, -3
+
+ST_40: StgValue_275 (193)  [1/1] 0.00ns  loc: ./mlp.cpp:58
+.preheader10:2  br i1 %exitcond4, label %.preheader.preheader, label %8
+
+ST_40: k_5_cast (195)  [1/1] 0.00ns  loc: ./mlp.cpp:58
+:0  %k_5_cast = zext i5 %k_5 to i32
+
+ST_40: test_data_1_addr_1 (199)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:4  %test_data_1_addr_1 = getelementptr [29 x i32]* %test_data_1, i32 0, i32 %k_5_cast
+
+ST_40: test_data_1_load (200)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:5  %test_data_1_load = load i32* %test_data_1_addr_1, align 4
+
+ST_40: test_data_2_addr_1 (201)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:6  %test_data_2_addr_1 = getelementptr [29 x i32]* %test_data_2, i32 0, i32 %k_5_cast
+
+ST_40: test_data_2_load (202)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:7  %test_data_2_load = load i32* %test_data_2_addr_1, align 4
+
+ST_40: test_data_3_addr_1 (203)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:8  %test_data_3_addr_1 = getelementptr [29 x i32]* %test_data_3, i32 0, i32 %k_5_cast
+
+ST_40: test_data_3_load (204)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:9  %test_data_3_load = load i32* %test_data_3_addr_1, align 4
+
+ST_40: test_data_4_addr_1 (205)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:10  %test_data_4_addr_1 = getelementptr [29 x i32]* %test_data_4, i32 0, i32 %k_5_cast
+
+ST_40: test_data_4_load (206)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:11  %test_data_4_load = load i32* %test_data_4_addr_1, align 4
+
+ST_40: test_data_5_addr_1 (207)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:12  %test_data_5_addr_1 = getelementptr [29 x i32]* %test_data_5, i32 0, i32 %k_5_cast
+
+ST_40: test_data_5_load (208)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:13  %test_data_5_load = load i32* %test_data_5_addr_1, align 4
+
+ST_40: test_data_6_addr_1 (209)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:14  %test_data_6_addr_1 = getelementptr [29 x i32]* %test_data_6, i32 0, i32 %k_5_cast
+
+ST_40: test_data_6_load (210)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:15  %test_data_6_load = load i32* %test_data_6_addr_1, align 4
+
+ST_40: test_data_7_addr_1 (211)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:16  %test_data_7_addr_1 = getelementptr [29 x i32]* %test_data_7, i32 0, i32 %k_5_cast
+
+ST_40: test_data_7_load (212)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:17  %test_data_7_load = load i32* %test_data_7_addr_1, align 4
+
+ST_40: test_data_8_addr_1 (213)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:18  %test_data_8_addr_1 = getelementptr [29 x i32]* %test_data_8, i32 0, i32 %k_5_cast
+
+ST_40: test_data_8_load (214)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:19  %test_data_8_load = load i32* %test_data_8_addr_1, align 4
+
+ST_40: test_data_9_addr_1 (215)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:20  %test_data_9_addr_1 = getelementptr [29 x i32]* %test_data_9, i32 0, i32 %k_5_cast
+
+ST_40: test_data_9_load (216)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:21  %test_data_9_load = load i32* %test_data_9_addr_1, align 4
+
+ST_40: test_data_10_addr_1 (217)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:22  %test_data_10_addr_1 = getelementptr [29 x i32]* %test_data_10, i32 0, i32 %k_5_cast
+
+ST_40: test_data_10_load (218)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:23  %test_data_10_load = load i32* %test_data_10_addr_1, align 4
+
+ST_40: test_data_11_addr_1 (219)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:24  %test_data_11_addr_1 = getelementptr [29 x i32]* %test_data_11, i32 0, i32 %k_5_cast
+
+ST_40: test_data_11_load (220)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:25  %test_data_11_load = load i32* %test_data_11_addr_1, align 4
+
+ST_40: test_data_12_addr_1 (221)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:26  %test_data_12_addr_1 = getelementptr [29 x i32]* %test_data_12, i32 0, i32 %k_5_cast
+
+ST_40: test_data_12_load (222)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:27  %test_data_12_load = load i32* %test_data_12_addr_1, align 4
+
+ST_40: test_data_13_addr_1 (223)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:28  %test_data_13_addr_1 = getelementptr [29 x i32]* %test_data_13, i32 0, i32 %k_5_cast
+
+ST_40: test_data_13_load (224)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:29  %test_data_13_load = load i32* %test_data_13_addr_1, align 4
+
+ST_40: StgValue_303 (447)  [1/1] 1.57ns  loc: ./mlp.cpp:76
+.preheader.preheader:0  br label %.preheader
+
+
+ <State 41>: 2.39ns
+ST_41: empty_14 (196)  [1/1] 0.00ns
+:1  %empty_14 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 28, i64 28, i64 28) nounwind
+
+ST_41: StgValue_305 (197)  [1/1] 0.00ns  loc: ./mlp.cpp:58
+:2  call void (...)* @_ssdm_op_SpecLoopName([12 x i8]* @p_str9) nounwind
+
+ST_41: tmp_5 (198)  [1/1] 0.00ns  loc: ./mlp.cpp:58
+:3  %tmp_5 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str9) nounwind
+
+ST_41: test_data_1_load (200)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:5  %test_data_1_load = load i32* %test_data_1_addr_1, align 4
+
+ST_41: test_data_2_load (202)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:7  %test_data_2_load = load i32* %test_data_2_addr_1, align 4
+
+ST_41: test_data_3_load (204)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:9  %test_data_3_load = load i32* %test_data_3_addr_1, align 4
+
+ST_41: test_data_4_load (206)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:11  %test_data_4_load = load i32* %test_data_4_addr_1, align 4
+
+ST_41: test_data_5_load (208)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:13  %test_data_5_load = load i32* %test_data_5_addr_1, align 4
+
+ST_41: test_data_6_load (210)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:15  %test_data_6_load = load i32* %test_data_6_addr_1, align 4
+
+ST_41: test_data_7_load (212)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:17  %test_data_7_load = load i32* %test_data_7_addr_1, align 4
+
+ST_41: test_data_8_load (214)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:19  %test_data_8_load = load i32* %test_data_8_addr_1, align 4
+
+ST_41: test_data_9_load (216)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:21  %test_data_9_load = load i32* %test_data_9_addr_1, align 4
+
+ST_41: test_data_10_load (218)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:23  %test_data_10_load = load i32* %test_data_10_addr_1, align 4
+
+ST_41: test_data_11_load (220)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:25  %test_data_11_load = load i32* %test_data_11_addr_1, align 4
+
+ST_41: test_data_12_load (222)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:27  %test_data_12_load = load i32* %test_data_12_addr_1, align 4
+
+ST_41: test_data_13_load (224)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:29  %test_data_13_load = load i32* %test_data_13_addr_1, align 4
+
+ST_41: StgValue_320 (225)  [1/1] 1.57ns  loc: ./mlp.cpp:59
+:30  br label %9
+
+
+ <State 42>: 3.25ns
+ST_42: i_3 (227)  [1/1] 0.00ns
+:0  %i_3 = phi i4 [ 1, %8 ], [ %i_7, %10 ]
+
+ST_42: exitcond3 (228)  [1/1] 1.88ns  loc: ./mlp.cpp:59
+:1  %exitcond3 = icmp eq i4 %i_3, -5
+
+ST_42: StgValue_323 (229)  [1/1] 0.00ns  loc: ./mlp.cpp:59
+:2  br i1 %exitcond3, label %11, label %10
+
+ST_42: i_3_cast (231)  [1/1] 0.00ns  loc: ./mlp.cpp:59
+:0  %i_3_cast = zext i4 %i_3 to i32
+
+ST_42: weightIH_1_addr_1 (239)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:8  %weightIH_1_addr_1 = getelementptr [11 x i32]* %weightIH_1, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_1_load (240)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:9  %weightIH_1_load = load i32* %weightIH_1_addr_1, align 4
+
+ST_42: weightIH_2_addr_1 (242)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:11  %weightIH_2_addr_1 = getelementptr [11 x i32]* %weightIH_2, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_2_load (243)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:12  %weightIH_2_load = load i32* %weightIH_2_addr_1, align 4
+
+ST_42: weightIH_3_addr_1 (245)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:14  %weightIH_3_addr_1 = getelementptr [11 x i32]* %weightIH_3, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_3_load (246)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:15  %weightIH_3_load = load i32* %weightIH_3_addr_1, align 4
+
+ST_42: weightIH_4_addr_1 (248)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:17  %weightIH_4_addr_1 = getelementptr [11 x i32]* %weightIH_4, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_4_load (249)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:18  %weightIH_4_load = load i32* %weightIH_4_addr_1, align 4
+
+ST_42: weightIH_5_addr_1 (251)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:20  %weightIH_5_addr_1 = getelementptr [11 x i32]* %weightIH_5, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_5_load (252)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:21  %weightIH_5_load = load i32* %weightIH_5_addr_1, align 4
+
+ST_42: weightIH_6_addr_1 (254)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:23  %weightIH_6_addr_1 = getelementptr [11 x i32]* %weightIH_6, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_6_load (255)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:24  %weightIH_6_load = load i32* %weightIH_6_addr_1, align 4
+
+ST_42: weightIH_7_addr_1 (257)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:26  %weightIH_7_addr_1 = getelementptr [11 x i32]* %weightIH_7, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_7_load (258)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:27  %weightIH_7_load = load i32* %weightIH_7_addr_1, align 4
+
+ST_42: weightIH_8_addr_1 (260)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:29  %weightIH_8_addr_1 = getelementptr [11 x i32]* %weightIH_8, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_8_load (261)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:30  %weightIH_8_load = load i32* %weightIH_8_addr_1, align 4
+
+ST_42: weightIH_9_addr_1 (263)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:32  %weightIH_9_addr_1 = getelementptr [11 x i32]* %weightIH_9, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_9_load (264)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:33  %weightIH_9_load = load i32* %weightIH_9_addr_1, align 4
+
+ST_42: weightIH_10_addr_1 (266)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:35  %weightIH_10_addr_1 = getelementptr [11 x i32]* %weightIH_10, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_10_load (267)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:36  %weightIH_10_load = load i32* %weightIH_10_addr_1, align 4
+
+ST_42: weightIH_11_addr_1 (269)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:38  %weightIH_11_addr_1 = getelementptr [11 x i32]* %weightIH_11, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_11_load (270)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:39  %weightIH_11_load = load i32* %weightIH_11_addr_1, align 4
+
+ST_42: weightIH_12_addr_1 (272)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:41  %weightIH_12_addr_1 = getelementptr [11 x i32]* %weightIH_12, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_12_load (273)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:42  %weightIH_12_load = load i32* %weightIH_12_addr_1, align 4
+
+ST_42: weightIH_13_addr_1 (275)  [1/1] 0.00ns  loc: ./mlp.cpp:62
+:44  %weightIH_13_addr_1 = getelementptr [11 x i32]* %weightIH_13, i32 0, i32 %i_3_cast
+
+ST_42: weightIH_13_load (276)  [2/2] 2.39ns  loc: ./mlp.cpp:62
+:45  %weightIH_13_load = load i32* %weightIH_13_addr_1, align 4
+
+ST_42: i_7 (353)  [1/1] 0.80ns  loc: ./mlp.cpp:59
+:122  %i_7 = add i4 %i_3, 1
+
+
+ <State 43>: 8.47ns
+ST_43: weightIH_1_load (240)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:9  %weightIH_1_load = load i32* %weightIH_1_addr_1, align 4
+
+ST_43: tmp_8 (241)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:10  %tmp_8 = mul nsw i32 %weightIH_1_load, %test_data_1_load
+
+ST_43: weightIH_2_load (243)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:12  %weightIH_2_load = load i32* %weightIH_2_addr_1, align 4
+
+ST_43: tmp_36_1 (244)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:13  %tmp_36_1 = mul nsw i32 %weightIH_2_load, %test_data_2_load
+
+ST_43: weightIH_3_load (246)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:15  %weightIH_3_load = load i32* %weightIH_3_addr_1, align 4
+
+ST_43: tmp_36_2 (247)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:16  %tmp_36_2 = mul nsw i32 %weightIH_3_load, %test_data_3_load
+
+ST_43: weightIH_4_load (249)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:18  %weightIH_4_load = load i32* %weightIH_4_addr_1, align 4
+
+ST_43: tmp_36_3 (250)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:19  %tmp_36_3 = mul nsw i32 %weightIH_4_load, %test_data_4_load
+
+ST_43: weightIH_5_load (252)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:21  %weightIH_5_load = load i32* %weightIH_5_addr_1, align 4
+
+ST_43: tmp_36_4 (253)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:22  %tmp_36_4 = mul nsw i32 %weightIH_5_load, %test_data_5_load
+
+ST_43: weightIH_6_load (255)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:24  %weightIH_6_load = load i32* %weightIH_6_addr_1, align 4
+
+ST_43: tmp_36_5 (256)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:25  %tmp_36_5 = mul nsw i32 %weightIH_6_load, %test_data_6_load
+
+ST_43: weightIH_7_load (258)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:27  %weightIH_7_load = load i32* %weightIH_7_addr_1, align 4
+
+ST_43: tmp_36_6 (259)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:28  %tmp_36_6 = mul nsw i32 %weightIH_7_load, %test_data_7_load
+
+ST_43: weightIH_8_load (261)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:30  %weightIH_8_load = load i32* %weightIH_8_addr_1, align 4
+
+ST_43: tmp_36_7 (262)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:31  %tmp_36_7 = mul nsw i32 %weightIH_8_load, %test_data_8_load
+
+ST_43: weightIH_9_load (264)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:33  %weightIH_9_load = load i32* %weightIH_9_addr_1, align 4
+
+ST_43: tmp_36_8 (265)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:34  %tmp_36_8 = mul nsw i32 %weightIH_9_load, %test_data_9_load
+
+ST_43: weightIH_10_load (267)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:36  %weightIH_10_load = load i32* %weightIH_10_addr_1, align 4
+
+ST_43: tmp_36_9 (268)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:37  %tmp_36_9 = mul nsw i32 %weightIH_10_load, %test_data_10_load
+
+ST_43: weightIH_11_load (270)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:39  %weightIH_11_load = load i32* %weightIH_11_addr_1, align 4
+
+ST_43: tmp_36_s (271)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:40  %tmp_36_s = mul nsw i32 %weightIH_11_load, %test_data_11_load
+
+ST_43: weightIH_12_load (273)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:42  %weightIH_12_load = load i32* %weightIH_12_addr_1, align 4
+
+ST_43: tmp_36_10 (274)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:43  %tmp_36_10 = mul nsw i32 %weightIH_12_load, %test_data_12_load
+
+ST_43: weightIH_13_load (276)  [1/2] 2.39ns  loc: ./mlp.cpp:62
+:45  %weightIH_13_load = load i32* %weightIH_13_addr_1, align 4
+
+ST_43: tmp_36_11 (277)  [6/6] 6.08ns  loc: ./mlp.cpp:62
+:46  %tmp_36_11 = mul nsw i32 %weightIH_13_load, %test_data_13_load
+
+
+ <State 44>: 6.08ns
+ST_44: tmp_8 (241)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:10  %tmp_8 = mul nsw i32 %weightIH_1_load, %test_data_1_load
+
+ST_44: tmp_36_1 (244)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:13  %tmp_36_1 = mul nsw i32 %weightIH_2_load, %test_data_2_load
+
+ST_44: tmp_36_2 (247)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:16  %tmp_36_2 = mul nsw i32 %weightIH_3_load, %test_data_3_load
+
+ST_44: tmp_36_3 (250)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:19  %tmp_36_3 = mul nsw i32 %weightIH_4_load, %test_data_4_load
+
+ST_44: tmp_36_4 (253)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:22  %tmp_36_4 = mul nsw i32 %weightIH_5_load, %test_data_5_load
+
+ST_44: tmp_36_5 (256)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:25  %tmp_36_5 = mul nsw i32 %weightIH_6_load, %test_data_6_load
+
+ST_44: tmp_36_6 (259)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:28  %tmp_36_6 = mul nsw i32 %weightIH_7_load, %test_data_7_load
+
+ST_44: tmp_36_7 (262)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:31  %tmp_36_7 = mul nsw i32 %weightIH_8_load, %test_data_8_load
+
+ST_44: tmp_36_8 (265)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:34  %tmp_36_8 = mul nsw i32 %weightIH_9_load, %test_data_9_load
+
+ST_44: tmp_36_9 (268)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:37  %tmp_36_9 = mul nsw i32 %weightIH_10_load, %test_data_10_load
+
+ST_44: tmp_36_s (271)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:40  %tmp_36_s = mul nsw i32 %weightIH_11_load, %test_data_11_load
+
+ST_44: tmp_36_10 (274)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:43  %tmp_36_10 = mul nsw i32 %weightIH_12_load, %test_data_12_load
+
+ST_44: tmp_36_11 (277)  [5/6] 6.08ns  loc: ./mlp.cpp:62
+:46  %tmp_36_11 = mul nsw i32 %weightIH_13_load, %test_data_13_load
+
+
+ <State 45>: 6.08ns
+ST_45: tmp_8 (241)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:10  %tmp_8 = mul nsw i32 %weightIH_1_load, %test_data_1_load
+
+ST_45: tmp_36_1 (244)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:13  %tmp_36_1 = mul nsw i32 %weightIH_2_load, %test_data_2_load
+
+ST_45: tmp_36_2 (247)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:16  %tmp_36_2 = mul nsw i32 %weightIH_3_load, %test_data_3_load
+
+ST_45: tmp_36_3 (250)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:19  %tmp_36_3 = mul nsw i32 %weightIH_4_load, %test_data_4_load
+
+ST_45: tmp_36_4 (253)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:22  %tmp_36_4 = mul nsw i32 %weightIH_5_load, %test_data_5_load
+
+ST_45: tmp_36_5 (256)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:25  %tmp_36_5 = mul nsw i32 %weightIH_6_load, %test_data_6_load
+
+ST_45: tmp_36_6 (259)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:28  %tmp_36_6 = mul nsw i32 %weightIH_7_load, %test_data_7_load
+
+ST_45: tmp_36_7 (262)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:31  %tmp_36_7 = mul nsw i32 %weightIH_8_load, %test_data_8_load
+
+ST_45: tmp_36_8 (265)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:34  %tmp_36_8 = mul nsw i32 %weightIH_9_load, %test_data_9_load
+
+ST_45: tmp_36_9 (268)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:37  %tmp_36_9 = mul nsw i32 %weightIH_10_load, %test_data_10_load
+
+ST_45: tmp_36_s (271)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:40  %tmp_36_s = mul nsw i32 %weightIH_11_load, %test_data_11_load
+
+ST_45: tmp_36_10 (274)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:43  %tmp_36_10 = mul nsw i32 %weightIH_12_load, %test_data_12_load
+
+ST_45: tmp_36_11 (277)  [4/6] 6.08ns  loc: ./mlp.cpp:62
+:46  %tmp_36_11 = mul nsw i32 %weightIH_13_load, %test_data_13_load
+
+
+ <State 46>: 6.08ns
+ST_46: tmp_8 (241)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:10  %tmp_8 = mul nsw i32 %weightIH_1_load, %test_data_1_load
+
+ST_46: tmp_36_1 (244)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:13  %tmp_36_1 = mul nsw i32 %weightIH_2_load, %test_data_2_load
+
+ST_46: tmp_36_2 (247)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:16  %tmp_36_2 = mul nsw i32 %weightIH_3_load, %test_data_3_load
+
+ST_46: tmp_36_3 (250)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:19  %tmp_36_3 = mul nsw i32 %weightIH_4_load, %test_data_4_load
+
+ST_46: tmp_36_4 (253)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:22  %tmp_36_4 = mul nsw i32 %weightIH_5_load, %test_data_5_load
+
+ST_46: tmp_36_5 (256)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:25  %tmp_36_5 = mul nsw i32 %weightIH_6_load, %test_data_6_load
+
+ST_46: tmp_36_6 (259)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:28  %tmp_36_6 = mul nsw i32 %weightIH_7_load, %test_data_7_load
+
+ST_46: tmp_36_7 (262)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:31  %tmp_36_7 = mul nsw i32 %weightIH_8_load, %test_data_8_load
+
+ST_46: tmp_36_8 (265)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:34  %tmp_36_8 = mul nsw i32 %weightIH_9_load, %test_data_9_load
+
+ST_46: tmp_36_9 (268)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:37  %tmp_36_9 = mul nsw i32 %weightIH_10_load, %test_data_10_load
+
+ST_46: tmp_36_s (271)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:40  %tmp_36_s = mul nsw i32 %weightIH_11_load, %test_data_11_load
+
+ST_46: tmp_36_10 (274)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:43  %tmp_36_10 = mul nsw i32 %weightIH_12_load, %test_data_12_load
+
+ST_46: tmp_36_11 (277)  [3/6] 6.08ns  loc: ./mlp.cpp:62
+:46  %tmp_36_11 = mul nsw i32 %weightIH_13_load, %test_data_13_load
+
+
+ <State 47>: 6.08ns
+ST_47: tmp_8 (241)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:10  %tmp_8 = mul nsw i32 %weightIH_1_load, %test_data_1_load
+
+ST_47: tmp_36_1 (244)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:13  %tmp_36_1 = mul nsw i32 %weightIH_2_load, %test_data_2_load
+
+ST_47: tmp_36_2 (247)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:16  %tmp_36_2 = mul nsw i32 %weightIH_3_load, %test_data_3_load
+
+ST_47: tmp_36_3 (250)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:19  %tmp_36_3 = mul nsw i32 %weightIH_4_load, %test_data_4_load
+
+ST_47: tmp_36_4 (253)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:22  %tmp_36_4 = mul nsw i32 %weightIH_5_load, %test_data_5_load
+
+ST_47: tmp_36_5 (256)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:25  %tmp_36_5 = mul nsw i32 %weightIH_6_load, %test_data_6_load
+
+ST_47: tmp_36_6 (259)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:28  %tmp_36_6 = mul nsw i32 %weightIH_7_load, %test_data_7_load
+
+ST_47: tmp_36_7 (262)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:31  %tmp_36_7 = mul nsw i32 %weightIH_8_load, %test_data_8_load
+
+ST_47: tmp_36_8 (265)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:34  %tmp_36_8 = mul nsw i32 %weightIH_9_load, %test_data_9_load
+
+ST_47: tmp_36_9 (268)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:37  %tmp_36_9 = mul nsw i32 %weightIH_10_load, %test_data_10_load
+
+ST_47: tmp_36_s (271)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:40  %tmp_36_s = mul nsw i32 %weightIH_11_load, %test_data_11_load
+
+ST_47: tmp_36_10 (274)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:43  %tmp_36_10 = mul nsw i32 %weightIH_12_load, %test_data_12_load
+
+ST_47: tmp_36_11 (277)  [2/6] 6.08ns  loc: ./mlp.cpp:62
+:46  %tmp_36_11 = mul nsw i32 %weightIH_13_load, %test_data_13_load
+
+
+ <State 48>: 8.52ns
+ST_48: weightIH_0_addr_1 (236)  [1/1] 0.00ns  loc: ./mlp.cpp:60
+:5  %weightIH_0_addr_1 = getelementptr [11 x i32]* %weightIH_0, i32 0, i32 %i_3_cast
+
+ST_48: weightIH_0_load (237)  [2/2] 2.39ns  loc: ./mlp.cpp:60
+:6  %weightIH_0_load = load i32* %weightIH_0_addr_1, align 4
+
+ST_48: tmp_8 (241)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:10  %tmp_8 = mul nsw i32 %weightIH_1_load, %test_data_1_load
+
+ST_48: tmp_36_1 (244)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:13  %tmp_36_1 = mul nsw i32 %weightIH_2_load, %test_data_2_load
+
+ST_48: tmp_36_2 (247)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:16  %tmp_36_2 = mul nsw i32 %weightIH_3_load, %test_data_3_load
+
+ST_48: tmp_36_3 (250)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:19  %tmp_36_3 = mul nsw i32 %weightIH_4_load, %test_data_4_load
+
+ST_48: tmp_36_4 (253)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:22  %tmp_36_4 = mul nsw i32 %weightIH_5_load, %test_data_5_load
+
+ST_48: tmp_36_5 (256)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:25  %tmp_36_5 = mul nsw i32 %weightIH_6_load, %test_data_6_load
+
+ST_48: tmp_36_6 (259)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:28  %tmp_36_6 = mul nsw i32 %weightIH_7_load, %test_data_7_load
+
+ST_48: tmp_36_7 (262)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:31  %tmp_36_7 = mul nsw i32 %weightIH_8_load, %test_data_8_load
+
+ST_48: tmp_36_8 (265)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:34  %tmp_36_8 = mul nsw i32 %weightIH_9_load, %test_data_9_load
+
+ST_48: tmp_36_9 (268)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:37  %tmp_36_9 = mul nsw i32 %weightIH_10_load, %test_data_10_load
+
+ST_48: tmp_36_s (271)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:40  %tmp_36_s = mul nsw i32 %weightIH_11_load, %test_data_11_load
+
+ST_48: tmp_36_10 (274)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:43  %tmp_36_10 = mul nsw i32 %weightIH_12_load, %test_data_12_load
+
+ST_48: tmp_36_11 (277)  [1/6] 6.08ns  loc: ./mlp.cpp:62
+:46  %tmp_36_11 = mul nsw i32 %weightIH_13_load, %test_data_13_load
+
+ST_48: tmp4 (281)  [1/1] 2.44ns  loc: ./mlp.cpp:62
+:50  %tmp4 = add i32 %tmp_36_4, %tmp_36_5
+
+ST_48: tmp7 (284)  [1/1] 2.44ns  loc: ./mlp.cpp:62
+:53  %tmp7 = add i32 %tmp_36_7, %tmp_36_8
+
+ST_48: tmp10 (287)  [1/1] 2.44ns  loc: ./mlp.cpp:62
+:56  %tmp10 = add i32 %tmp_36_10, %tmp_36_11
+
+
+ <State 49>: 8.30ns
+ST_49: weightIH_0_load (237)  [1/2] 2.39ns  loc: ./mlp.cpp:60
+:6  %weightIH_0_load = load i32* %weightIH_0_addr_1, align 4
+
+ST_49: tmp1 (278)  [1/1] 1.97ns  loc: ./mlp.cpp:62
+:47  %tmp1 = add i32 %tmp_8, %tmp_36_1
+
+ST_49: tmp2 (279)  [1/1] 1.97ns  loc: ./mlp.cpp:62
+:48  %tmp2 = add i32 %tmp1, %weightIH_0_load
+
+ST_49: tmp3 (280)  [1/1] 1.97ns  loc: ./mlp.cpp:62
+:49  %tmp3 = add i32 %tmp_36_2, %tmp_36_3
+
+ST_49: tmp5 (282)  [1/1] 1.97ns  loc: ./mlp.cpp:62
+:51  %tmp5 = add i32 %tmp4, %tmp3
+
+ST_49: tmp6 (283)  [1/1] 1.97ns  loc: ./mlp.cpp:62
+:52  %tmp6 = add i32 %tmp5, %tmp2
+
+ST_49: tmp8 (285)  [1/1] 1.97ns  loc: ./mlp.cpp:62
+:54  %tmp8 = add i32 %tmp7, %tmp_36_6
+
+ST_49: tmp9 (286)  [1/1] 1.97ns  loc: ./mlp.cpp:62
+:55  %tmp9 = add i32 %tmp_36_9, %tmp_36_s
+
+ST_49: tmp11 (288)  [1/1] 1.97ns  loc: ./mlp.cpp:62
+:57  %tmp11 = add i32 %tmp10, %tmp9
+
+ST_49: tmp12 (289)  [1/1] 1.97ns  loc: ./mlp.cpp:62
+:58  %tmp12 = add i32 %tmp11, %tmp8
+
+ST_49: tmp_37_s (290)  [1/1] 1.97ns  loc: ./mlp.cpp:62
+:59  %tmp_37_s = add nsw i32 %tmp12, %tmp6
+
+ST_49: tmp_9 (291)  [1/1] 0.00ns  loc: ./mlp.cpp:64
+:60  %tmp_9 = call i24 @_ssdm_op_PartSelect.i24.i32.i32.i32(i32 %tmp_37_s, i32 8, i32 31)
+
+ST_49: tmp_10 (295)  [1/1] 0.00ns  loc: ./mlp.cpp:87->./mlp.cpp:64
+:64  %tmp_10 = call i19 @_ssdm_op_PartSelect.i19.i32.i32.i32(i32 %tmp_37_s, i32 13, i32 31)
+
+ST_49: tmp_12 (301)  [1/1] 0.00ns  loc: ./mlp.cpp:90->./mlp.cpp:64
+:70  %tmp_12 = call i21 @_ssdm_op_PartSelect.i21.i32.i32.i32(i32 %tmp_37_s, i32 11, i32 31)
+
+
+ <State 50>: 8.45ns
+ST_50: tmp_34_cast (292)  [1/1] 0.00ns  loc: ./mlp.cpp:64
+:61  %tmp_34_cast = sext i24 %tmp_9 to i25
+
+ST_50: tmp_i (293)  [1/1] 2.40ns  loc: ./mlp.cpp:83->./mlp.cpp:64
+:62  %tmp_i = icmp sgt i24 %tmp_9, 1280
+
+ST_50: tmp_1_i (294)  [1/1] 2.40ns  loc: ./mlp.cpp:86->./mlp.cpp:64
+:63  %tmp_1_i = icmp sgt i24 %tmp_9, 608
+
+ST_50: tmp_4_i (300)  [1/1] 2.40ns  loc: ./mlp.cpp:89->./mlp.cpp:64
+:69  %tmp_4_i = icmp sgt i24 %tmp_9, 256
+
+ST_50: tmp_7_i (305)  [1/1] 2.40ns  loc: ./mlp.cpp:92->./mlp.cpp:64
+:74  %tmp_7_i = icmp sgt i24 %tmp_9, -256
+
+ST_50: tmp_14 (306)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:64 (grouped into LUT with out node tmp_9_i)
+:75  %tmp_14 = call i1 @_ssdm_op_BitSelect.i1.i32.i32(i32 %tmp_37_s, i32 31)
+
+ST_50: p_neg_i (307)  [1/1] 2.20ns  loc: ./mlp.cpp:93->./mlp.cpp:64
+:76  %p_neg_i = sub i25 0, %tmp_34_cast
+
+ST_50: tmp_15 (308)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:64
+:77  %tmp_15 = call i23 @_ssdm_op_PartSelect.i23.i25.i32.i32(i25 %p_neg_i, i32 2, i32 24)
+
+ST_50: tmp_16 (309)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:64
+:78  %tmp_16 = sext i23 %tmp_15 to i30
+
+ST_50: p_lshr_i_cast (310)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:64
+:79  %p_lshr_i_cast = zext i30 %tmp_16 to i31
+
+ST_50: p_neg_t_i (311)  [1/1] 2.44ns  loc: ./mlp.cpp:93->./mlp.cpp:64
+:80  %p_neg_t_i = sub i31 0, %p_lshr_i_cast
+
+ST_50: tmp_17 (312)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:64 (grouped into LUT with out node tmp_9_i)
+:81  %tmp_17 = call i22 @_ssdm_op_PartSelect.i22.i32.i32.i32(i32 %tmp_37_s, i32 10, i32 31)
+
+ST_50: tmp_18 (313)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:64 (grouped into LUT with out node tmp_9_i)
+:82  %tmp_18 = sext i22 %tmp_17 to i30
+
+ST_50: p_lshr_f_i_cast (314)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:64 (grouped into LUT with out node tmp_9_i)
+:83  %p_lshr_f_i_cast = zext i30 %tmp_18 to i31
+
+ST_50: tmp_8_i (315)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:64 (grouped into LUT with out node tmp_9_i)
+:84  %tmp_8_i = select i1 %tmp_14, i31 %p_neg_t_i, i31 %p_lshr_f_i_cast
+
+ST_50: tmp_8_i_cast (316)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:64 (grouped into LUT with out node tmp_9_i)
+:85  %tmp_8_i_cast = sext i31 %tmp_8_i to i32
+
+ST_50: tmp_9_i (317)  [1/1] 2.44ns  loc: ./mlp.cpp:93->./mlp.cpp:64 (out node of the LUT)
+:86  %tmp_9_i = add nsw i32 %tmp_8_i_cast, 128
+
+ST_50: tmp_i_16 (318)  [1/1] 2.40ns  loc: ./mlp.cpp:95->./mlp.cpp:64
+:87  %tmp_i_16 = icmp sgt i24 %tmp_9, -608
+
+ST_50: tmp_19 (319)  [1/1] 0.00ns  loc: ./mlp.cpp:96->./mlp.cpp:64
+:88  %tmp_19 = call i22 @_ssdm_op_PartSelect.i22.i25.i32.i32(i25 %p_neg_i, i32 3, i32 24)
+
+ST_50: tmp_20 (320)  [1/1] 0.00ns  loc: ./mlp.cpp:96->./mlp.cpp:64
+:89  %tmp_20 = sext i22 %tmp_19 to i29
+
+ST_50: tmp_13_i_cast (321)  [1/1] 0.00ns  loc: ./mlp.cpp:96->./mlp.cpp:64
+:90  %tmp_13_i_cast = zext i29 %tmp_20 to i30
+
+ST_50: tmp_11_i (322)  [1/1] 2.44ns  loc: ./mlp.cpp:96->./mlp.cpp:64
+:91  %tmp_11_i = sub i30 96, %tmp_13_i_cast
+
+ST_50: tmp_11_i_cast (323)  [1/1] 0.00ns  loc: ./mlp.cpp:96->./mlp.cpp:64 (grouped into LUT with out node newSel3)
+:92  %tmp_11_i_cast = sext i30 %tmp_11_i to i32
+
+ST_50: tmp_12_i (324)  [1/1] 2.40ns  loc: ./mlp.cpp:98->./mlp.cpp:64
+:93  %tmp_12_i = icmp sgt i24 %tmp_9, -1280
+
+ST_50: tmp_21 (325)  [1/1] 0.00ns  loc: ./mlp.cpp:99->./mlp.cpp:64
+:94  %tmp_21 = call i20 @_ssdm_op_PartSelect.i20.i25.i32.i32(i25 %p_neg_i, i32 5, i32 24)
+
+ST_50: tmp_22 (326)  [1/1] 0.00ns  loc: ./mlp.cpp:99->./mlp.cpp:64
+:95  %tmp_22 = sext i20 %tmp_21 to i27
+
+ST_50: tmp_16_i_cast (327)  [1/1] 0.00ns  loc: ./mlp.cpp:99->./mlp.cpp:64
+:96  %tmp_16_i_cast = zext i27 %tmp_22 to i28
+
+ST_50: tmp_14_i (328)  [1/1] 2.32ns  loc: ./mlp.cpp:99->./mlp.cpp:64
+:97  %tmp_14_i = sub i28 40, %tmp_16_i_cast
+
+ST_50: sel_tmp12_i (333)  [1/1] 0.00ns  loc: ./mlp.cpp:89->./mlp.cpp:64 (grouped into LUT with out node or_cond3)
+:102  %sel_tmp12_i = xor i1 %tmp_4_i, true
+
+ST_50: sel_tmp13_i (334)  [1/1] 0.00ns  loc: ./mlp.cpp:92->./mlp.cpp:64 (grouped into LUT with out node or_cond3)
+:103  %sel_tmp13_i = and i1 %tmp_7_i, %sel_tmp12_i
+
+ST_50: sel_tmp21_i (335)  [1/1] 0.00ns  loc: ./mlp.cpp:92->./mlp.cpp:64 (grouped into LUT with out node sel_tmp22_i)
+:104  %sel_tmp21_i = xor i1 %tmp_7_i, true
+
+ST_50: sel_tmp22_i (336)  [1/1] 1.37ns  loc: ./mlp.cpp:95->./mlp.cpp:64 (out node of the LUT)
+:105  %sel_tmp22_i = and i1 %tmp_i_16, %sel_tmp21_i
+
+ST_50: sel_tmp32_i (337)  [1/1] 0.00ns  loc: ./mlp.cpp:95->./mlp.cpp:64 (grouped into LUT with out node or_cond)
+:106  %sel_tmp32_i = xor i1 %tmp_i_16, true
+
+ST_50: sel_tmp33_i (338)  [1/1] 0.00ns  loc: ./mlp.cpp:98->./mlp.cpp:64 (grouped into LUT with out node or_cond)
+:107  %sel_tmp33_i = and i1 %tmp_12_i, %sel_tmp32_i
+
+ST_50: newSel (339)  [1/1] 0.00ns  loc: ./mlp.cpp:83->./mlp.cpp:64 (grouped into LUT with out node newSel3)
+:108  %newSel = select i1 %tmp_i, i28 256, i28 %tmp_14_i
+
+ST_50: newSel_cast (340)  [1/1] 0.00ns  loc: ./mlp.cpp:83->./mlp.cpp:64 (grouped into LUT with out node newSel3)
+:109  %newSel_cast = sext i28 %newSel to i32
+
+ST_50: or_cond (341)  [1/1] 1.37ns  loc: ./mlp.cpp:83->./mlp.cpp:64 (out node of the LUT)
+:110  %or_cond = or i1 %tmp_i, %sel_tmp33_i
+
+ST_50: newSel1 (342)  [1/1] 0.00ns  loc: ./mlp.cpp:95->./mlp.cpp:64 (grouped into LUT with out node newSel3)
+:111  %newSel1 = select i1 %sel_tmp22_i, i32 %tmp_11_i_cast, i32 %tmp_9_i
+
+ST_50: or_cond1 (343)  [1/1] 0.00ns  loc: ./mlp.cpp:95->./mlp.cpp:64 (grouped into LUT with out node or_cond3)
+:112  %or_cond1 = or i1 %sel_tmp22_i, %sel_tmp13_i
+
+ST_50: newSel3 (346)  [1/1] 1.37ns  loc: ./mlp.cpp:83->./mlp.cpp:64 (out node of the LUT)
+:115  %newSel3 = select i1 %or_cond, i32 %newSel_cast, i32 %newSel1
+
+ST_50: or_cond3 (347)  [1/1] 1.37ns  loc: ./mlp.cpp:83->./mlp.cpp:64 (out node of the LUT)
+:116  %or_cond3 = or i1 %or_cond, %or_cond1
+
+
+ <State 51>: 7.57ns
+ST_51: empty_15 (232)  [1/1] 0.00ns
+:1  %empty_15 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 10, i64 10, i64 10) nounwind
+
+ST_51: StgValue_504 (233)  [1/1] 0.00ns  loc: ./mlp.cpp:59
+:2  call void (...)* @_ssdm_op_SpecLoopName([12 x i8]* @p_str10) nounwind
+
+ST_51: tmp_7 (234)  [1/1] 0.00ns  loc: ./mlp.cpp:59
+:3  %tmp_7 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str10) nounwind
+
+ST_51: StgValue_506 (235)  [1/1] 0.00ns  loc: ./mlp.cpp:60
+:4  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str2) nounwind
+
+ST_51: SumH_addr (238)  [1/1] 0.00ns  loc: ./mlp.cpp:60
+:7  %SumH_addr = getelementptr inbounds [11 x i32]* %SumH, i32 0, i32 %i_3_cast
+
+ST_51: tmp_11 (296)  [1/1] 0.00ns  loc: ./mlp.cpp:87->./mlp.cpp:64
+:65  %tmp_11 = sext i19 %tmp_10 to i27
+
+ST_51: tmp_2_i_cast (297)  [1/1] 0.00ns  loc: ./mlp.cpp:87->./mlp.cpp:64
+:66  %tmp_2_i_cast = zext i27 %tmp_11 to i28
+
+ST_51: tmp_3_i (298)  [1/1] 2.32ns  loc: ./mlp.cpp:87->./mlp.cpp:64
+:67  %tmp_3_i = add i28 %tmp_2_i_cast, 216
+
+ST_51: tmp_3_i_cast (299)  [1/1] 0.00ns  loc: ./mlp.cpp:87->./mlp.cpp:64 (grouped into LUT with out node newSel57_cast)
+:68  %tmp_3_i_cast = zext i28 %tmp_3_i to i30
+
+ST_51: tmp_13 (302)  [1/1] 0.00ns  loc: ./mlp.cpp:90->./mlp.cpp:64
+:71  %tmp_13 = sext i21 %tmp_12 to i29
+
+ST_51: tmp_5_i_cast (303)  [1/1] 0.00ns  loc: ./mlp.cpp:90->./mlp.cpp:64
+:72  %tmp_5_i_cast = zext i29 %tmp_13 to i30
+
+ST_51: tmp_6_i (304)  [1/1] 2.44ns  loc: ./mlp.cpp:90->./mlp.cpp:64
+:73  %tmp_6_i = add i30 %tmp_5_i_cast, 160
+
+ST_51: sel_tmp_i (329)  [1/1] 0.00ns  loc: ./mlp.cpp:83->./mlp.cpp:64 (grouped into LUT with out node newSel57_cast)
+:98  %sel_tmp_i = xor i1 %tmp_i, true
+
+ST_51: sel_tmp1_i (330)  [1/1] 0.00ns  loc: ./mlp.cpp:86->./mlp.cpp:64 (grouped into LUT with out node newSel57_cast)
+:99  %sel_tmp1_i = and i1 %tmp_1_i, %sel_tmp_i
+
+ST_51: sel_tmp5_i (331)  [1/1] 0.00ns  loc: ./mlp.cpp:86->./mlp.cpp:64 (grouped into LUT with out node sel_tmp6_i)
+:100  %sel_tmp5_i = xor i1 %tmp_1_i, true
+
+ST_51: sel_tmp6_i (332)  [1/1] 1.37ns  loc: ./mlp.cpp:89->./mlp.cpp:64 (out node of the LUT)
+:101  %sel_tmp6_i = and i1 %tmp_4_i, %sel_tmp5_i
+
+ST_51: newSel2 (344)  [1/1] 0.00ns  loc: ./mlp.cpp:89->./mlp.cpp:64 (grouped into LUT with out node newSel57_cast)
+:113  %newSel2 = select i1 %sel_tmp6_i, i30 %tmp_6_i, i30 %tmp_3_i_cast
+
+ST_51: or_cond2 (345)  [1/1] 0.00ns  loc: ./mlp.cpp:89->./mlp.cpp:64 (grouped into LUT with out node newSel57_cast)
+:114  %or_cond2 = or i1 %sel_tmp6_i, %sel_tmp1_i
+
+ST_51: newSel4 (348)  [1/1] 0.00ns  loc: ./mlp.cpp:89->./mlp.cpp:64 (grouped into LUT with out node newSel57_cast)
+:117  %newSel4 = select i1 %or_cond2, i30 %newSel2, i30 0
+
+ST_51: newSel57_cast (349)  [1/1] 1.37ns  loc: ./mlp.cpp:89->./mlp.cpp:64 (out node of the LUT)
+:118  %newSel57_cast = zext i30 %newSel4 to i32
+
+ST_51: newSel5 (350)  [1/1] 1.37ns  loc: ./mlp.cpp:83->./mlp.cpp:64 (out node of the LUT)
+:119  %newSel5 = select i1 %or_cond3, i32 %newSel3, i32 %newSel57_cast
+
+ST_51: StgValue_524 (351)  [1/1] 2.39ns  loc: ./mlp.cpp:64
+:120  store i32 %newSel5, i32* %SumH_addr, align 4
+
+ST_51: empty_17 (352)  [1/1] 0.00ns  loc: ./mlp.cpp:65
+:121  %empty_17 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str10, i32 %tmp_7) nounwind
+
+ST_51: StgValue_526 (354)  [1/1] 0.00ns  loc: ./mlp.cpp:59
+:123  br label %9
+
+
+ <State 52>: 2.39ns
+ST_52: result_addr_1 (356)  [1/1] 0.00ns  loc: ./mlp.cpp:67
+:0  %result_addr_1 = getelementptr inbounds [28 x i32]* %result, i32 0, i32 %k_5_cast
+
+ST_52: StgValue_528 (357)  [1/1] 2.39ns  loc: ./mlp.cpp:67
+:1  store i32 %weightHO_load, i32* %result_addr_1, align 4
+
+ST_52: StgValue_529 (358)  [1/1] 1.57ns  loc: ./mlp.cpp:68
+:2  br label %12
+
+
+ <State 53>: 3.25ns
+ST_53: j_3 (360)  [1/1] 0.00ns
+:0  %j_3 = phi i4 [ 1, %11 ], [ %j_5, %13 ]
+
+ST_53: exitcond1 (361)  [1/1] 1.88ns  loc: ./mlp.cpp:68
+:1  %exitcond1 = icmp eq i4 %j_3, -5
+
+ST_53: StgValue_532 (362)  [1/1] 0.00ns  loc: ./mlp.cpp:68
+:2  br i1 %exitcond1, label %14, label %13
+
+ST_53: j_3_cast (364)  [1/1] 0.00ns  loc: ./mlp.cpp:68
+:0  %j_3_cast = zext i4 %j_3 to i32
+
+ST_53: SumH_addr_1 (369)  [1/1] 0.00ns  loc: ./mlp.cpp:69
+:5  %SumH_addr_1 = getelementptr inbounds [11 x i32]* %SumH, i32 0, i32 %j_3_cast
+
+ST_53: SumH_load (370)  [2/2] 2.39ns  loc: ./mlp.cpp:69
+:6  %SumH_load = load i32* %SumH_addr_1, align 4
+
+ST_53: weightHO_addr_2 (371)  [1/1] 0.00ns  loc: ./mlp.cpp:69
+:7  %weightHO_addr_2 = getelementptr inbounds [14 x i32]* %weightHO, i32 0, i32 %j_3_cast
+
+ST_53: weightHO_load_1 (372)  [2/2] 2.39ns  loc: ./mlp.cpp:69
+:8  %weightHO_load_1 = load i32* %weightHO_addr_2, align 4
+
+ST_53: j_5 (378)  [1/1] 0.80ns  loc: ./mlp.cpp:68
+:14  %j_5 = add i4 %j_3, 1
+
+
+ <State 54>: 8.47ns
+ST_54: SumH_load (370)  [1/2] 2.39ns  loc: ./mlp.cpp:69
+:6  %SumH_load = load i32* %SumH_addr_1, align 4
+
+ST_54: weightHO_load_1 (372)  [1/2] 2.39ns  loc: ./mlp.cpp:69
+:8  %weightHO_load_1 = load i32* %weightHO_addr_2, align 4
+
+ST_54: tmp_32 (373)  [6/6] 6.08ns  loc: ./mlp.cpp:69
+:9  %tmp_32 = mul nsw i32 %weightHO_load_1, %SumH_load
+
+
+ <State 55>: 6.08ns
+ST_55: tmp_32 (373)  [5/6] 6.08ns  loc: ./mlp.cpp:69
+:9  %tmp_32 = mul nsw i32 %weightHO_load_1, %SumH_load
+
+
+ <State 56>: 6.08ns
+ST_56: tmp_32 (373)  [4/6] 6.08ns  loc: ./mlp.cpp:69
+:9  %tmp_32 = mul nsw i32 %weightHO_load_1, %SumH_load
+
+
+ <State 57>: 6.08ns
+ST_57: tmp_32 (373)  [3/6] 6.08ns  loc: ./mlp.cpp:69
+:9  %tmp_32 = mul nsw i32 %weightHO_load_1, %SumH_load
+
+
+ <State 58>: 6.08ns
+ST_58: tmp_32 (373)  [2/6] 6.08ns  loc: ./mlp.cpp:69
+:9  %tmp_32 = mul nsw i32 %weightHO_load_1, %SumH_load
+
+
+ <State 59>: 6.08ns
+ST_59: tmp_32 (373)  [1/6] 6.08ns  loc: ./mlp.cpp:69
+:9  %tmp_32 = mul nsw i32 %weightHO_load_1, %SumH_load
+
+ST_59: result_load_2 (374)  [2/2] 2.39ns  loc: ./mlp.cpp:69
+:10  %result_load_2 = load i32* %result_addr_1, align 4
+
+
+ <State 60>: 7.22ns
+ST_60: empty_18 (365)  [1/1] 0.00ns
+:1  %empty_18 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 10, i64 10, i64 10) nounwind
+
+ST_60: StgValue_549 (366)  [1/1] 0.00ns  loc: ./mlp.cpp:68
+:2  call void (...)* @_ssdm_op_SpecLoopName([12 x i8]* @p_str12) nounwind
+
+ST_60: tmp_39 (367)  [1/1] 0.00ns  loc: ./mlp.cpp:68
+:3  %tmp_39 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str12) nounwind
+
+ST_60: StgValue_551 (368)  [1/1] 0.00ns  loc: ./mlp.cpp:69
+:4  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str2) nounwind
+
+ST_60: result_load_2 (374)  [1/2] 2.39ns  loc: ./mlp.cpp:69
+:10  %result_load_2 = load i32* %result_addr_1, align 4
+
+ST_60: tmp_33 (375)  [1/1] 2.44ns  loc: ./mlp.cpp:69
+:11  %tmp_33 = add nsw i32 %result_load_2, %tmp_32
+
+ST_60: StgValue_554 (376)  [1/1] 2.39ns  loc: ./mlp.cpp:69
+:12  store i32 %tmp_33, i32* %result_addr_1, align 4
+
+ST_60: empty_19 (377)  [1/1] 0.00ns  loc: ./mlp.cpp:70
+:13  %empty_19 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str12, i32 %tmp_39) nounwind
+
+ST_60: StgValue_556 (379)  [1/1] 0.00ns  loc: ./mlp.cpp:68
+:15  br label %12
+
+
+ <State 61>: 2.39ns
+ST_61: result_load_1 (381)  [2/2] 2.39ns  loc: ./mlp.cpp:71
+:0  %result_load_1 = load i32* %result_addr_1, align 4
+
+ST_61: k (444)  [1/1] 1.72ns  loc: ./mlp.cpp:58
+:63  %k = add i5 %k_5, 1
+
+
+ <State 62>: 7.03ns
+ST_62: result_load_1 (381)  [1/2] 2.39ns  loc: ./mlp.cpp:71
+:0  %result_load_1 = load i32* %result_addr_1, align 4
+
+ST_62: tmp_23 (382)  [1/1] 0.00ns  loc: ./mlp.cpp:71
+:1  %tmp_23 = call i24 @_ssdm_op_PartSelect.i24.i32.i32.i32(i32 %result_load_1, i32 8, i32 31)
+
+ST_62: tmp_30_cast (383)  [1/1] 0.00ns  loc: ./mlp.cpp:71
+:2  %tmp_30_cast = sext i24 %tmp_23 to i25
+
+ST_62: tmp_i1 (384)  [1/1] 2.40ns  loc: ./mlp.cpp:83->./mlp.cpp:71
+:3  %tmp_i1 = icmp sgt i24 %tmp_23, 1280
+
+ST_62: tmp_1_i2 (385)  [1/1] 2.40ns  loc: ./mlp.cpp:86->./mlp.cpp:71
+:4  %tmp_1_i2 = icmp sgt i24 %tmp_23, 608
+
+ST_62: tmp_24 (386)  [1/1] 0.00ns  loc: ./mlp.cpp:87->./mlp.cpp:71
+:5  %tmp_24 = call i19 @_ssdm_op_PartSelect.i19.i32.i32.i32(i32 %result_load_1, i32 13, i32 31)
+
+ST_62: tmp_4_i5 (391)  [1/1] 2.40ns  loc: ./mlp.cpp:89->./mlp.cpp:71
+:10  %tmp_4_i5 = icmp sgt i24 %tmp_23, 256
+
+ST_62: tmp_26 (392)  [1/1] 0.00ns  loc: ./mlp.cpp:90->./mlp.cpp:71
+:11  %tmp_26 = call i21 @_ssdm_op_PartSelect.i21.i32.i32.i32(i32 %result_load_1, i32 11, i32 31)
+
+ST_62: tmp_7_i8 (396)  [1/1] 2.40ns  loc: ./mlp.cpp:92->./mlp.cpp:71
+:15  %tmp_7_i8 = icmp sgt i24 %tmp_23, -256
+
+ST_62: p_neg_i1 (398)  [1/1] 2.20ns  loc: ./mlp.cpp:93->./mlp.cpp:71
+:17  %p_neg_i1 = sub i25 0, %tmp_30_cast
+
+ST_62: tmp_29 (399)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:71
+:18  %tmp_29 = call i23 @_ssdm_op_PartSelect.i23.i25.i32.i32(i25 %p_neg_i1, i32 2, i32 24)
+
+ST_62: tmp_30 (400)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:71
+:19  %tmp_30 = sext i23 %tmp_29 to i30
+
+ST_62: p_lshr_i12_cast (401)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:71
+:20  %p_lshr_i12_cast = zext i30 %tmp_30 to i31
+
+ST_62: p_neg_t_i1 (402)  [1/1] 2.44ns  loc: ./mlp.cpp:93->./mlp.cpp:71
+:21  %p_neg_t_i1 = sub i31 0, %p_lshr_i12_cast
+
+ST_62: tmp_i1_20 (409)  [1/1] 2.40ns  loc: ./mlp.cpp:95->./mlp.cpp:71
+:28  %tmp_i1_20 = icmp sgt i24 %tmp_23, -608
+
+ST_62: tmp_35 (410)  [1/1] 0.00ns  loc: ./mlp.cpp:96->./mlp.cpp:71
+:29  %tmp_35 = call i22 @_ssdm_op_PartSelect.i22.i25.i32.i32(i25 %p_neg_i1, i32 3, i32 24)
+
+ST_62: tmp_12_i1 (415)  [1/1] 2.40ns  loc: ./mlp.cpp:98->./mlp.cpp:71
+:34  %tmp_12_i1 = icmp sgt i24 %tmp_23, -1280
+
+ST_62: tmp_37 (416)  [1/1] 0.00ns  loc: ./mlp.cpp:99->./mlp.cpp:71
+:35  %tmp_37 = call i20 @_ssdm_op_PartSelect.i20.i25.i32.i32(i25 %p_neg_i1, i32 5, i32 24)
+
+
+ <State 63>: 7.57ns
+ST_63: tmp_25 (387)  [1/1] 0.00ns  loc: ./mlp.cpp:87->./mlp.cpp:71
+:6  %tmp_25 = sext i19 %tmp_24 to i27
+
+ST_63: tmp_2_i3_cast (388)  [1/1] 0.00ns  loc: ./mlp.cpp:87->./mlp.cpp:71
+:7  %tmp_2_i3_cast = zext i27 %tmp_25 to i28
+
+ST_63: tmp_3_i4 (389)  [1/1] 2.32ns  loc: ./mlp.cpp:87->./mlp.cpp:71
+:8  %tmp_3_i4 = add i28 %tmp_2_i3_cast, 216
+
+ST_63: tmp_3_i4_cast (390)  [1/1] 0.00ns  loc: ./mlp.cpp:87->./mlp.cpp:71 (grouped into LUT with out node newSel69_cast)
+:9  %tmp_3_i4_cast = zext i28 %tmp_3_i4 to i30
+
+ST_63: tmp_27 (393)  [1/1] 0.00ns  loc: ./mlp.cpp:90->./mlp.cpp:71
+:12  %tmp_27 = sext i21 %tmp_26 to i29
+
+ST_63: tmp_5_i6_cast (394)  [1/1] 0.00ns  loc: ./mlp.cpp:90->./mlp.cpp:71
+:13  %tmp_5_i6_cast = zext i29 %tmp_27 to i30
+
+ST_63: tmp_6_i7 (395)  [1/1] 2.44ns  loc: ./mlp.cpp:90->./mlp.cpp:71
+:14  %tmp_6_i7 = add i30 %tmp_5_i6_cast, 160
+
+ST_63: tmp_28 (397)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:71 (grouped into LUT with out node tmp_9_i1)
+:16  %tmp_28 = call i1 @_ssdm_op_BitSelect.i1.i32.i32(i32 %result_load_1, i32 31)
+
+ST_63: tmp_31 (403)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:71 (grouped into LUT with out node tmp_9_i1)
+:22  %tmp_31 = call i22 @_ssdm_op_PartSelect.i22.i32.i32.i32(i32 %result_load_1, i32 10, i32 31)
+
+ST_63: tmp_34 (404)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:71 (grouped into LUT with out node tmp_9_i1)
+:23  %tmp_34 = sext i22 %tmp_31 to i30
+
+ST_63: p_lshr_f_i14_cast (405)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:71 (grouped into LUT with out node tmp_9_i1)
+:24  %p_lshr_f_i14_cast = zext i30 %tmp_34 to i31
+
+ST_63: tmp_8_i1 (406)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:71 (grouped into LUT with out node tmp_9_i1)
+:25  %tmp_8_i1 = select i1 %tmp_28, i31 %p_neg_t_i1, i31 %p_lshr_f_i14_cast
+
+ST_63: tmp_8_i15_cast (407)  [1/1] 0.00ns  loc: ./mlp.cpp:93->./mlp.cpp:71 (grouped into LUT with out node tmp_9_i1)
+:26  %tmp_8_i15_cast = sext i31 %tmp_8_i1 to i32
+
+ST_63: tmp_9_i1 (408)  [1/1] 2.44ns  loc: ./mlp.cpp:93->./mlp.cpp:71 (out node of the LUT)
+:27  %tmp_9_i1 = add nsw i32 %tmp_8_i15_cast, 128
+
+ST_63: tmp_36 (411)  [1/1] 0.00ns  loc: ./mlp.cpp:96->./mlp.cpp:71
+:30  %tmp_36 = sext i22 %tmp_35 to i29
+
+ST_63: tmp_13_i18_cast (412)  [1/1] 0.00ns  loc: ./mlp.cpp:96->./mlp.cpp:71
+:31  %tmp_13_i18_cast = zext i29 %tmp_36 to i30
+
+ST_63: tmp_11_i1 (413)  [1/1] 2.44ns  loc: ./mlp.cpp:96->./mlp.cpp:71
+:32  %tmp_11_i1 = sub i30 96, %tmp_13_i18_cast
+
+ST_63: tmp_11_i19_cast (414)  [1/1] 0.00ns  loc: ./mlp.cpp:96->./mlp.cpp:71 (grouped into LUT with out node newSel9)
+:33  %tmp_11_i19_cast = sext i30 %tmp_11_i1 to i32
+
+ST_63: tmp_38 (417)  [1/1] 0.00ns  loc: ./mlp.cpp:99->./mlp.cpp:71
+:36  %tmp_38 = sext i20 %tmp_37 to i27
+
+ST_63: tmp_16_i21_cast (418)  [1/1] 0.00ns  loc: ./mlp.cpp:99->./mlp.cpp:71
+:37  %tmp_16_i21_cast = zext i27 %tmp_38 to i28
+
+ST_63: tmp_14_i1 (419)  [1/1] 2.32ns  loc: ./mlp.cpp:99->./mlp.cpp:71
+:38  %tmp_14_i1 = sub i28 40, %tmp_16_i21_cast
+
+ST_63: sel_tmp_i1 (420)  [1/1] 0.00ns  loc: ./mlp.cpp:83->./mlp.cpp:71 (grouped into LUT with out node newSel69_cast)
+:39  %sel_tmp_i1 = xor i1 %tmp_i1, true
+
+ST_63: sel_tmp1_i1 (421)  [1/1] 0.00ns  loc: ./mlp.cpp:86->./mlp.cpp:71 (grouped into LUT with out node newSel69_cast)
+:40  %sel_tmp1_i1 = and i1 %tmp_1_i2, %sel_tmp_i1
+
+ST_63: sel_tmp5_i1 (422)  [1/1] 0.00ns  loc: ./mlp.cpp:86->./mlp.cpp:71 (grouped into LUT with out node sel_tmp6_i1)
+:41  %sel_tmp5_i1 = xor i1 %tmp_1_i2, true
+
+ST_63: sel_tmp6_i1 (423)  [1/1] 1.37ns  loc: ./mlp.cpp:89->./mlp.cpp:71 (out node of the LUT)
+:42  %sel_tmp6_i1 = and i1 %tmp_4_i5, %sel_tmp5_i1
+
+ST_63: sel_tmp12_i1 (424)  [1/1] 0.00ns  loc: ./mlp.cpp:89->./mlp.cpp:71 (grouped into LUT with out node or_cond7)
+:43  %sel_tmp12_i1 = xor i1 %tmp_4_i5, true
+
+ST_63: sel_tmp13_i1 (425)  [1/1] 0.00ns  loc: ./mlp.cpp:92->./mlp.cpp:71 (grouped into LUT with out node or_cond7)
+:44  %sel_tmp13_i1 = and i1 %tmp_7_i8, %sel_tmp12_i1
+
+ST_63: sel_tmp21_i1 (426)  [1/1] 0.00ns  loc: ./mlp.cpp:92->./mlp.cpp:71 (grouped into LUT with out node sel_tmp22_i1)
+:45  %sel_tmp21_i1 = xor i1 %tmp_7_i8, true
+
+ST_63: sel_tmp22_i1 (427)  [1/1] 1.37ns  loc: ./mlp.cpp:95->./mlp.cpp:71 (out node of the LUT)
+:46  %sel_tmp22_i1 = and i1 %tmp_i1_20, %sel_tmp21_i1
+
+ST_63: sel_tmp32_i1 (428)  [1/1] 0.00ns  loc: ./mlp.cpp:95->./mlp.cpp:71 (grouped into LUT with out node or_cond4)
+:47  %sel_tmp32_i1 = xor i1 %tmp_i1_20, true
+
+ST_63: sel_tmp33_i1 (429)  [1/1] 0.00ns  loc: ./mlp.cpp:98->./mlp.cpp:71 (grouped into LUT with out node or_cond4)
+:48  %sel_tmp33_i1 = and i1 %tmp_12_i1, %sel_tmp32_i1
+
+ST_63: newSel6 (430)  [1/1] 0.00ns  loc: ./mlp.cpp:83->./mlp.cpp:71 (grouped into LUT with out node newSel9)
+:49  %newSel6 = select i1 %tmp_i1, i28 256, i28 %tmp_14_i1
+
+ST_63: newSel61_cast (431)  [1/1] 0.00ns  loc: ./mlp.cpp:83->./mlp.cpp:71 (grouped into LUT with out node newSel9)
+:50  %newSel61_cast = sext i28 %newSel6 to i32
+
+ST_63: or_cond4 (432)  [1/1] 1.37ns  loc: ./mlp.cpp:83->./mlp.cpp:71 (out node of the LUT)
+:51  %or_cond4 = or i1 %tmp_i1, %sel_tmp33_i1
+
+ST_63: newSel7 (433)  [1/1] 0.00ns  loc: ./mlp.cpp:95->./mlp.cpp:71 (grouped into LUT with out node newSel9)
+:52  %newSel7 = select i1 %sel_tmp22_i1, i32 %tmp_11_i19_cast, i32 %tmp_9_i1
+
+ST_63: or_cond5 (434)  [1/1] 0.00ns  loc: ./mlp.cpp:95->./mlp.cpp:71 (grouped into LUT with out node or_cond7)
+:53  %or_cond5 = or i1 %sel_tmp22_i1, %sel_tmp13_i1
+
+ST_63: newSel8 (435)  [1/1] 0.00ns  loc: ./mlp.cpp:89->./mlp.cpp:71 (grouped into LUT with out node newSel69_cast)
+:54  %newSel8 = select i1 %sel_tmp6_i1, i30 %tmp_6_i7, i30 %tmp_3_i4_cast
+
+ST_63: or_cond6 (436)  [1/1] 0.00ns  loc: ./mlp.cpp:89->./mlp.cpp:71 (grouped into LUT with out node newSel69_cast)
+:55  %or_cond6 = or i1 %sel_tmp6_i1, %sel_tmp1_i1
+
+ST_63: newSel9 (437)  [1/1] 1.37ns  loc: ./mlp.cpp:83->./mlp.cpp:71 (out node of the LUT)
+:56  %newSel9 = select i1 %or_cond4, i32 %newSel61_cast, i32 %newSel7
+
+ST_63: or_cond7 (438)  [1/1] 1.37ns  loc: ./mlp.cpp:83->./mlp.cpp:71 (out node of the LUT)
+:57  %or_cond7 = or i1 %or_cond4, %or_cond5
+
+ST_63: newSel10 (439)  [1/1] 0.00ns  loc: ./mlp.cpp:89->./mlp.cpp:71 (grouped into LUT with out node newSel69_cast)
+:58  %newSel10 = select i1 %or_cond6, i30 %newSel8, i30 0
+
+ST_63: newSel69_cast (440)  [1/1] 1.37ns  loc: ./mlp.cpp:89->./mlp.cpp:71 (out node of the LUT)
+:59  %newSel69_cast = zext i30 %newSel10 to i32
+
+ST_63: newSel11 (441)  [1/1] 1.37ns  loc: ./mlp.cpp:83->./mlp.cpp:71 (out node of the LUT)
+:60  %newSel11 = select i1 %or_cond7, i32 %newSel9, i32 %newSel69_cast
+
+ST_63: StgValue_620 (442)  [1/1] 2.39ns  loc: ./mlp.cpp:71
+:61  store i32 %newSel11, i32* %result_addr_1, align 4
+
+ST_63: empty_21 (443)  [1/1] 0.00ns  loc: ./mlp.cpp:72
+:62  %empty_21 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str9, i32 %tmp_5) nounwind
+
+ST_63: StgValue_622 (445)  [1/1] 0.00ns  loc: ./mlp.cpp:58
+:64  br label %.preheader10
+
+
+ <State 64>: 3.28ns
+ST_64: i_4 (449)  [1/1] 0.00ns
+.preheader:0  %i_4 = phi i5 [ %i_6, %15 ], [ 1, %.preheader.preheader ]
+
+ST_64: exitcond (450)  [1/1] 1.91ns  loc: ./mlp.cpp:76
+.preheader:1  %exitcond = icmp eq i5 %i_4, -3
+
+ST_64: StgValue_625 (451)  [1/1] 0.00ns  loc: ./mlp.cpp:76
+.preheader:2  br i1 %exitcond, label %16, label %15
+
+ST_64: i_4_cast (453)  [1/1] 0.00ns  loc: ./mlp.cpp:76
+:0  %i_4_cast = zext i5 %i_4 to i32
+
+ST_64: result_addr (458)  [1/1] 0.00ns  loc: ./mlp.cpp:77
+:5  %result_addr = getelementptr inbounds [28 x i32]* %result, i32 0, i32 %i_4_cast
+
+ST_64: result_load (459)  [2/2] 2.39ns  loc: ./mlp.cpp:77
+:6  %result_load = load i32* %result_addr, align 4
+
+ST_64: i_6 (462)  [1/1] 1.72ns  loc: ./mlp.cpp:76
+:9  %i_6 = add i5 %i_4, 1
+
+
+ <State 65>: 2.39ns
+ST_65: result_load (459)  [1/2] 2.39ns  loc: ./mlp.cpp:77
+:6  %result_load = load i32* %result_addr, align 4
+
+ST_65: StgValue_631 (460)  [2/2] 0.00ns  loc: ./mlp.cpp:77
+:7  call void @_ssdm_op_Write.axis.i32P(i32* %output_r, i32 %result_load) nounwind
+
+
+ <State 66>: 0.00ns
+ST_66: empty_22 (454)  [1/1] 0.00ns
+:1  %empty_22 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 28, i64 28, i64 28) nounwind
+
+ST_66: StgValue_633 (455)  [1/1] 0.00ns  loc: ./mlp.cpp:76
+:2  call void (...)* @_ssdm_op_SpecLoopName([12 x i8]* @p_str13) nounwind
+
+ST_66: tmp_6 (456)  [1/1] 0.00ns  loc: ./mlp.cpp:76
+:3  %tmp_6 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str13) nounwind
+
+ST_66: StgValue_635 (457)  [1/1] 0.00ns  loc: ./mlp.cpp:77
+:4  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str2) nounwind
+
+ST_66: StgValue_636 (460)  [1/2] 0.00ns  loc: ./mlp.cpp:77
+:7  call void @_ssdm_op_Write.axis.i32P(i32* %output_r, i32 %result_load) nounwind
+
+ST_66: empty_23 (461)  [1/1] 0.00ns  loc: ./mlp.cpp:78
+:8  %empty_23 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str13, i32 %tmp_6) nounwind
+
+ST_66: StgValue_638 (463)  [1/1] 0.00ns  loc: ./mlp.cpp:76
+:10  br label %.preheader
+
+
+ <State 67>: 0.00ns
+ST_67: StgValue_639 (465)  [1/1] 0.00ns  loc: ./mlp.cpp:80
+:0  ret void
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 1.57ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', ./mlp.cpp:20) [41]  (1.57 ns)
+
+ <State 2>: 3.28ns
+The critical path consists of the following:
+	'icmp' operation ('exitcond9', ./mlp.cpp:20) [42]  (1.91 ns)
+	blocking operation 1.37 ns on control path)
+
+ <State 3>: 0ns
+The critical path consists of the following:
+
+ <State 4>: 0ns
+The critical path consists of the following:
+
+ <State 5>: 0ns
+The critical path consists of the following:
+
+ <State 6>: 0ns
+The critical path consists of the following:
+
+ <State 7>: 0ns
+The critical path consists of the following:
+
+ <State 8>: 0ns
+The critical path consists of the following:
+
+ <State 9>: 0ns
+The critical path consists of the following:
+
+ <State 10>: 0ns
+The critical path consists of the following:
+
+ <State 11>: 0ns
+The critical path consists of the following:
+
+ <State 12>: 0ns
+The critical path consists of the following:
+
+ <State 13>: 0ns
+The critical path consists of the following:
+
+ <State 14>: 2.39ns
+The critical path consists of the following:
+	'getelementptr' operation ('test_data_12_addr', ./mlp.cpp:32) [84]  (0 ns)
+	'store' operation (./mlp.cpp:32) of variable 'input_read_11', ./mlp.cpp:32 on array 'test_data[12]', ./mlp.cpp:8 [85]  (2.39 ns)
+
+ <State 15>: 2.39ns
+The critical path consists of the following:
+	'getelementptr' operation ('test_data_1_addr', ./mlp.cpp:21) [51]  (0 ns)
+	'store' operation (./mlp.cpp:21) of variable 'input_read', ./mlp.cpp:21 on array 'test_data[1]', ./mlp.cpp:8 [52]  (2.39 ns)
+
+ <State 16>: 1.57ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('j') with incoming values : ('j', ./mlp.cpp:38) [95]  (1.57 ns)
+
+ <State 17>: 3.25ns
+The critical path consists of the following:
+	'icmp' operation ('exitcond8', ./mlp.cpp:38) [96]  (1.88 ns)
+	blocking operation 1.37 ns on control path)
+
+ <State 18>: 2.39ns
+The critical path consists of the following:
+	'getelementptr' operation ('weightIH_0_addr', ./mlp.cpp:39) [106]  (0 ns)
+	'store' operation (./mlp.cpp:39) of variable 'tmp', ./mlp.cpp:39 on array 'weightIH[0]', ./mlp.cpp:10 [107]  (2.39 ns)
+
+ <State 19>: 1.57ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('j') with incoming values : ('j', ./mlp.cpp:43) [114]  (1.57 ns)
+
+ <State 20>: 3.25ns
+The critical path consists of the following:
+	'icmp' operation ('exitcond7', ./mlp.cpp:43) [115]  (1.88 ns)
+	blocking operation 1.37 ns on control path)
+
+ <State 21>: 0ns
+The critical path consists of the following:
+
+ <State 22>: 0ns
+The critical path consists of the following:
+
+ <State 23>: 0ns
+The critical path consists of the following:
+
+ <State 24>: 0ns
+The critical path consists of the following:
+
+ <State 25>: 0ns
+The critical path consists of the following:
+
+ <State 26>: 0ns
+The critical path consists of the following:
+
+ <State 27>: 0ns
+The critical path consists of the following:
+
+ <State 28>: 0ns
+The critical path consists of the following:
+
+ <State 29>: 0ns
+The critical path consists of the following:
+
+ <State 30>: 0ns
+The critical path consists of the following:
+
+ <State 31>: 0ns
+The critical path consists of the following:
+
+ <State 32>: 2.39ns
+The critical path consists of the following:
+	'getelementptr' operation ('weightIH_12_addr', ./mlp.cpp:45) [157]  (0 ns)
+	'store' operation (./mlp.cpp:45) of variable 'input_read_26', ./mlp.cpp:45 on array 'weightIH[12]', ./mlp.cpp:10 [158]  (2.39 ns)
+
+ <State 33>: 2.39ns
+The critical path consists of the following:
+	'getelementptr' operation ('weightIH_1_addr', ./mlp.cpp:45) [124]  (0 ns)
+	'store' operation (./mlp.cpp:45) of variable 'input_read_15', ./mlp.cpp:45 on array 'weightIH[1]', ./mlp.cpp:10 [125]  (2.39 ns)
+
+ <State 34>: 0ns
+The critical path consists of the following:
+
+ <State 35>: 2.39ns
+The critical path consists of the following:
+	axis read on port 'input_r' (./mlp.cpp:50) [166]  (0 ns)
+	'shl' operation ('tmp_2', ./mlp.cpp:50) [167]  (0 ns)
+	'store' operation (./mlp.cpp:50) of variable 'tmp_2', ./mlp.cpp:50 on array 'weightHO', ./mlp.cpp:11 [169]  (2.39 ns)
+
+ <State 36>: 3.25ns
+The critical path consists of the following:
+	'icmp' operation ('exitcond5', ./mlp.cpp:52) [173]  (1.88 ns)
+	blocking operation 1.37 ns on control path)
+
+ <State 37>: 2.39ns
+The critical path consists of the following:
+	'getelementptr' operation ('weightHO_addr_1', ./mlp.cpp:53) [182]  (0 ns)
+	'store' operation (./mlp.cpp:53) of variable 'input_read_28', ./mlp.cpp:53 on array 'weightHO', ./mlp.cpp:11 [183]  (2.39 ns)
+
+ <State 38>: 2.39ns
+The critical path consists of the following:
+	'load' operation ('weightHO_load', ./mlp.cpp:67) on array 'weightHO', ./mlp.cpp:11 [188]  (2.39 ns)
+
+ <State 39>: 2.39ns
+The critical path consists of the following:
+	'load' operation ('weightHO_load', ./mlp.cpp:67) on array 'weightHO', ./mlp.cpp:11 [188]  (2.39 ns)
+
+ <State 40>: 3.28ns
+The critical path consists of the following:
+	'icmp' operation ('exitcond4', ./mlp.cpp:58) [192]  (1.91 ns)
+	blocking operation 1.37 ns on control path)
+
+ <State 41>: 2.39ns
+The critical path consists of the following:
+	'load' operation ('test_data_1_load', ./mlp.cpp:62) on array 'test_data[1]', ./mlp.cpp:8 [200]  (2.39 ns)
+
+ <State 42>: 3.25ns
+The critical path consists of the following:
+	'icmp' operation ('exitcond3', ./mlp.cpp:59) [228]  (1.88 ns)
+	blocking operation 1.37 ns on control path)
+
+ <State 43>: 8.47ns
+The critical path consists of the following:
+	'load' operation ('weightIH_1_load', ./mlp.cpp:62) on array 'weightIH[1]', ./mlp.cpp:10 [240]  (2.39 ns)
+	'mul' operation ('tmp_8', ./mlp.cpp:62) [241]  (6.08 ns)
+
+ <State 44>: 6.08ns
+The critical path consists of the following:
+	'mul' operation ('tmp_8', ./mlp.cpp:62) [241]  (6.08 ns)
+
+ <State 45>: 6.08ns
+The critical path consists of the following:
+	'mul' operation ('tmp_8', ./mlp.cpp:62) [241]  (6.08 ns)
+
+ <State 46>: 6.08ns
+The critical path consists of the following:
+	'mul' operation ('tmp_8', ./mlp.cpp:62) [241]  (6.08 ns)
+
+ <State 47>: 6.08ns
+The critical path consists of the following:
+	'mul' operation ('tmp_8', ./mlp.cpp:62) [241]  (6.08 ns)
+
+ <State 48>: 8.52ns
+The critical path consists of the following:
+	'mul' operation ('tmp_36_4', ./mlp.cpp:62) [253]  (6.08 ns)
+	'add' operation ('tmp4', ./mlp.cpp:62) [281]  (2.44 ns)
+
+ <State 49>: 8.3ns
+The critical path consists of the following:
+	'load' operation ('weightIH_0_load', ./mlp.cpp:60) on array 'weightIH[0]', ./mlp.cpp:10 [237]  (2.39 ns)
+	'add' operation ('tmp2', ./mlp.cpp:62) [279]  (1.97 ns)
+	'add' operation ('tmp6', ./mlp.cpp:62) [283]  (1.97 ns)
+	'add' operation ('tmp_37_s', ./mlp.cpp:62) [290]  (1.97 ns)
+
+ <State 50>: 8.45ns
+The critical path consists of the following:
+	'sub' operation ('p_neg_i', ./mlp.cpp:93->./mlp.cpp:64) [307]  (2.2 ns)
+	'sub' operation ('p_neg_t_i', ./mlp.cpp:93->./mlp.cpp:64) [311]  (2.44 ns)
+	'select' operation ('tmp_8_i', ./mlp.cpp:93->./mlp.cpp:64) [315]  (0 ns)
+	'add' operation ('tmp_9_i', ./mlp.cpp:93->./mlp.cpp:64) [317]  (2.44 ns)
+	'select' operation ('newSel1', ./mlp.cpp:95->./mlp.cpp:64) [342]  (0 ns)
+	'select' operation ('newSel3', ./mlp.cpp:83->./mlp.cpp:64) [346]  (1.37 ns)
+
+ <State 51>: 7.57ns
+The critical path consists of the following:
+	'add' operation ('tmp_6_i', ./mlp.cpp:90->./mlp.cpp:64) [304]  (2.44 ns)
+	'select' operation ('newSel2', ./mlp.cpp:89->./mlp.cpp:64) [344]  (0 ns)
+	'select' operation ('newSel4', ./mlp.cpp:89->./mlp.cpp:64) [348]  (0 ns)
+	'select' operation ('newSel5', ./mlp.cpp:83->./mlp.cpp:64) [350]  (1.37 ns)
+	'store' operation (./mlp.cpp:64) of variable 'newSel5', ./mlp.cpp:83->./mlp.cpp:64 on array 'SumH', ./mlp.cpp:13 [351]  (2.39 ns)
+
+ <State 52>: 2.39ns
+The critical path consists of the following:
+	'getelementptr' operation ('result_addr_1', ./mlp.cpp:67) [356]  (0 ns)
+	'store' operation (./mlp.cpp:67) of variable 'weightHO_load', ./mlp.cpp:67 on array 'result', ./mlp.cpp:15 [357]  (2.39 ns)
+
+ <State 53>: 3.25ns
+The critical path consists of the following:
+	'icmp' operation ('exitcond1', ./mlp.cpp:68) [361]  (1.88 ns)
+	blocking operation 1.37 ns on control path)
+
+ <State 54>: 8.47ns
+The critical path consists of the following:
+	'load' operation ('SumH_load', ./mlp.cpp:69) on array 'SumH', ./mlp.cpp:13 [370]  (2.39 ns)
+	'mul' operation ('tmp_32', ./mlp.cpp:69) [373]  (6.08 ns)
+
+ <State 55>: 6.08ns
+The critical path consists of the following:
+	'mul' operation ('tmp_32', ./mlp.cpp:69) [373]  (6.08 ns)
+
+ <State 56>: 6.08ns
+The critical path consists of the following:
+	'mul' operation ('tmp_32', ./mlp.cpp:69) [373]  (6.08 ns)
+
+ <State 57>: 6.08ns
+The critical path consists of the following:
+	'mul' operation ('tmp_32', ./mlp.cpp:69) [373]  (6.08 ns)
+
+ <State 58>: 6.08ns
+The critical path consists of the following:
+	'mul' operation ('tmp_32', ./mlp.cpp:69) [373]  (6.08 ns)
+
+ <State 59>: 6.08ns
+The critical path consists of the following:
+	'mul' operation ('tmp_32', ./mlp.cpp:69) [373]  (6.08 ns)
+
+ <State 60>: 7.22ns
+The critical path consists of the following:
+	'load' operation ('result_load_2', ./mlp.cpp:69) on array 'result', ./mlp.cpp:15 [374]  (2.39 ns)
+	'add' operation ('tmp_33', ./mlp.cpp:69) [375]  (2.44 ns)
+	'store' operation (./mlp.cpp:69) of variable 'tmp_33', ./mlp.cpp:69 on array 'result', ./mlp.cpp:15 [376]  (2.39 ns)
+
+ <State 61>: 2.39ns
+The critical path consists of the following:
+	'load' operation ('result_load_1', ./mlp.cpp:71) on array 'result', ./mlp.cpp:15 [381]  (2.39 ns)
+
+ <State 62>: 7.03ns
+The critical path consists of the following:
+	'load' operation ('result_load_1', ./mlp.cpp:71) on array 'result', ./mlp.cpp:15 [381]  (2.39 ns)
+	'sub' operation ('p_neg_i1', ./mlp.cpp:93->./mlp.cpp:71) [398]  (2.2 ns)
+	'sub' operation ('p_neg_t_i1', ./mlp.cpp:93->./mlp.cpp:71) [402]  (2.44 ns)
+
+ <State 63>: 7.57ns
+The critical path consists of the following:
+	'add' operation ('tmp_6_i7', ./mlp.cpp:90->./mlp.cpp:71) [395]  (2.44 ns)
+	'select' operation ('newSel8', ./mlp.cpp:89->./mlp.cpp:71) [435]  (0 ns)
+	'select' operation ('newSel10', ./mlp.cpp:89->./mlp.cpp:71) [439]  (0 ns)
+	'select' operation ('newSel11', ./mlp.cpp:83->./mlp.cpp:71) [441]  (1.37 ns)
+	'store' operation (./mlp.cpp:71) of variable 'newSel11', ./mlp.cpp:83->./mlp.cpp:71 on array 'result', ./mlp.cpp:15 [442]  (2.39 ns)
+
+ <State 64>: 3.28ns
+The critical path consists of the following:
+	'icmp' operation ('exitcond', ./mlp.cpp:76) [450]  (1.91 ns)
+	blocking operation 1.37 ns on control path)
+
+ <State 65>: 2.39ns
+The critical path consists of the following:
+	'load' operation ('result_load', ./mlp.cpp:77) on array 'result', ./mlp.cpp:15 [459]  (2.39 ns)
+
+ <State 66>: 0ns
+The critical path consists of the following:
+
+ <State 67>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+	State 26
+	State 27
+	State 28
+	State 29
+	State 30
+	State 31
+	State 32
+	State 33
+	State 34
+	State 35
+	State 36
+	State 37
+	State 38
+	State 39
+	State 40
+	State 41
+	State 42
+	State 43
+	State 44
+	State 45
+	State 46
+	State 47
+	State 48
+	State 49
+	State 50
+	State 51
+	State 52
+	State 53
+	State 54
+	State 55
+	State 56
+	State 57
+	State 58
+	State 59
+	State 60
+	State 61
+	State 62
+	State 63
+	State 64
+	State 65
+	State 66
+	State 67
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

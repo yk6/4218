@@ -1,0 +1,38 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="mlp" label="mlp_label12" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="mlp" label="mlp_label13" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="mlp" label="mlp_label14" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="mlp" label="mlp_label15" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="mlp" label="mlp_label16" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="mlp" label="mlp_label17" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="mlp" label="mlp_label22" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="mlp" label="mlp_label19" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="mlp" label="mlp_label20" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="mlp" label="mlp_label21" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="mlp" label="mlp_label18" functionLabel="">
+            <pragma name="LOOP_FLATTEN"/>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+

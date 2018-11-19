@@ -1,0 +1,138 @@
+================================================================
+  Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC
+  Version 2016.3
+  Build 1682563 on Mon Oct 10 19:41:59 MDT 2016
+  Copyright (C) 1986-2016 Xilinx, Inc. All Rights Reserved.
+================================================================
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado_HLS/2016.3/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'G552' on host 'yk6' (Windows NT_amd64 version 6.2) on Mon Nov 19 13:34:24 +0800 2018
+INFO: [HLS 200-10] In directory 'C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted'
+INFO: [HLS 200-10] Opening and resetting project 'C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls'.
+INFO: [HLS 200-10] Adding design file './mlp.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file './result.golden.dat' to the project
+INFO: [HLS 200-10] Adding test bench file './mlp_test.cpp' to the project
+INFO: [HLS 200-10] Opening and resetting solution 'C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SIM 211-2] *************** CSIM start ***************
+WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux.
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../mlp_test.cpp in debug mode
+   Compiling ../../../../mlp.cpp in debug mode
+   Generating csim.exe
+Test passed !
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-10] Analyzing design file './mlp.cpp' ... 
+INFO: [HLS 200-10] Validating synthesis directives ...
+WARNING: [HLS 200-40] Directive 'PIPELINE' cannot be applied: Label 'mlp_label17' does not exist in function 'mlp'. 
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 93.559 ; gain = 43.918
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 93.559 ; gain = 43.918
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 95.109 ; gain = 45.469
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 95.324 ; gain = 45.684
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'mlp_label14' (./mlp.cpp:43) in function 'mlp' for pipelining.
+WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'mlp_label15' (./mlp.cpp:44) because its parent loop or function is pipelined.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'mlp_label19' (./mlp.cpp:59) in function 'mlp' for pipelining.
+WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'mlp_label20' (./mlp.cpp:61) because its parent loop or function is pipelined.
+INFO: [XFORM 203-501] Unrolling loop 'mlp_label15' (./mlp.cpp:44) in function 'mlp' completely.
+INFO: [XFORM 203-501] Unrolling loop 'mlp_label20' (./mlp.cpp:61) in function 'mlp' completely.
+INFO: [XFORM 203-102] Partitioning array 'test_data' (./mlp.cpp:8) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'weightIH' (./mlp.cpp:10) in dimension 1 automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (./mlp.cpp:104:1) in function 'sigmoid'... converting 12 basic blocks.
+INFO: [XFORM 203-602] Inlining function 'sigmoid' into 'mlp' (./mlp.cpp:64) automatically.
+INFO: [XFORM 203-11] Balancing expressions in function 'mlp' (./mlp.cpp:3)...13 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:02 ; elapsed = 00:00:12 . Memory (MB): peak = 117.164 ; gain = 67.523
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'mlp_label18' (./mlp.cpp:58:41) in function 'mlp' : 
+WARNING: [XFORM 203-542] more than one sub loop.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:02 ; elapsed = 00:00:12 . Memory (MB): peak = 117.313 ; gain = 67.672
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'mlp' ...
+WARNING: [SYN 201-107] Renaming port name 'mlp/input' to 'mlp/input_r' to avoid the conflict with HDL keywords or other object names.
+WARNING: [SYN 201-107] Renaming port name 'mlp/output' to 'mlp/output_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'mlp' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label12'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:22) and axis read on port 'input_r' (./mlp.cpp:21).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:23) and axis read on port 'input_r' (./mlp.cpp:21).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:24) and axis read on port 'input_r' (./mlp.cpp:21).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:25) and axis read on port 'input_r' (./mlp.cpp:21).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 11, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:32) and axis read on port 'input_r' (./mlp.cpp:21).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 12, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:33) and axis read on port 'input_r' (./mlp.cpp:21).
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 13, Depth: 14.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label13'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 2.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label14'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:45) and axis read on port 'input_r' (./mlp.cpp:45).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:45) and axis read on port 'input_r' (./mlp.cpp:45).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:45) and axis read on port 'input_r' (./mlp.cpp:45).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:45) and axis read on port 'input_r' (./mlp.cpp:45).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 11, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:45) and axis read on port 'input_r' (./mlp.cpp:45).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 12, distance = 1, offset = 1)
+   between axis read on port 'input_r' (./mlp.cpp:45) and axis read on port 'input_r' (./mlp.cpp:45).
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 13, Depth: 14.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label16'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 2.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label19'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 10.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label21'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (./mlp.cpp:69) of variable 'tmp_33', ./mlp.cpp:69 on array 'result', ./mlp.cpp:15 and 'load' operation ('result_load_2', ./mlp.cpp:69) on array 'result', ./mlp.cpp:15.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 2, Depth: 8.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label22'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 13.318 seconds; current allocated memory: 80.858 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.445 seconds; current allocated memory: 80.892 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mlp' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'mlp/input_r' to 'axis' (register).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mlp/output_r' to 'axis' (register).
+INFO: [RTGEN 206-500] Setting interface mode on function 'mlp' to 'ap_ctrl_none'.
+INFO: [SYN 201-210] Renamed object name 'mlp_mul_32s_32s_32_6' to 'mlp_mul_32s_32s_3bkb' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'mlp_mul_32s_32s_3bkb': 14 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mlp'.
+INFO: [HLS 200-111]  Elapsed time: 0.699 seconds; current allocated memory: 83.955 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'mlp_mul_32s_32s_3bkb_MulnS_0'
+INFO: [RTMG 210-278] Implementing memory 'mlp_test_data_1_ram' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mlp_weightIH_0_ram' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mlp_weightHO_ram' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mlp_result_ram' using distributed RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:05 ; elapsed = 00:00:18 . Memory (MB): peak = 130.082 ; gain = 80.441
+INFO: [SYSC 207-301] Generating SystemC RTL for mlp.
+INFO: [VHDL 208-304] Generating VHDL RTL for mlp.
+INFO: [VLOG 209-307] Generating Verilog RTL for mlp.
+INFO: [IMPL 213-8] Exporting RTL as an IP in IP-XACT.
+
+****** Vivado v2016.3 (64-bit)
+  **** SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+  **** IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2016.3/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Mon Nov 19 13:34:51 2018...
+INFO: [HLS 200-112] Total elapsed time: 47.182 seconds; peak allocated memory: 86.311 MB.

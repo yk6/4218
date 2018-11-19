@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="mlp.cpp" path="C:\Users\G552\Desktop\hls\mlp.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="result.golden.dat" path="C:\Users\G552\Desktop\hls\result.golden.dat"/>
+    <originFiles name="mlp_test.cpp" path="C:\Users\G552\Desktop\hls\mlp_test.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

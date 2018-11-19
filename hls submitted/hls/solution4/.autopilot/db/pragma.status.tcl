@@ -1,0 +1,11 @@
+lappend pragmaStatus0 {pragma "PIPELINE" source "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/./mlp.cpp" location "mlp/mlp_label12" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}
+lappend pragmaStatus1 {pragma "PIPELINE" source "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/./mlp.cpp" location "mlp/mlp_label13" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}
+lappend pragmaStatus2 {pragma "PIPELINE" source "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/./mlp.cpp" location "mlp/mlp_label14" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}
+lappend pragmaStatus3 {pragma "PIPELINE" source "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/./mlp.cpp" location "mlp/mlp_label15" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}
+lappend pragmaStatus4 {pragma "PIPELINE" source "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/./mlp.cpp" location "mlp/mlp_label16" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}
+lappend pragmaStatus5 {pragma "PIPELINE" source "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/./mlp.cpp" location "mlp/mlp_label17" found 0 funcFound 1 applied 0 ambiguous 0 reason "Directive 'PIPELINE' cannot be applied: Label 'mlp_label17' does not exist in function 'mlp'. "}
+lappend pragmaStatus6 {pragma "PIPELINE" source "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/./mlp.cpp" location "mlp/mlp_label22" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}
+lappend pragmaStatus7 {pragma "PIPELINE" source "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/./mlp.cpp" location "mlp/mlp_label19" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}
+lappend pragmaStatus8 {pragma "PIPELINE" source "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/./mlp.cpp" location "mlp/mlp_label20" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}
+lappend pragmaStatus9 {pragma "PIPELINE" source "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/./mlp.cpp" location "mlp/mlp_label21" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}
+lappend pragmaStatus10 {pragma "LOOP_FLATTEN" source "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/./mlp.cpp" location "mlp/mlp_label18" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}

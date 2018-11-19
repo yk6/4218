@@ -1,0 +1,251 @@
+================================================================
+  Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC
+  Version 2016.3
+  Build 1682563 on Mon Oct 10 19:41:59 MDT 2016
+  Copyright (C) 1986-2016 Xilinx, Inc. All Rights Reserved.
+================================================================
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado_HLS/2016.3/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'G552' on host 'yk6' (Windows NT_amd64 version 6.2) on Mon Nov 19 13:10:57 +0800 2018
+INFO: [HLS 200-10] In directory 'C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4'
+INFO: [HLS 200-10] Opening and resetting project 'C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS'.
+INFO: [HLS 200-10] Adding design file '../../mlp.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file '../../result.golden.dat' to the project
+INFO: [HLS 200-10] Adding test bench file '../../mlp_test.cpp' to the project
+INFO: [HLS 200-10] Opening and resetting solution 'C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SIM 211-2] *************** CSIM start ***************
+WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux.
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../../../mlp_test.cpp in debug mode
+   Compiling ../../../../../../mlp.cpp in debug mode
+   Generating csim.exe
+Test passed !
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-10] Analyzing design file '../../mlp.cpp' ... 
+INFO: [HLS 200-10] Validating synthesis directives ...
+WARNING: [HLS 200-40] Directive 'PIPELINE' cannot be applied: Label 'mlp_label17' does not exist in function 'mlp'. 
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 93.719 ; gain = 43.625
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 93.719 ; gain = 43.625
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 95.504 ; gain = 45.410
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 95.719 ; gain = 45.625
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'mlp_label14' (../../mlp.cpp:43) in function 'mlp' for pipelining.
+WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'mlp_label15' (../../mlp.cpp:44) because its parent loop or function is pipelined.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'mlp_label19' (../../mlp.cpp:59) in function 'mlp' for pipelining.
+WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'mlp_label20' (../../mlp.cpp:61) because its parent loop or function is pipelined.
+INFO: [XFORM 203-501] Unrolling loop 'mlp_label15' (../../mlp.cpp:44) in function 'mlp' completely.
+INFO: [XFORM 203-501] Unrolling loop 'mlp_label20' (../../mlp.cpp:61) in function 'mlp' completely.
+INFO: [XFORM 203-102] Partitioning array 'test_data' (../../mlp.cpp:8) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'weightIH' (../../mlp.cpp:10) in dimension 1 automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (../../mlp.cpp:104:1) in function 'sigmoid'... converting 12 basic blocks.
+INFO: [XFORM 203-602] Inlining function 'sigmoid' into 'mlp' (../../mlp.cpp:64) automatically.
+INFO: [XFORM 203-11] Balancing expressions in function 'mlp' (../../mlp.cpp:3)...13 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:02 ; elapsed = 00:00:12 . Memory (MB): peak = 117.398 ; gain = 67.305
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'mlp_label18' (../../mlp.cpp:58:41) in function 'mlp' : 
+WARNING: [XFORM 203-542] more than one sub loop.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:02 ; elapsed = 00:00:13 . Memory (MB): peak = 117.398 ; gain = 67.305
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'mlp' ...
+WARNING: [SYN 201-107] Renaming port name 'mlp/input' to 'mlp/input_r' to avoid the conflict with HDL keywords or other object names.
+WARNING: [SYN 201-107] Renaming port name 'mlp/output' to 'mlp/output_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'mlp' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label12'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:22) and axis read on port 'input_r' (../../mlp.cpp:21).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:23) and axis read on port 'input_r' (../../mlp.cpp:21).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:24) and axis read on port 'input_r' (../../mlp.cpp:21).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:25) and axis read on port 'input_r' (../../mlp.cpp:21).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 11, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:32) and axis read on port 'input_r' (../../mlp.cpp:21).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 12, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:33) and axis read on port 'input_r' (../../mlp.cpp:21).
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 13, Depth: 14.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label13'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 2.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label14'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:45) and axis read on port 'input_r' (../../mlp.cpp:45).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:45) and axis read on port 'input_r' (../../mlp.cpp:45).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:45) and axis read on port 'input_r' (../../mlp.cpp:45).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:45) and axis read on port 'input_r' (../../mlp.cpp:45).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 11, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:45) and axis read on port 'input_r' (../../mlp.cpp:45).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 12, distance = 1, offset = 1)
+   between axis read on port 'input_r' (../../mlp.cpp:45) and axis read on port 'input_r' (../../mlp.cpp:45).
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 13, Depth: 14.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label16'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 2.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label19'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 7.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label21'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (../../mlp.cpp:69) of variable 'tmp_59', ../../mlp.cpp:69 on array 'result', ../../mlp.cpp:15 and 'load' operation ('result_load_2', ../../mlp.cpp:69) on array 'result', ../../mlp.cpp:15.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 2, Depth: 8.
+INFO: [SCHED 204-61] Pipelining loop 'mlp_label22'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 14.017 seconds; current allocated memory: 82.642 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.692 seconds; current allocated memory: 82.539 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mlp' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'mlp/input_r' to 'axis' (register).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mlp/output_r' to 'axis' (register).
+INFO: [RTGEN 206-500] Setting interface mode on function 'mlp' to 'ap_ctrl_none'.
+INFO: [SYN 201-210] Renamed object name 'mlp_mul_32s_16ns_32_3' to 'mlp_mul_32s_16ns_bkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'mlp_mul_32s_32s_32_6' to 'mlp_mul_32s_32s_3cud' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'mlp_mul_32s_16ns_bkb': 13 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mlp_mul_32s_32s_3cud': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mlp'.
+INFO: [HLS 200-111]  Elapsed time: 0.955 seconds; current allocated memory: 84.776 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'mlp_mul_32s_16ns_bkb_Mul3S_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'mlp_mul_32s_32s_3cud_MulnS_0'
+INFO: [RTMG 210-278] Implementing memory 'mlp_test_data_1_ram' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mlp_weightIH_0_ram' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mlp_weightHO_ram' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mlp_result_ram' using distributed RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:07 ; elapsed = 00:00:21 . Memory (MB): peak = 131.660 ; gain = 81.566
+INFO: [SYSC 207-301] Generating SystemC RTL for mlp.
+INFO: [VHDL 208-304] Generating VHDL RTL for mlp.
+INFO: [VLOG 209-307] Generating Verilog RTL for mlp.
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+WARNING: [COSIM 212-75] Fifo port 'input_r' has a default depth of 1. Insufficient depth may cause simulation mismatch or freeze. Please specify the depth in 'set_directive_interface' using the option '-depth'.
+WARNING: [COSIM 212-75] Fifo port 'output_r' has a default depth of 1. Insufficient depth may cause simulation mismatch or freeze. Please specify the depth in 'set_directive_interface' using the option '-depth'.
+   Build using "D:/Xilinx/Vivado_HLS/2016.3/msys/bin/g++.exe"
+   Compiling apatb_mlp.cpp
+   Compiling mlp.cpp_pre.cpp.tb.cpp
+   Compiling mlp_test.cpp_pre.cpp.tb.cpp
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+Test passed !
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+
+C:\Users\G552\Desktop\4218_proj\hls_to_be_submitted\hls\solution4\HLS\solution4\sim\verilog>call xelab xil_defaultlib.apatb_mlp_top -prj mlp.prj --initfile "D:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini" --lib "ieee_proposed=./ieee_proposed" -s mlp  
+INFO: [XSIM 43-3496] Using init file passed via -initfile option "D:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini".
+Vivado Simulator 2016.3
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2016.3/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.apatb_mlp_top -prj mlp.prj --initfile D:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini --lib ieee_proposed=./ieee_proposed -s mlp 
+Multi-threading is on. Using 2 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/AESL_axi_s_input_r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_input_r
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/AESL_axi_s_output_r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_output_r
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/AESL_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/mlp.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_mlp_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/mlp.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mlp
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/mlp_mul_32s_16ns_bkb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mlp_mul_32s_16ns_bkb_Mul3S_0
+INFO: [VRFC 10-311] analyzing module mlp_mul_32s_16ns_bkb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/mlp_mul_32s_32s_3cud.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mlp_mul_32s_32s_3cud_MulnS_0
+INFO: [VRFC 10-311] analyzing module mlp_mul_32s_32s_3cud
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/mlp_result.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mlp_result_ram
+INFO: [VRFC 10-311] analyzing module mlp_result
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/mlp_test_data_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mlp_test_data_1_ram
+INFO: [VRFC 10-311] analyzing module mlp_test_data_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/mlp_weightHO.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mlp_weightHO_ram
+INFO: [VRFC 10-311] analyzing module mlp_weightHO
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/mlp_weightIH_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mlp_weightIH_0_ram
+INFO: [VRFC 10-311] analyzing module mlp_weightIH_0
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.mlp_test_data_1_ram
+Compiling module xil_defaultlib.mlp_test_data_1(DataWidth=16,Add...
+Compiling module xil_defaultlib.mlp_weightIH_0_ram
+Compiling module xil_defaultlib.mlp_weightIH_0(DataWidth=32,Addr...
+Compiling module xil_defaultlib.mlp_weightHO_ram
+Compiling module xil_defaultlib.mlp_weightHO(DataWidth=32,Addres...
+Compiling module xil_defaultlib.mlp_result_ram
+Compiling module xil_defaultlib.mlp_result(DataWidth=32,AddressR...
+Compiling module xil_defaultlib.mlp_mul_32s_16ns_bkb_Mul3S_0
+Compiling module xil_defaultlib.mlp_mul_32s_16ns_bkb(ID=1,NUM_ST...
+Compiling module xil_defaultlib.mlp_mul_32s_32s_3cud_MulnS_0
+Compiling module xil_defaultlib.mlp_mul_32s_32s_3cud(ID=1,NUM_ST...
+Compiling module xil_defaultlib.mlp
+Compiling module xil_defaultlib.fifo(DEPTH=1,WIDTH=32)
+Compiling module xil_defaultlib.AESL_axi_s_input_r
+Compiling module xil_defaultlib.AESL_axi_s_output_r
+Compiling module xil_defaultlib.apatb_mlp_top
+Built simulation snapshot mlp
+
+****** Webtalk v2016.3 (64-bit)
+  **** SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+  **** IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/xsim.dir/mlp/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/xsim.dir/mlp/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Mon Nov 19 13:11:56 2018. For additional details about this file, please refer to the WebTalk help file at D:/Xilinx/Vivado/2016.3/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Mon Nov 19 13:11:56 2018...
+
+****** xsim v2016.3 (64-bit)
+  **** SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+  **** IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/mlp/xsim_script.tcl
+# xsim {mlp} -autoloadwcfg -tclbatch {mlp.tcl}
+Vivado Simulator 2016.3
+Time resolution is 1 ps
+source mlp.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [0.00%] @ "125000"
+// RTL Simulation : 1 / 1 [0.00%] @ "18855000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 18895 ns : File "C:/Users/G552/Desktop/4218_proj/hls_to_be_submitted/hls/solution4/HLS/solution4/sim/verilog/mlp.autotb.v" Line 199
+## quit
+INFO: [Common 17-206] Exiting xsim at Mon Nov 19 13:12:13 2018...
+INFO: [COSIM 212-316] Starting C post checking ...
+Files result.dat and result.golden.dat differ
+Test failed  !!!
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [IMPL 213-8] Exporting RTL as an IP in IP-XACT.
+
+****** Vivado v2016.3 (64-bit)
+  **** SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+  **** IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2016.3/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Mon Nov 19 13:12:33 2018...
+INFO: [HLS 200-112] Total elapsed time: 116.74 seconds; peak allocated memory: 91.672 MB.
